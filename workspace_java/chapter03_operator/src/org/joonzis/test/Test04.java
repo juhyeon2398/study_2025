@@ -8,12 +8,11 @@ public class Test04 {
 //		* 1~4 사이의 값으로 입력 받기 
 //		* 홀수-남자 짝수-여자
 		Scanner sc = new Scanner(System.in);
-		
+
 		System.out.println("성별 번호를 입력해주세요 : ");
 		int sexNum = sc.nextInt();
 		boolean result = (sexNum % 2 == 0);
 		System.out.println(result ? "여자" : "남자");
 
-		
 	}
 }

@@ -8,20 +8,24 @@ public class Test10 {
 //		* ex) num = 1234
 //			1 + 2 + 3 + 4
 		Scanner sc = new Scanner(System.in);
-		
+
 		int num = 0;
 		int length = 0;
 		int result = 0;
 		String strNum = "";
-		
+
 		System.out.println("숫자 입력 : ");
 		num = sc.nextInt();
 		
 		strNum = Integer.toString(num);
 		length = strNum.length();
 		for (int i = 0; i < length; i++) {
-			result += Integer.parseInt(strNum.substring(i,i+1));
-			System.out.println(result);
+			result += Integer.parseInt(strNum.substring(i, i + 1));
+			if(i == length-1) {
+				System.out.println("최종 합은 :" + result);
+			}else {
+				System.out.println(result);
+			}
 		}
 	}
 }
