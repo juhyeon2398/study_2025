@@ -17,7 +17,10 @@ public class Test04 {
 		str = sc.next();
 		ch = (int) str.charAt(0);
 		
-		if(ch >= 64 && ch < 91) {
+//		char ch = sc.next().charAt(0);
+		
+		// char 타입은 문자로 비교가능 (알아서 변환하여 비교)
+		if(ch >= 65 && ch < 91) {
 			System.out.println("대문자");
 		}else if(ch >= 97 && ch < 123) {
 			System.out.println("소문자");
