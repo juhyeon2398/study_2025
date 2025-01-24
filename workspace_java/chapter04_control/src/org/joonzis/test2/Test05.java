@@ -7,16 +7,24 @@ public class Test05 {
 
 		int num = 0;
 		int sum = 0;
+		int sum2 = 0;
+		
+		
 
 		while (true) {
 			num++;
-			sum += num;
-			System.out.println(num + ". " + sum);
+			if(num % 2 == 0) {
+				sum += num;				
+			}else {				
+				sum2 += num;				
+			}
 			
 			if (num == 100) {
 				break;
 			}
 		}
+		System.out.println("짝수의 합 " + sum);
+		System.out.println("홀수의 합 " + sum2);
 
 	}
 }

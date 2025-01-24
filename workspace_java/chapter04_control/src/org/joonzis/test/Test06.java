@@ -15,21 +15,17 @@ public class Test06 {
 		Scanner sc = new Scanner(System.in);
 		System.out.println("수준입력 >> ");
 		grade = sc.nextInt();
-		
+
 		switch (grade) {
-		case 1:
-			System.out.println("읽기");
-			break;
-		case 2:
-			System.out.println("쓰기, 읽기");
-			break;
 		case 3:
-			System.out.println("실행, 쓰기, 읽기");
-			break;
+			System.out.print("실행, ");
+		case 2:
+			System.out.print("쓰기,");
+		case 1:
+			System.out.print("읽기");
 		default:
 			break;
 		}
-		
-		
+
 	}
 }

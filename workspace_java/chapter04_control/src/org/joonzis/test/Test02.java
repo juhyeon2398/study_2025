@@ -17,7 +17,7 @@ public class Test02 {
 		System.out.println("실기점수를 입력해주세요 : ");
 		score2 = sc.nextInt();
 
-		avg = (score1 + score2) / 2;
+		avg = (score1 + score2) / 2.0;
 		System.out.println("필기 : " + score1 + " 실기 : " + score2 +"\n평균 : " + avg);
 
 		if ((score1 >= 70 && score2 >= 70) || avg >= 80) {
