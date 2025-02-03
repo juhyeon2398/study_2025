@@ -27,19 +27,39 @@ public class Test10 {
 //		1	1	1	1	
 //		1	1	1	1	1
 
+//		Scanner sc = new Scanner(System.in);
+//		int[] colLine = new int[5];
+//		for (int i = 0; i < colLine.length; i++) {
+//			System.out.print ((i+1)+"행 >> ");
+//			colLine[i] = sc.nextInt();
+//		}
+//		System.out.println(Arrays.toString(colLine));
+//		for (int i : colLine) {
+//			for (int j = 0; j < i; j++) {
+//				System.out.print("1\t");
+//			}
+//			System.out.print("\n");
+//		}
+		
+		int[][] arr = new int[5][];
 		Scanner sc = new Scanner(System.in);
-		int[] colLine = new int[5];
-		for (int i = 0; i < colLine.length; i++) {
-			System.out.print ((i+1)+"행 >> ");
-			colLine[i] = sc.nextInt();
-		}
-		System.out.println(Arrays.toString(colLine));
-		for (int i : colLine) {
-			for (int j = 0; j < i; j++) {
-				System.out.print("1\t");
+		for (int i = 0; i < arr.length; i++) {
+			System.out.println((i+1) + "행 >> ");
+			int row = sc.nextInt();
+			arr[i] = new int[row];
+			
+			for (int j = 0; j < arr[i].length; j++) {
+				arr[i][j] = 1;
 			}
-			System.out.print("\n");
 		}
+		
+		for (int i = 0; i < arr.length; i++) {
+			for (int j = 0; j < arr[i].length; j++) {
+				System.out.print(arr[i][j] + "\t");
+			}
+			System.out.println();
+		}
+		
 		
 	}
 }

@@ -7,12 +7,13 @@ public class Test03 {
 
 		int[] arr = { 10, 20, 50, 60, 13, 25, 97 };
 		int sum = 0;
-		int avg = 0;
-		for (int num : arr ) {
+		double avg = 0.0;
+
+		for (int num : arr) {
 			sum += num;
 		}
-		avg = sum/arr.length;
-		
-		System.out.println("해당 배열의 합은 " +sum+"이며 평균은 "+avg+"입니다.");
+		avg = sum / (double) arr.length;
+
+		System.out.println("해당 배열의 합은 " + sum + "이며 평균은 " + avg + "입니다.");
 	}
 }
