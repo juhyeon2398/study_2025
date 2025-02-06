@@ -21,13 +21,12 @@ public class Ex05_Book {
 	int salesVolume;
 	boolean isBestSeller;
 
-	public Ex05_Book() {
-	
-	}
+	public Ex05_Book() {}
 
 	public Ex05_Book(String title, int price) {
 		this.title = title;
 		this.price = price;
+		writer = "작가미상";
 	}
 
 	public Ex05_Book(String title, int price, String writer) {
@@ -36,14 +35,14 @@ public class Ex05_Book {
 		this.writer = writer;
 	}
 
-	boolean setSalesVolume(int sales) {
+	void setSalesVolume(int sales) {
 		salesVolume = sales;
-		return isBestSeller = salesVolume >=1000;
+		isBestSeller = salesVolume >= 1000;
 	}
 
 	void output() {
 		System.out.println("제목 : " + title);
-		System.out.println("저자 : " + (writer == null ? "작가미상" : writer));
+		System.out.println("저자 : " + writer);
 		System.out.println("가격 : " + price);
 		System.out.println("판매량 : " + salesVolume);
 		System.out.println(isBestSeller ? "베스트셀러" : "일반서적");
