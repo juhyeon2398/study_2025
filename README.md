@@ -26,7 +26,7 @@
 # this
 1. 생성된 객체의 자기 자신을 호출하는 방식
 2. this.필드 -> 필드 호출
-3. this() 메소드 -> 같은 이름의 생성자를 찾음
+3. this() 생성자 -> 같은 이름의 생성자를 찾음
 # static
 1. 객체 생성전 만들어진다.
 2. 정적 멤버 : 객체를 생성하지 않고 사용가능한 필드와 메소드 (Math, Intiger)
@@ -41,7 +41,7 @@
   System.out.println(ran.nextInt());
   System.out.println(ran.nextInt(10)); // 난수 발생 (0 ~ 9);
   System.out.println(ran.nextInt(6)); // 0~5
-  System.out.println(ran.nextInt(6) + 1); // 0~6
+  System.out.println(ran.nextInt(6) + 1); // 1~6
   System.out.println(ran.nextDouble()); // 0~0.999
   System.out.println(ran.nextDouble() * 10); // 0~9.999
   System.out.println((int) ran.nextDouble() * 10); // 0~9
@@ -49,3 +49,45 @@
   
   ((int)(Math.random()*6 +1));
 </pre>
+# 상속 (Inheritance)
+1. 부모가 자식에게 데이터를 전달해줌 -> 클래스 재활용
+2. 기존 클래스를 확장(extends), 중복 제거
+3. private 필드, 메소드는 제외
+4. 한 부모에게만 상속 가능, 자식은 여럿 가능
+5. 객체선언은 자식만해도 사용가능
+6. 자바의 최상위 클래스 (슈퍼클래스) -> java.long.Objext
+7. super() -> 부모의 생성자이며 이를 통해 부모 필드 초기화가능
+<pre>
+class Child extends Parent {
+  void doChild() {
+    System.out.println("Child() 호출");
+  }
+}
+</pre>
+# 메소드 오버라이드 (Method Override)
+1. 상속 받은 클래스를 재정의
+2. 어노테이션 - @Override
+  * 선언한 메소드가 오버라이드 되었다는것을 나타냄
+  * 상위 클래스에서 해당 메소드를 못 찾으면 컴파일 에러발생
+3. 자동완성 -> Override/Impement Methods
+# 정보 은닉 (Information Hiding)
+1. 필드는 숨김 : 필드
+2. 노출 시키는 정보 : "생성자","메소드" 객체 생성을 위함 (new 생성자)
+  * 필드 : private
+  * 생성자 : public
+  * 메소드 : public or private
+3. 접근 지시자 : public, protected, default, private
+# Getters & Setters
+1. 필드를 private 처리하면 필드에 접근하기 위한 메소드
+2. 초기화시 예외처리에 용이
+<pre>
+  //setter
+  public void set필드명(메개변수){}
+  
+  //getter
+  public void set필드명(메개변수){
+    return 값;
+  }
+</pre>
+# 다형성 (Polymorphism)
+1. 
