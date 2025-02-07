@@ -23,10 +23,9 @@ public class Test01_1 {
 
 		int[] arr = new int[6];
 		int[] answer = { 42, 36, 20, 5, 1, 30 };
-		int count = 0;
 
 		for (int i = 0; i < arr.length; i++) {
-			int ranNum = (int) (ran.nextDouble() * 45) + 1; // 난수 발생
+			int ranNum = ran.nextInt(45) + 1; // 난수 발생
 
 			// 중복여부 비교
 			for (int j : arr) {
@@ -37,10 +36,10 @@ public class Test01_1 {
 					System.out.println("==========================");
 
 					// 난수 재설정;
-					while(true) {
-						int newNum = (int) (ran.nextDouble() * 45) + 1; //신규 난수
-						if(ranNum != newNum ) {
-							ranNum = newNum; 
+					while (true) {
+						int newNum = ran.nextInt(45) + 1; // 신규 난수
+						if (ranNum != newNum) {
+							ranNum = newNum;
 							break; // 무한루프 종료
 						}
 					}
@@ -51,9 +50,12 @@ public class Test01_1 {
 		}
 
 		// 정답 비교
-		for (int i = 0; i < answer.length; i++) {
-			if (answer[i] == arr[i]) {
-				count++;
+		int count = 0;
+		for (int i = 0; i < arr.length; i++) {
+			for (int j = 0; j < answer.length; j++) {
+				if (arr[i] == answer[j]) {
+					count++;
+				}
 			}
 		}
 
