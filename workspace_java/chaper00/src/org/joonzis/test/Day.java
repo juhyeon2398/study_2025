@@ -6,25 +6,25 @@ package org.joonzis.test;
 //	  	setSchedule(String schedule) : 스케쥴 저장, output()
 
 public class Day {
-	String schedule;
+	private String schedule;
 
-	public Day() {
-	}
-
+	public Day() {}
 	public Day(String schedule) {
-		this.schedule = schedule;
+		setSchedule(schedule);
 	}
 
+	// 스케쥴반환
 	public String getSchedule() {
 		return schedule;
 	}
 
+	//스케쥴 저장
 	public void setSchedule(String schedule) {
 		this.schedule = schedule;
-		System.out.println("저장되었습니다.");
+		System.out.println("================================================================");
+		System.out.println("+++ 저장되었습니다 +++");
 	}
 
-	void output() {
-		System.out.println("저장된 스케줄 : " + getSchedule());
+	public void output() {
 	}
 }

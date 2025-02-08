@@ -24,6 +24,8 @@ import java.util.Scanner;
 public class WeekSchedulerMain {
 
 	public static void main(String[] args) {
-		WeekScheduler sch = new WeekScheduler();
+		
+		WeekScheduler scheduler = new WeekScheduler(7, new Scanner(System.in));
+		scheduler.run();	
 	}
 }
