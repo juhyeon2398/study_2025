@@ -38,13 +38,13 @@ public class WeekScheduler {
 		this.days = new Day[scheduleSize];
 		this.week = new String[] { "일", "월", "화", "수", "목", "금", "토" };
 		this.scanner = scanner;
+		isExit = true;
 	}
 
 	private void menu() {
 		// 목록 (1. 스케줄 생성, 2. 삭제, 3. 수정, 4. 보기, 0. 종료)
-		isExit = true;
 		while (isExit) {
-			System.out.println("1. 스케줄 생성, 2. 삭제, 3. 수정, 4. 보기, 0. 종료");
+			System.out.println("1. 스케줄 생성, 2.삭제, 3. 수정, 4. 보기, 0. 종료");
 
 			switch (scanner.nextInt()) {
 			case 1:
