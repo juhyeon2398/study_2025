@@ -106,3 +106,28 @@ class Child extends Parent {
 4. class C implements A,B {}
   * C는 A,B의 구현 클래스
 5. 업캐스팅이 가능하다.
+# 예외 (exception)
+1. 처리형식
+<pre>
+  try{
+    예외가 발생할 가능성이 있는 구역
+  } catch {
+    받은 예외 처리
+  } finally{
+    예외 유무와 상관없이 무조건 실행
+  }
+</pre>
+2. Exception으로 처리가능하나 명확하게 하는 것이 좋음
+3. printStackTrace -> catch 영역에서 오류 메시지 출력
+4. throws : 공통 자원의 예외처리를 호출자에가 예외처리를 넘김
+5. throw : 예외 강제 발생
+# API
+1. java.long 패키지 
+2. import 없이 사용가능
+3. 연산이 일어날 경우 주소값이 계속 생김
+  * 연산이 많이 일어날경우 StringBuffer, StringBilder 객체형태로 사용
+# Object
+1. 최상위 클래스
+2. 모든 데이터가 들어감
+# toString
+1. @override 오버라이딩 시키면 출력 객체처럼사용가능
