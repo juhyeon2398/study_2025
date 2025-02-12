@@ -22,7 +22,7 @@ public class Ex06_Wrapper {
 		// AutoBoxing
 		Integer c = 100;
 		Integer d = 100;
-		
+
 		// AutoUnBoxing
 		int result = c + d;
 		System.out.println(result);
