@@ -136,6 +136,38 @@ class Child extends Parent {
 # Date 
 1. java.util -> 자바단에서사용
 2. java.sql -> DB에 날짜저장할때 사용
+# Thread 스레드
+1. Thread 클래스를 상속받아 객체생성
+2. Runnalbe 인터페이스 구현 -> Thread를 상속받으면 다른 클래스를 상속받지 못 하기 때문
+3. run() 스레드 객체 생성
+4. start() 스레드 실행
+5. 스레드는 실행 및 종료 순서는 정하지 못 하지만 synchronized 사용하여 블록내 순서는 정할 수 있다.
 # 제네릭 Generic
 1. 잘못된 타입이 사용될 문제를 컴파일 과정에서 제거가능
-2. 
+2. 제네릭 메소드/클래스 생성 가능
+   * class 클래스명<제네릭 변수 T> 클래스 사용
+   * static <T> void printArray(T[] arr) 메소드 사용
+3. 캐스팅 타입 변환을 거치지 않아도 된다.
+4. 메소드는 타입을 지정하지 않아도 입력된 값에 따라 동적으로 변함
+# Collection
+1. 변수명을 호출하면 값이 나옴
+2. Set 순서가 없는 데이터 집함 -> 중복 불가
+3. List 순서가 있는 데이터 집합 -> 중복 허용
+4. ArrayList
+  * size() = length() -> Array는 length(), ArrayList는 size()로 배열의 크기를 확인함
+  * .add(); // 추가
+  * .get(idx); // 요소 가져옴
+  * .clear(); // 저장된 모든 객체 삭제
+  * .remove(0); // 인덱스 객체 삭제
+5. Map
+  * key와 value가 쌍으로 이루어진 순서가 없는 데이터 집합
+  * key는 중복 X
+  * value 중복 O
+4. Iterator (반복자)
+  * 주소값을 공유하여 해당 배열에서도 삭제가 일어남
+  * hasNext() : 다음요소 유무 확인 메소드
+  * next() : 다음 요소 가져옴
+  * remove() : next()로 가져온 요소 삭제
+  * 구조 : Iterator itr = list.iterator();
+  * 사용 하면 비워지는 구조여서 재사용시 다시 넣어야함
+  
