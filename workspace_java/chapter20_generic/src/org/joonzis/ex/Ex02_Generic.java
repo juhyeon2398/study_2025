@@ -21,6 +21,6 @@ public class Ex02_Generic {
 		bag.setObj(new Ball());
 
 		Ball ball = bag.getObj();
-		// 제네릭을 사용하면 캐스팅이 필요헚다.
+		// 제네릭을 사용하면 캐스팅이 필요없다.
 	}
 }

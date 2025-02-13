@@ -49,8 +49,7 @@ class Bicycle {
 public class Test04 {
 	// - CityTourBus, SeoulBus, Taxi 정보 출력
 	static <T extends Car> void onlyCar(T car) {
-		StringBuffer sb = new StringBuffer();
-		System.out.println(sb.append(car.info()));
+		car.info();
 	}
 
 	public static void main(String[] args) {

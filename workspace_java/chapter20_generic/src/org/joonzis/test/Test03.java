@@ -21,6 +21,7 @@ class Product<T1, T2> {
 		this.category = category;
 	}
 
+	@SuppressWarnings("unchecked")
 	public void setModel(T2 model) {
 		this.model = (T2) model.toString();
 	}
@@ -62,7 +63,7 @@ class Cup {
 
 	@Override
 	public String toString() {
-		return model + "컵";
+		return model + " 컵";
 	}
 }
 
