@@ -13,12 +13,13 @@ import java.util.Date;
 //					메소드 : 생성자, toString()
 
 class Board{
-	String title, content;
-//	Date register;
+	private String title, content;
+	private Date register;
 	
 	public Board(String title, String content) {
 		this.title = title;
 		this.content = content;
+		this.register = new Date();
 	}
 	
 	@Override
@@ -29,15 +30,10 @@ class Board{
 
 public class Test01 {
 	public static void main(String[] args) {
-		ArrayList<String> arr = new ArrayList<String>();
-		Board borad = new Board("제목1","내용1");
-		Board borad2 = new Board("제목2","내용2");
-		Board borad3 = new Board("제목3","내용3");
-		arr.add(borad.toString());
-		arr.add(borad2.toString());
-		arr.add(borad3.toString());
-		
-		System.out.println(arr);
+		ArrayList<Board> arr = new ArrayList<Board>();
+		arr.add(new Board("11","55"));
+		arr.add(new Board("22","66"));
+		arr.add(new Board("33","77"));
 		
 		arr.remove(1);
 		System.out.println(arr);
