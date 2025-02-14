@@ -170,4 +170,11 @@ class Child extends Parent {
   * remove() : next()로 가져온 요소 삭제
   * 구조 : Iterator itr = list.iterator();
   * 사용 하면 비워지는 구조여서 재사용시 다시 넣어야함
-  
+# IO 
+1. BufferedOutputStream 
+  * flush() 채워지지 않은 데이터를 보냄
+  * close() 객체를 생성한것의 역순으로 닫아야 좋음
+2. file
+  * file.exists() - 파일 존재여부 확인 메소드
+  * file.getPath() - 상대경로
+  * file.getAbsolutePath() - 절대경로
