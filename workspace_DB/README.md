@@ -2,6 +2,8 @@ user scott    // 계정
 identified by tiger; // password
 select ename || `is a` || job 칼럼을 연결할떄 || 사용COMCAT으로도 가능
 
+DESC 테이블명 - 데이터 구조 확인
+
 # 데이터형
 1. NUMBER - 숫자형
 2. DATE - 날짜형
@@ -139,8 +141,66 @@ END
      CREATE TABLE 테이블명(
       column_name1 data_type expr...,
       column_name2 data_type
-      )
+     )
    </pre>
 2. ALTER - 테이블을 수정하는 역할
+   <pre>
+      // 컬럼 추가
+      ALTER TABLE 테이블 명
+      ADD(컬럼 명 데이터 타입, ...);
+
+      // 컬럼 수정
+      ALTER TABLE 테이블 명
+      MODIFY(컬럼 명 데이터 타입, ...);
+   </pre>
 3. DROP - 데이터베이스, 테이블을 삭제하는 역할
+   <pre>
+     DROP TABLE 테이블 명;
+   </pre>
 4. TRUNCATE - 테이블을 초기화 시키는 역할
+   <pre>
+     TRUNCATE TABLE 테이블 명;
+   </pre>
+# DML
+* 테이블 검색, 삽입, 수정, 삭제하는데 사용
+* Rollback이 가능
+1. INSERT
+   * 컬럼명을 생략하면 모든 데이터를 다 넣어야함
+   * 컬럼을 일부만 추가할 경우 누락된 영역은 NULL값이 추가된다.
+     <pre>
+       INSERT INTO DEPT01 
+       VALUES(20, ‘인사부’, ‘천안’);
+     </pre>
+2. UPDATE
+   * 테이블에 저장된 데이터를 수정
+   * where절을 주지 않으면 해당 칼럼 데이터를 변경함
+     <pre>
+       UPDATE 테이블명 
+       SET 컬럼1=값1, 컬럼2=값2, ... 
+       WHERE 조건;
+     </pre>
+3. DELETE
+   * 테이블에 저장된 데이터를 삭제
+     <pre>
+       DELETE FROM 테이블명
+       WHERE 조건;
+     </pre>
+# 트랜잭션
+1. COMMIT과 ROLLBACK
+   * 데이터 무결성
+   * 데이터의 변경 사항
+   * 작업 그룹화
+2. COMMIT
+   * 이전 데이터가 완전히 UPDATE 된다.
+   * 변경된 데이터 결과를 볼 수 있다.
+3 ROLLBACK
+   * INSERT, UPDATE, DELETE 작업 내용을 취소
+   * 이전 COMMIT한 곳/이전 트랜잭션이 종료된 지점 까지만 복구된다
+# 제약조건
+1. 무결성 제약조건
+   * NOT NULL - NULL X
+   * UNIQUE - 중복 값 X
+   * PRIMARY KEY - NULL X, 중복 값 X
+   * FOREIGN KEY - 참조컬럼 존재시 O
+   * CHECK - 범위나 조건에 충족하는 데이터 O
+   
