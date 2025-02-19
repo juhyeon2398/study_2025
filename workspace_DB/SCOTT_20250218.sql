@@ -223,7 +223,6 @@ saleprice NUMBER,
 orderdate date
 );
 
-
 insert into book values (1, '축구의역사', '굿스포츠', 7000);
 insert into book values (2, '축구아는여자', '나무수', 13000);
 insert into book values (3, '축구의이해', '대한미디어', 22000);
@@ -276,11 +275,11 @@ select count(*) from orders
         select customerid from customer where name = '박지성' 
     );
 --10. 2014년 7월 4일부터 7월 7일 사이에 주문 받은 주문 정보를 출력하시오. (+@ 기간 제외 정보 출력)
---select * from orders join coustomer where orderdate BETWEEN '14/07/04' and '14/07/07';
 select * from customer 
         inner join orders on customer.customerid = orders.customerid 
         inner join book on book.bookid = orders.bookid  
         where orderdate BETWEEN '14/07/04' and '14/07/07' ;
+        
 --11. 주문한 적이 없는 고객의 이름을 출력하시오.
 select name from customer where customerid = all(select customerid from orders);
 --12. 박지성이 구매한 도서의 출판사 수(중복없이)를 출력하시오.
@@ -288,10 +287,16 @@ select count(book.publisher) from book
         inner join orders on book.bookid = orders.bookid  
         inner join customer on customer.customerid = orders.customerid
         where name = '박지성';
+        
+select count(*) from orders 
+        group by customerid
+        HAVING customerid = (
+        select customerid from customer where name = '박지성');
+        
 --13. 고객의 모든 이름과 고객별 총 구매액을 함께 출력하시오.
 SELECT name, sum(orders.saleprice) FROM customer
     left OUTER JOIN orders 
-    USING(customerid) group by name;
+    on orders.customerid = customer.customerid group by name;
 --13-1. 구매 내역이 있는 고객의 이름과 고객별 총 구매액을 함께 출력하시오.
 select name, sum(orders.saleprice)  from customer 
     JOIN orders on orders.customerid = customer.customerid 
@@ -300,4 +305,4 @@ select name, sum(orders.saleprice)  from customer
 --13-2. 고객의 모든 이름과 고객별 총 구매액을 함께 출력하되 구매 내역이 없는 고객의 구매 금액은 0으로 출력하시오.
 SELECT name, NVL(sum(orders.saleprice),0) FROM customer
     left OUTER JOIN orders 
-    USING(customerid) group by name;
+    on orders.customerid = customer.customerid group by name;
