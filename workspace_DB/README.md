@@ -203,4 +203,40 @@ END
    * PRIMARY KEY - NULL X, 중복 값 X
    * FOREIGN KEY - 참조컬럼 존재시 O
    * CHECK - 범위나 조건에 충족하는 데이터 O
-   
+# 뷰 (VIEW)
+1. 기본 테이블을 제한적으로 사용 가능한 가상 테이블
+2. 테이블 복사시 제약조건은 복사되지 않음
+3. CREATE OR REPLACE VIEW를 주로 사용한다 - 'OR REPLACE'를 사용하지 않으면 구조 수정이 불가
+4. VIEW 생성시 쿼리를 order by로 정렬해서 ROWNUM 값을 재정렬하여 일부 데이터를 원하는 정렬로 사용할 수 있음
+5. 인라인뷰 - select문 중 Table 영역에 서브쿼리를 사용하여 가상의 테이블을 생성 가능하다.
+<pre>
+ SELECT ROWNUM, EMPNO, ENAME, HIREDATE
+ FROM ( SELECT EMPNO, ENAME, HIREDATE FROM EMP ORDER BY HIREDATE)
+ WHERE ROWNUM<=5;
+</pre>
+# 시퀀스
+1. 주로 기본 키에 사용이되며 자동으로 규칙에 맞는 데이터를 추가
+2. START WITH - 시퀀스 시작 값 설정
+3. INCREMENT BY - 시퀀스 데이터 증가치 설정
+<pre>
+  CREATE SEQUENCE DEPT_DEPTNO_SEQ
+  INCREMENT BY 10
+  START WITH 10;
+</pre>
+4. NEXTVAL - 현재 시퀀스의 다음 값을 출력
+<pre>
+ SELECT DEPT_DEPTNO_SEQ.NEXTVAL FROM DUAL;
+</pre>
+5. CURRVAL - 현재 시퀀스의 값을 출력
+<pre>
+ SELECT DEPT_DEPTNO_SEQ.CURRVAL FROM DUAL;
+</pre>
+# 인덱스
+1. 인덱스의 내부 구조는 B* 트리 형식
+2. 인덱스 장점
+   * 검색 속도가 빨라진다.
+   * 시스템에 걸리는 부하를 줄여서 시스템 전체 성능을 향상시킨다.
+3. 인덱스 단점
+   * 인덱스를 위한 추가적인 공간이 필요하다.
+   * 인덱스를 생성하는데 시간이 걸린다.
+   * 데이터의 변경 작업(INSERT/UPDATE/DELETE)이 자주 일어날 경우에는 오히려 성능이 저하된다.
