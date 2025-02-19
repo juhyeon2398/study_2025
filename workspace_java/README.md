@@ -178,3 +178,6 @@ class Child extends Parent {
   * file.exists() - 파일 존재여부 확인 메소드
   * file.getPath() - 상대경로
   * file.getAbsolutePath() - 절대경로
+# DB연동 
+javaproject 우클릭 -> buildpath -> libraries탭 -> classpath -> add external jars -> 파일추가 후 저장
+
