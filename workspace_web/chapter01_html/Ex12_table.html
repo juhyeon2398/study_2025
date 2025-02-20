@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>나의 첫 웹 페이지 제목</title>
+</head>
+<body>
+    <h1>3행 2열 테이블</h1>
+    <table border="1">
+        <tr>
+            <th>이름</th>
+            <th>나이</th>
+        </tr>
+        <tr>
+            <td>김씨</td>
+            <td>10</td>
+        </tr>
+        <tr>
+            <td>박씨</td>
+            <td>20</td>
+        </tr>
+        <tr>
+            <td>이씨</td>
+            <td>30</td>
+        </tr>
+    </table>
+    
+    
+    <table border="1">
+        <thead>
+            <tr>
+                <th>이름</th>
+                <th>나이</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>김씨</td>
+                <td>10</td>
+            </tr>
+            <tr>
+                <td>박씨</td>
+                <td>20</td>
+            </tr>
+            <tr>
+                <td>이씨</td>
+                <td>30</td>
+            </tr>
+        </tbody>
+    </table>
+    <h1>열 병합 연습</h1>
+    <table border="1">
+        <thead>
+            <tr>
+                <th colspan="2">인구조사</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>지역</td>
+                <td>인구</td>
+            </tr>
+            <tr>
+                <td>서울</td>
+                <td>1000</td>
+            </tr>
+        </tbody>
+    </table>
+    
+    <table border="1">
+        <thead>
+            <tr>
+                <th colspan="2">라커 1번</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td rowspan="2">심슨</td>
+                <td>10월 20일</td>
+            </tr>
+            <tr>
+                <td>10월 30일</td>
+                
+            </tr>
+        </tbody>
+    </table>
+    <hr>
+    <div style="display: inline-block;vertical-align:top;">
+        <table border="1"width="250px">
+            <tbody>
+                <tr>
+                    <th>이름</th>
+                    <th>나이</th>
+                    <th>주소</th>
+                </tr>
+                <tr>
+                    <td>홍길동</td>
+                    <td>20세</td>
+                    <td>서울시 마포구 노고산동</td>
+                </tr>
+                <tr>
+                <th>특기</th>
+                <td colspan="2">먹기</td>
+                </tr>
+                <tr>
+                <th rowspan="2">신체</th>
+                <td colspan="2">180.0cm</td>
+                </tr>
+                <tr>
+                <td colspan="2">83kg</td>
+                </tr>
+            
+            </tbody>
+        </table>
+    </div>
+    <div style="display: inline-block;vertical-align:top;">
+        <table border="1" width="250px">
+            <tbody>
+                <tr>
+                    <td rowspan="5">1</td>
+                    <td>2</td>
+                    <td>3</td>
+                    <td>4</td>
+                    <td>5</td>
+                </tr>
+                <tr>
+                    <td>6</td>
+                    <td>7</td>
+                    <td>8</td>
+                    <td>9</td>
+                </tr>
+                <tr>
+                    <td rowspan="3">10</td>
+                    <td>11</td>
+                    <td>12</td>
+                    <td rowspan="2">13</td>
+                </tr>
+                <tr>
+                    <td>14</td>
+                    <td>15</td>
+                </tr>
+                <tr>
+                    <td>16</td>
+                    <td>17</td>
+                    <td>18</td>
+                </tr>
+                <tr>
+                    <td colspan="5">19</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div style="display: inline-block;vertical-align:top;">
+        <table border="1" width="250px">
+            <tbody>
+                <tr>
+                    <td colspan="4">1</td>
+                    <td rowspan="7">2</td>
+                </tr>
+                <tr>
+                    <td rowspan="5">3</td>
+                    <td rowspan="4">4</td>
+                    <td colspan="2">5</td>
+                </tr>
+                <tr>
+                    <td>6</td>
+                    <td rowspan="4">7</td>
+                </tr>
+                <tr>
+                    <td>8</td>
+                </tr>
+                <tr>
+                    <td>9</td>
+                </tr>
+                <tr>
+                    <td colspan="2">10</td>
+                </tr>
+                <tr>
+                    <td colspan="4">11</td>
+                </tr>
+
+            
+                
+            </tbody>
+        </table>
+    </div>
+    
+</body>
+</html>
