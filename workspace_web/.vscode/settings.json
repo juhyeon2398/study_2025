@@ -1,5 +1,6 @@
 {
     "turboConsoleLog.logMessageSuffix": "",
     "turboConsoleLog.delimiterInsideMessage": "",
-    "editor.fontSize": 14
+    "editor.fontSize": 14,
+    "turboConsoleLog.logMessagePrefix": ""
 }

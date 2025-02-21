@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        /*
+        z-index
+        1. z방향(앞뒤)의 순서를 결정하는 인덱스 값
+        2. 정수 값을 가집
+        3. 값이 클수록 앞으로 나옴
+        4. z-index : 9999
+        */
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            position: relative;
+            width: 500px;
+            height: 500px;
+            border: 1px solid #222;
+        }
+
+        .box {
+            width: 100px;
+            height: 100px;
+            border: 1px solid #222;
+            position: absolute;
+        }
+
+        .red {
+            background: red;
+            top: 50px;
+            left:50px;
+            z-index: 3;
+        }
+        
+        .orange {
+            background: orange;
+            top: 100px;
+            left:100px;
+            z-index: 2;
+        }
+        
+        .yellow {
+            background: yellow;
+            top: 150px;
+            left:150px;
+        }
+        
+       
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="box red"></div>
+        <div class="box orange"></div>
+        <div class="box yellow"></div>
+    </div>
+</body>
+
+</html>

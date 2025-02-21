@@ -61,6 +61,42 @@
         <!-- 행 : rows, 열 :  cols -->
         <h3>textarea</h3>
         <textarea name="" rows="10" cols="100" placeholder="자기소개" style="resize:none" id=""></textarea>
+
+        <!-- 7. 목록 상자(선택만 가능) -->
+         <!-- select 태그로 목록을 만들고 option 태그로 값 추가 -->
+        <h3>목록 상자</h3>
+        <select name="arr1" id="">
+            <option value="s">서울</option>
+            <option value="g">경기</option>
+            <option value="i">인천</option>
+        </select>
+        <select name="arr2" size="4" multiple id="">
+            <option value="강남">강남</option>
+            <option value="강서">강서</option>
+            <option value="강서">강서</option>
+            <option value="인천">인천</option>
+        </select>
+
+        <!-- 8. 콤보 상자(목록상자 + 직접입력) -->
+        <input type="text" list="animals">
+        <datalist id="animals">
+            <option value="강아지">강아지</option>
+            <option value="고양이">고양이</option>
+            <option value="앵무새">앵무새</option>
+            <option value="햄스터">햄스터</option>
+        </datalist>
+
+        <!-- 9. 기타 -->
+        <!-- 진행바 : 전체 100중 50 진행 상태 -->
+        <progress value="50" max ="100"></progress><br>
+        색상표 : <input type="color" name="" id=""><br>
+        <!-- 범위 바 -->
+        범위 : <input type="range" name="" min="0" max="100" step="10" id="">
+        <!-- 파일 첨부 -->
+        첨부파일 : <input type="file" name="" id="">
+
+
+
     </form>
 </body>
 </html>

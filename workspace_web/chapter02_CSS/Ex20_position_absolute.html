@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        /*
+            absolute
+            기준 위치에서 원하는 위치를 직접 지정
+            기준 위치 : 가장 가까운 부모중 relative 속성을 가진 요소 없으면 화면 전체로 인식
+
+        */
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            position: relative;
+        }
+        .group-box {
+            position: relative;
+            width: 500px;
+            height: 500px;
+            border: 1px solid #222;
+        }
+
+        .box {
+            width: 100px;
+            height: 100px;
+            border: 1px solid #222;
+            position: absolute;
+            transition: 2s ease;
+            border-radius: 50%;
+        }
+
+        .v1{
+            border-radius: 50%;
+            animation: rotate 2s infinite linear;
+            width: 400px;
+            height: 400px;
+        }
+
+        .red {
+            background: red;
+            top: 50px;
+            left: 50px;
+        }
+        
+        .v2 .red{
+            animation: red 2s infinite linear;
+        }
+        
+        .orange {
+            background: orange;
+            top: 50px;
+            left: calc(100% - 150px);
+        }
+        .v2 .orange{
+            animation: orange 2s infinite linear;
+        }
+        
+        .yellow {
+            background: yellow;
+            top: calc(100% - 150px);
+            left: 50px;
+        }
+        .v2 .yellow{
+            animation: yellow 2s infinite linear;
+        }
+        
+        .green {
+            background: green;
+            top: calc(100% - 150px);
+            left: calc(100% - 150px);
+        }
+        .v2 .green{
+            animation: green 2s infinite linear;
+        }
+        @keyframes red {
+            0%{
+                top: 50px;
+                left: 50px;
+            }
+            25%{
+                top: 50px;
+                left: calc(100% - 150px);
+            }
+            50%{
+               top: calc(100% - 150px);
+                left: calc(100% - 150px);
+            }
+            75%{
+                top: calc(100% - 150px);
+                left: 50px;
+            }
+            100%{
+                top: 50px;
+                left: 50px;
+            }
+        }
+        @keyframes orange {
+            0%{
+                top: 50px;
+                left: calc(100% - 150px);
+            }
+            25%{
+               top: calc(100% - 150px);
+                left: calc(100% - 150px);
+            }
+            50%{
+                top: calc(100% - 150px);
+                left: 50px;
+            }
+            75%{
+                top: 50px;
+                left: 50px;
+            }
+            100%{
+                top: 50px;
+                left: calc(100% - 150px);
+            }
+        }
+        @keyframes yellow {
+            0%{
+                top: calc(100% - 150px);
+                left: 50px;
+            }
+            25%{
+                top: 50px;
+                left: 50px;
+            }
+            50%{
+                top: 50px;
+                left: calc(100% - 150px);
+            }
+            75%{
+               top: calc(100% - 150px);
+                left: calc(100% - 150px);
+            }
+            100%{
+                top: calc(100% - 150px);
+                left: 50px;
+            }
+        }
+        @keyframes green {
+            0%{
+               top: calc(100% - 150px);
+                left: calc(100% - 150px);
+            }
+            25%{
+                top: calc(100% - 150px);
+                left: 50px;
+            }
+            50%{
+                top: 50px;
+                left: 50px;
+            }
+            75%{
+                top: 50px;
+                left: calc(100% - 150px);
+            }
+            100%{
+               top: calc(100% - 150px);
+                left: calc(100% - 150px);
+            }
+        }
+        @keyframes rotate{
+            0%{
+                transform: rotate(0);
+            }
+          
+            100%{
+                transform: rotate(360deg);
+            }
+        }
+
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="group-box v1">
+            <div class="box red"></div>
+            <div class="box orange"></div>
+            <div class="box yellow"></div>
+            <div class="box green"></div>
+        </div>
+
+        <div class="group-box v2">
+            <div class="box red"></div>
+            <div class="box orange"></div>
+            <div class="box yellow"></div>
+            <div class="box green"></div>
+        </div>
+    </div>
+</body>
+
+</html>

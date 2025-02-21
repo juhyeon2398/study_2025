@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    img{
+      width: 300px;
+      display: inline-block;
+      animation: move 10s infinite alternate linear;
+    }
+  
+    .invisible-item{
+      visibility:hidden;
+      /* visibility는 공간 차지 함 */
+    }
+    @keyframes move{
+      
+      50%{
+        margin-top: 50%;
+      }
+     
+    }
+  </style>
+</head>
+
+<body>
+  <img src="./images/fruit1.jpg" alt="과일이미지1"> 
+  &nbsp; 
+  <img src="./images/fruit2.jpg" alt="과일이미지2" class="invisible-item">  
+  &nbsp;
+  <img class="linear" src="./images/fruit3.jpg" alt="과일이미지3">
+</body>
+
+</html>

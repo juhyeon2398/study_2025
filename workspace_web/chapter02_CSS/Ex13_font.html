@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    html{
+      font-size: 16px;
+    }
+    body{
+      font-size: 1rem;
+    }
+    div{
+      font-style: none; /* 모양 */
+      font-weight: bold; /* 굵기 */
+      font-size: 1.1rem; 
+    }
+    #t-div{
+      font-family: "굴림",sans-serif;
+    }
+  </style>
+</head>
+
+<body>
+  부모 body<br>
+  <div>
+    1차 자식 div <br>
+    <div>
+      2차 자식 div <br>
+      <div id="t-div">
+        3차 자식 div <br>
+      </div>
+    </div>
+  </div>
+</body>
+
+</html>
