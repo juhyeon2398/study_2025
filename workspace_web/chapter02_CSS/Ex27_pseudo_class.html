@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{margin: 0;padding: 0;}
+        body p:nth-child(2) {
+            /* 전제 자식중 2번째 */
+            color:#f00;
+        }
+        body p:nth-of-type(2) {
+            /* 전제 자식중 P의 2번째 */
+            color:#f0f;
+        }
+        body p:nth-of-type(2n+0) {
+            /* P중 2의 배수 노드 even 짝수 */
+            font-weight: bold;
+        }
+        body p:nth-of-type(odd) {
+            /* P중 홀수 노드 odd */
+            background: aqua;
+        }
+    </style>
+</head>
+<body>
+    <div>이 곳은 첫 번째 div</div>
+    <p>이 곳은 첫 번째 P</p>
+    <p>이 곳은 두 번째 P</p>
+    <p>이 곳은 세 번째 P</p>
+    <p>이 곳은 네 번째 P</p>
+    <div>이 곳은 두 번째 div</div>
+    <div>이 곳은 세 번째 div</div>
+    <div>이 곳은 네 번째 div</div>
+</body>
+</html>

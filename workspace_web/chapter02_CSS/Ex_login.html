@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        .container{background: rgb(92, 92, 92);height: 100vh;}
+        .wrap{width: 500px;margin: 0 auto;padding:25px;background:#b9b9b9; border-radius:  0 0 10px 10px;}
+        .wrap ul{list-style: none;}
+        .wrap input[type="email"],
+        .wrap input[type="password"]{background: #fff;border: 1px solid #222;border-radius: 5px;padding:15px 10px;width: 100%;margin-bottom: 5px;box-sizing: border-box;font-size: 18px;}
+        .wrap button{background: #5a5a5a;color:#fff;border: none;border-radius: 10px;width: 100%;padding: 20px 0;font-weight: bold;font-size: 24px;margin: 30px 0 20px;transition: 0.25s ease;}
+        .wrap button:hover{background: #fff;color:#222;}
+        .wrap input[type=checkbox] + label{padding-left: 10px;}
+
+        .btnBox{display: flex;justify-content: space-between;}
+        .btnBox a{color:#222;text-decoration: none;}
+        .btnBox a:hover{color:#f00;}
+        .btnBox a:active{color:#ff0;}
+    </style>
+</head>
+<body>
+    <div class="container">
+        <form action="#" method="get">
+            <div class="wrap">
+                <ul>
+                    <li>
+                        <label><input type="email" placeholder="example@naver.com"></label>
+                    </li>
+                    <li>
+                        <label><input type="password" placeholder="password"></label>
+                    </li>
+                </ul>
+                <button type="submit">로그인</button>
+                <ul class="btnBox">
+                    <li><input type="checkbox" id="chk1"><label for="chk1">로그인 유지</label></li>
+                    <li><a href="#;">아이디 찾기</a> / <a href="#;">비밀번호 찾기</a></li>
+                </ul>
+            </div>
+        </form>
+    </div>
+</body>
+</html>

@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {margin: 0;padding: 0;}
+        img{display: block;width: 100%;}
+        a{text-decoration: none;color:#222;}
+        a:visited{color:#222;}
+        ul{list-style: none;}
+        .header{background: #d3d3d3;}
+        .login-box{display: flex;gap:10px;padding: 10px;height: 30px;}
+        .login-box input[type="text"]{height: 30px;box-sizing: border-box;background: url("./images/searchicon.png") #fff left center no-repeat;border:1px solid #222;border-radius: 5px;padding-left: 30px;}
+        .login-box button{padding: 0 10px;border-radius: 5px;border:1px solid #222;}
+        .logo{width: 150px;margin: 25px;}
+        .nav {display: flex;background: #333;}
+        .nav a{color:#fff;padding: 15px 10px;display: block;}
+        .nav a:visited{color:#fff;}
+
+        .wrap{padding: 30px}
+        .flex-box{display: flex;justify-content: space-between;}
+        .btns{display: flex;justify-content: flex-end;gap: 5px;}
+        .btns button{padding: 2px 10px;}
+        .items dt{font-weight: bold;font-size: 1.6rem;margin-bottom: 15px;}
+        .items ul.square{list-style: square; margin: 15px 0 30px 30px;}
+
+        .footer{padding:15px;background:#d3d3d3;}
+        .footer ul{display: flex;justify-content: center;}
+        .footer ul a{padding: 2px 10px;border-left: 1px solid #999;font-weight: bold;}
+        .footer ul a:last-of-type{border-right: 1px solid #999;}
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="header">
+            <div class="login-box">
+                <a href="#">회원가입</a>
+                <a href="#">로그인</a>
+                <label><input type="text" name="" id="" placeholder="Search"></label>
+                <button type="button">검색</button>
+            </div>
+            <h1 class="logo"><img src="./images/logo.png" alt=""></h1>
+            <ul class="nav">
+                <li><a href="#;">베스트</a></li>
+                <li><a href="#;">세일중</a></li>
+                <li><a href="#;">기획전</a></li>
+                <li><a href="#;">이벤트</a></li>
+                <li><a href="#;">스토어</a></li>
+            </ul>
+        </div>
+        <div class="wrap">
+            <div class="flex-box">
+                <div class="items">
+                    <dl>
+                        <dt>건조기</dt>
+                        <dd><img src="./images/product-1.jpg" alt=""></dd>
+                        <dd>
+                            <ul class="square">
+                                <li>트롬의류건조기</li>
+                                <li>히트펌프식</li>
+                                <li>16kg</li>
+                                <li>모던스테인레스</li>
+                                <li>1,669,000원</li>
+                            </ul>
+                        </dd>
+                    </dl>
+                    <div class="btns">
+                        <button type="button">바로구매</button>
+                        <button type="button">장바구니</button>
+                    </div>
+                </div>
+                <div class="items">
+                    <dl>
+                        <dt>일반세탁기</dt>
+                        <dd><img src="./images/product-2.jpg" alt=""></dd>
+                        <dd>
+                            <ul class="square">
+                                <li>통돌이</li>
+                                <li>DD모터</li>
+                                <li>16kg</li>
+                                <li>미드프리실버</li>
+                                <li>574,500원</li>
+                            </ul>
+                        </dd>
+                    </dl>
+                    <div class="btns">
+                        <button type="button">바로구매</button>
+                        <button type="button">장바구니</button>
+                    </div>
+                </div>
+                <div class="items">
+                    <dl>
+                        <dt>의류관리기</dt>
+                        <dd><img src="./images/product-3.jpg" alt=""></dd>
+                        <dd>
+                            <ul class="square">
+                                <li>트롬스타일러</li>
+                                <li>히트펌프식</li>
+                                <li>상의5벌, 하의1벌</li>
+                                <li>린넨블랙</li>
+                                <li>1,504,000원</li>
+                            </ul>
+                        </dd>
+                    </dl>
+                    <div class="btns">
+                        <button type="button">바로구매</button>
+                        <button type="button">장바구니</button>
+                    </div>
+                </div>
+                <div class="items">
+                    <dl>
+                        <dt>드럼세탁기</dt>
+                        <dd><img src="./images/product-4.jpg" alt=""></dd>
+                        <dd>
+                            <ul class="square">
+                                <li>트윈워시</li>
+                                <li>DD모터</li>
+                                <li>21kg + 4kg</li>
+                                <li>모던스테인레스</li>
+                                <li>1,546,000원</li>
+                            </ul>
+                        </dd>
+                    </dl>
+                    <div class="btns">
+                        <button type="button">바로구매</button>
+                        <button type="button">장바구니</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="footer">
+            <ul>
+                <li><a href="#;">회사소개</a></li>
+                <li><a href="#;">이용약관</a></li>
+                <li><a href="#;">전자금융거래약관</a></li>
+                <li><a href="#;">개인정보처리방침</a></li>
+                <li><a href="#;">고객센터</a></li>
+            </ul>
+        </div>
+    </div>
+</body>
+
+</html>
