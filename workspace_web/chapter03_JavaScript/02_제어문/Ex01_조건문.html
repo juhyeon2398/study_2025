@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+    // if 문
+    let val = 10;
+    if (val < 11) {
+        console.log(" val이 11보다 작습니다");
+    }
+
+    val = 1;
+    if (val < 11) {
+        let val = 2;
+        console.log(`if 내부 값 : ${val}`)
+    }
+    console.log(`if 외부 값 : ${val}`)
+
+    val = 10;
+    if (val > 10) {
+        console.log(`val이 11보다 큽니다.`)
+    } else {
+        console.log(`val이 11보다 작습니다.`)
+    }
+
+    if (val > 0) {
+        console.log(`양수`)
+    } else if (val < 0) {
+        console.log(`음수`)
+    } else {
+        console.log('0');
+    }
+
+    let kor = Number(prompt("국어 점수"));
+    let mat = Number(prompt("수학 점수"));
+    let eng = Number(prompt("영어 점수"));
+    let sum = kor + mat + eng;
+    let avg = sum / 3;
+
+    if (avg >= 90) {
+        console.log(`평균 : ${avg}\n학점 : A`);
+    } else if (avg >= 80) {
+        console.log(`평균 : ${avg}\n학점 : B`);
+    } else if (avg >= 70) {
+        console.log(`평균 : ${avg}\n학점 : C`);
+    } else if (avg >= 60) {
+        console.log(`평균 : ${avg}\n학점 : D`);
+    } else {
+        console.log(`평균 : ${avg}\n학점 : F`);
+    }
+
+    const gender = '남';
+    switch (gender) {
+        case '남': console.log("남자입니다."); break;
+        case '여': console.log("여자입니다."); break;
+        default: console.log("남자입니다."); break;
+    }
+
+</script>
+
+</html>

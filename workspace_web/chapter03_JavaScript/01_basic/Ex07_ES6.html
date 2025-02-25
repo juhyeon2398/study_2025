@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  
+</body>
+<script>
+  /*
+    1. let, const 키워드 추가
+      - ES5에서는 변수 및 상수 할당 시
+      var 키워드를 사용하였으나, 
+      ES6에서는 변수에 해당하는 let,
+      상수에 해당하는 const 키워드 추가
+      - 같은 변수에 재 할당 문제와,
+      생명 주기를 확인할 수 있게 됨
+  */
+
+  // 2. 화살표 함수(Arrow function)
+  // 기존 함수를 간결하게 사용할 수 있지만
+  // 추가 문법 숙지가 필요
+  // es5
+  function add(a, b){
+    return a+b;
+  }
+  // es6
+  const add1 = (a, b) => {
+    return a + b;
+  }
+  const add2 = (a, b) => a + b;
+
+  /*
+    3. 템플릿 리터럴
+     - 백틱(`) 기호를 이용
+     - 문자열을 표시하는 작은 따옴표('')와
+      큰 따옴표("")를 동시에 사용 가능
+     - 문자열 인터플레이션을 제공
+  */
+  const person  = `내 이름은 '김씨'이고,
+      나이는 "20"살 입니다.`;
+  console.log(person);
+
+  // es5
+  var name = '김씨';
+  var age = 20;
+  var people = '내 이름은 ' + name + '이고,' +
+  '나이는 ' + age + '살 입니다.';
+  console.log(people);
+
+  // es6
+  let name2 = '김씨';
+  let age2 = 20;
+  let people2 = `내 이름은 ${name2} 이고, 
+  나이는 ${age2} 살 입니다.`;
+  console.log(people2);
+
+  /*
+    5. 디폴트 파라미터
+    - 파라미터가 입력되지 않았을 경우
+    개발자가 직접 입력한 내용으로 처리하는 방식
+  */
+  // es5
+  function personInfo(name, age){
+    age = age || 20;
+    var result = '내 이름은 ' + name + '이고,' +
+    '나이는 ' + age + '살 입니다.';
+    console.log(result);
+  }
+  personInfo('김씨');
+
+  // es6
+  const personInfo2 = (name, age=20) => {
+    const result2 = `내 이름은 ${name} 이고, 
+  나이는 ${age} 살 입니다.`;
+    console.log(result2);
+  }
+  personInfo2('박씨');
+
+</script>
+</html>

@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <button id="btn">버튼 1</button>
+</body>
+<script>
+    const add1 = (a, b) => {
+        return a + b;
+    }
+
+    // 내부에서 바로 return할 경우 코드 생략 가능
+    const add2 = (a, b) => a + b;
+    // 파라미터를 한 개만 받을 경우 괄호 생략 가능
+    const pow = a => a * a;
+
+    // 화살표 함수 특징
+    // 1. 무조건 익명 함수로만 사용할 수 있다.
+    // 2. 메소드나 생성자 함수로 사용할 수 없다.
+    // 3. 일반 functiondml this 바인딩이 다르다.
+
+    // this 바인딩(자바스크립트는 상황에 맞게 this를 바인딩한다.)
+    // 1. 전역 영역에서의 this : 전역객체
+    // 2. 메소드 호출시 메소드 내부의 this :  메소드를 호출할 객체
+    // 3. 함수 호출 시 함수 내부의 this : 지정되지 않음
+
+    // const person = {
+    //     name : '김씨',
+    //     age : 20,
+    //     func1 : function(){
+    //         console.log(this.name);
+    //     }
+    // }
+    // person.func1();
+    
+    const person = {
+        name : '김씨',
+        age : 20,
+        func1 : function(){
+            const func2 = () => {
+                console.log(this.name);
+            }
+            func2();
+        }
+    }
+    person.func1();
+
+    // button으로 this 판단하기
+    const btn = document.querySelector('#btn');
+    console.log(" btn : ", btn);
+
+    btn.addEventListener("click", function(){
+        console.log(this);
+    });
+   
+    btn.addEventListener("click", () => {
+        console.log(this);
+    });
+    
+
+</script>
+
+</html>

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+    // 타이머 함수 
+    // - 특정한 시간에 특정한 함수를 실행하는 함수
+    // - 전달 인자 : 함수, 시간(밀리초)
+    // - 종류 
+    //   1. setTimeout : 지정된 시간 후 함수 한번 실행
+    //   2. clearTimeout : 해당 setTimeout 중지
+    //   3. setInterval : 지정된 시간 마다 함수 실행
+    //   4. clearInterval : 해당 setInterval 중지
+
+    // setTimeout 함수 이용 : 
+    let hello = setTimeout(function () {
+        // alert("안녕하세요");
+    }, 5000);
+
+    // 2. setInterval : 1초 마다 숫자를 1씩증가시켜 출력
+    // 10초만 진행
+    let cnt = 0;
+    let inc = setInterval(function () {
+        console.log('Interval : ',++cnt);
+        if (cnt == 10) clearInterval(inc);
+    }, 1000);
+    let n = 0;
+    function myTimer() {
+        setTimeout(function () { 
+            console.log('Timeout : ',++n) 
+            if(n != 10){
+                myTimer();
+            }
+        }, 1000);
+    }
+    myTimer();
+
+</script>
+
+</html>

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script>
+ /*
+    선언적 함수(함수 선언식)
+    -이름 있는 함수
+        (자바스크립트 영역은 두 번 읽힌다.)
+        첫 번째는 선언 함수 정의 부분을 읽는다.
+        -> 호이스팅 개념은 다음에 설명
+    - 함수를 정의하고 , 호출하는 과정이 필요
+    - 정의와 호출 순서 상관 없음
+ */
+    // 1. 선언적 함수 정의
+    function myFunction(){
+        console.log('myFunction 실행');
+    }
+    myFunction();
+    function add(a , b){
+        return a + b;
+    }
+
+    console.log(add(10,20));
+
+    // 선언적 함수를 변수에 저장할 수 있다.
+    // 변수 저장시 기존 함수명은 사용 불가능
+    let view = function yourFunction(){
+        console.log('yourFunction 실행');
+    }
+    view();
+
+    // 정의된 선언적 함수를 나중에 변수에 저장할 수 있다.
+    function ourFunction(){
+        console.log('ourFunction 실행');
+    }
+    let view2 = ourFunction;
+    view2();
+
+
+    // 동일한 함수를 두 개 이상 만들면 덮어쓴다.
+    // * 자바의 오버로드 불가
+    function view3(){
+        document.write(`<h1>첫 번째 view</h1>`)
+    }
+    function view3(){
+        document.write(`<h1>두 번째 view</h1>`)
+    }
+    
+    view3();
+
+</script>
+</html>

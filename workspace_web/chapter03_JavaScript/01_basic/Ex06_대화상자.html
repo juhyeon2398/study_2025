@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script>
+    // js 에서 사용 할수 있는 여러 알림 창들
+    // 1. alert
+    // 경고 메세지를 출력하는 함수
+    
+    window.alert("경고 메세지");
+    alert("경고 메세지");
+
+    // 2. confirm
+    // 사용자에게 확인을 받는 함수
+    // 확인 버튼 클릭시 true 리턴
+    let yn = confirm("계속 진행할까요?");
+    console.log(" yn : ", yn)
+
+    // 3. prompt
+    // 사용자에게 값을 입력 받는 함수
+    // 입력 내용은 무조건 문자열로 반환
+    let inputName = prompt('이름을 입력하세요');
+    console.log(" inputName : ", inputName)
+
+    // Q. 숫자 2개를 각각 입력받아 젼수에 저장
+    // 두 변수의 합을 출력하시오.
+
+    let num1 = prompt("첫 번째 숫자를 입력하세요 : ");
+    let num2 = prompt("두 번째 숫자를 입력하세요 : ");
+    alert("두 수의 합은 : " + (Number(num1) + Number(num2)));
+    
+</script>
+</html>

@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script>
+    /*
+        1. 산술 연산자
+        +, -, *, /, %, ++, --
+
+    */
+    let val1 = 7;
+    let val2 = 2;
+    
+    console.log(" val : ", val1 / val2);
+    console.log(" val : ", val1 % val2);
+    console.log(" val : ", parseInt(val1 / val2));
+    console.log(" val : ", ++val1);
+    console.log(" val : ", --val1);
+    
+    // 2. 대입 연산자
+    // 특정 값을 저장 공간에 저장
+    let val3 = 1; 
+    val3 = 2;
+    val3 += 1;
+    console.log(" val3 :", val3)
+    
+    // 3. 관게 연산자 (대입 연산자)
+    // 각 항들의 값을 관계로 비교하여
+    // 맞으면 true, 다르면 false 반환
+
+    let a = 0; 
+    let b = '1'; 
+    let c = 2; 
+    let d = false; 
+    console.log(a == b);
+    console.log(a === b);
+    console.log(a == c);
+    console.log(a == d);
+
+    /*
+        두 값을 비교할 때에는 == 혹은 === 기호를 사용
+        == 경우 데이터 타입을 자동 변환하여 값을 비교
+        === 경우 값의 타입까지 비교 (오류 확률 감소);
+
+        true는 1 false는 0 의 값을 가지며 == 비교가능
+
+    */
+
+    // 4. 문자열 연산자 
+    // '+' 기호를 이용하여 문자열 연결
+    let val4 = 'hello';
+    let val5 = 'world';
+    console.log(val4 + val5);
+
+    // 5. 논리 연산자
+    // &&(and), ||(or), !(not)
+    // 두개 이상의 비교식을 나열할때
+    let logVal1 = 1;
+    let logVal2 = 2;
+    let logVal3 = 3;
+    console.log(" logVal1 :", logVal1 < logVal2);
+    console.log(" logVal2 :", logVal2 > logVal3);
+    console.log(" logVal3 :", (logVal1 < logVal2) && (logVal2 > logVal3));
+    console.log(" logVal3 :", (logVal1 < logVal2) || (logVal2 > logVal3));
+
+    // 6. 복합 연산자
+    // 산술 연산 대입 연산을 간결하게 사용
+    // +=, -=, *=,/=
+    let mulVal = 10;
+    let result = mulVal += 1;
+    console.log(" result :", result);
+
+    // 7. 삼항 연산자
+    // 특정 조건식을 통해서 두 가지 이상의 결과를 처리
+    let conVal = 20;
+    result = (conVal == 11) ? '같다' : '다르다.';
+    console.log(" result :", result)
+    
+
+</script>
+</html>

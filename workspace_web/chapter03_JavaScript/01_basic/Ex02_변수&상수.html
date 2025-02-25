@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script>
+    /*
+    1. 선언 시 자료형을 명시하지 않는다.
+    2. 저장되는 값에 의해 자료형이 결정
+    3. 선언 방법
+        키워드 변수명
+        ex) let name;
+    4. 문자 + 숫자 + 특수문자 (_ , $) 조합 가능
+    5. 공백 문자는 사용 X
+    6. 선언하지 않은 변수도 사용할 수 있다.
+    */
+
+    // 1. 변수
+    let val1 = 10;
+    console.log(" val1:", val1)
+    val1 = 20;
+    console.log(" val1:", val1)
+    // 변수를 선언 할 때에는 let, var 두 가지 
+    // 키워드를 사용할 수 이으나 ES6 이후 문법인 let을 주로 사용한다.
+
+    // 2. 상수
+    // 상수 선언 시 const 키워드 사용
+    const val2 = 10;
+    console.log(" val2:", val2)
+    // val2 = 20;
+    // console.log(" val2:", val2)
+
+    // var, let, const 차이
+    // 1. var
+    //  ES6 이전에 사용하던 변수
+    //  변수 중복 선언 및 재 할당 가능
+    //  변수 선언 전 변수를 참조하면 undefined 반환
+    var varAge ;
+    console.log(" varAge:", varAge);
+    varAge = 20;
+    console.log(" varAge:", varAge)
+    var varAge = 30;
+    console.log(" varAge:", varAge)
+
+    /*
+        - ES6 버전에서 추가
+        - 변수 재 할당은 가능, 재 선언은 불가능
+    */
+    let letAge;
+    console.log(" letAge:", letAge)
+    letAge = 20;
+    console.log(" letAge:", letAge)
+    // let letAge = 30;
+    console.log(" letAge:", letAge)
+    
+    /*
+        const
+        - ES6 버전에서 추가
+        - 반드시 선언과 동시에 초기화가 이루어져야 함
+    */
+    // const constAge;
+    console.log(" constAge:", constAge);
+    const constAge = 20;
+    console.log(" constAge:", constAge);
+    constAge = 30;
+    console.log(" constAge:", constAge);
+
+
+</script>
+</html>
