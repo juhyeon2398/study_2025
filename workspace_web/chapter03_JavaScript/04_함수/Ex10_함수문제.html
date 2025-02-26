@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+    function makeZeroNum(num, length) {
+        let result = '';
+        if(length <= 1){
+            return num;
+        }else{
+            for (let i = 0; i < length; i++) {
+                if (i == (length - 1)) {
+                    result += num
+                } else {
+                    result += 0;
+                }
+            }
+            return result;
+        }
+    }
+    console.log(makeZeroNum(2, 13));
+</script>
+
+</html>

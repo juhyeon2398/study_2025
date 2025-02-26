@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1 id="click"></h1>
+</body>
+<script>
+    let element = document.querySelector("#click");
+    let date, y, m, d, hour, min, second;
+
+    function to12Times() {
+        date = new Date();
+        y = date.getFullYear();
+        m = String(date.getMonth() + 1).padStart(2, '0');
+        d = String(date.getDate()).padStart(2, '0');
+        hour = String(date.getHours()).padStart(2, '0');
+        min = String(date.getMinutes()).padStart(2, '0');
+        second = String(date.getSeconds()).padStart(2, '0');
+        let ampm;
+        if(hour < 12){
+            ampm = '오전';
+            if(hour == 0 ){
+                hour = 12;
+            }
+        }else{
+            ampm = '오후';
+            if(hour != 12) h -= 12;
+        }
+
+        let dateSet = `${y}-${m}-${d} ${hour > 11 ? '오후' : '오전'} ${hour}:${min}:${second}`;
+
+        element.innerHTML = dateSet;
+    }
+    let timer = setInterval(() => {
+        to12Times();
+    }, 1000);
+
+    if (hour == 0) {
+        clearInterval(timer);
+    }
+
+
+</script>
+
+</html>

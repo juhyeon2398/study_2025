@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+  
+</body>
+<script>
+    // 클로저
+    // * 함수가 함수를 리턴할 때 나타나는 특장점
+    // * 함수를 리턴 받는 영역에서 리턴 된 함수의 영역을
+    // 사용할 수 있도록 리턴 함수의 값을 소멸시키지 않고 유지함
+    // * 외부 함수의 리턴이 끝나도 내부 함수는 외부 함수의 지역 변수 값을 유지 가능
+    function addOne(){
+        let n = 0;
+        n++;
+        return n;
+    }
+    let addOneResult = addOne();
+    console.log(" addOneResult : ", addOneResult);
+    console.log(" addOneResult : ", addOneResult);
+    console.log(" addOneResult : ", addOneResult);
+    console.log(" addOneResult : ", addOne());
+    console.log(" addOneResult : ", addOne());
+    console.log(" addOneResult : ", addOne());
+    
+    function addTwo(){
+        let n = 0;
+        return function(){
+            n += 2; 
+            return n;
+        }
+    }
+    let addTwoResult = addTwo();
+    console.log(" addTwoResult : ", addTwoResult());
+    console.log(" addTwoResult : ", addTwoResult());
+    console.log(" addTwoResult : ", addTwoResult());
+    console.log(" addTwoResult : ", (addTwo())());
+    console.log(" addTwoResult : ", (addTwo())());
+    console.log(" addTwoResult : ", (addTwo())());
+
+    // 1번 방식 처럼 변수를 함수에 담아서 리턴하면, 외부 함수의 지역 변수 값 유지
+    // 2번 방식은 매번 외부 함수를 새로 호출하기 때문에 지역변수 초기화
+
+    // 클로저 사용이유
+    // 값이 증가하는 전역 변수 생성 후 증가
+    // -> 외부에서 접근하여 변수의 초기화 가능성
+    // 함수 내의 지역 변수 선언 후 소멸
+    // -> 함수 종료 시점에 변수 소멸
+</script>
+
+</html>

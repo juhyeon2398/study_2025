@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1 id="click">0000-00-00 00:00:00</h1>
+    <button onclick="watch();">현재 시간 출력</button>
+    <button onclick="timerStop();">중지</button>
+    <button onclick="timerReset();">초기화</button>
+</body>
+<script>
+    let element = document.querySelector("#click");
+    let timer;
+    function toTimes() {
+        let date = new Date();
+        let y = date.getFullYear();
+        let m = String(date.getMonth() + 1).padStart(2, '0');
+        let d = String(date.getDate()).padStart(2, '0');
+        let hour = String(date.getHours()).padStart(2, '0');
+        let min = String(date.getMinutes()).padStart(2, '0');
+        let second = String(date.getSeconds()).padStart(2, '0');
+
+        let dateSet = `${y}-${m}-${d} ${hour}:${min}:${second}`;
+
+        element.innerHTML = dateSet;
+    }
+
+    function watch() {
+        if (timer) {
+            clearInterval(timer);
+        }
+        timer = setInterval(() => {
+            toTimes();
+        }, 1000);
+        timerChk = true;
+        
+        console.log("Timer Start");
+    }
+
+    function timerStop() {
+        clearInterval(timer);
+        timerChk = false;
+
+        console.log("Timer Stop");
+    }
+
+    function timerReset() {
+        timerStop();
+        element.innerHTML = '0000-00-00 00:00:00';
+
+        console.log("Timer Reset");
+    }
+</script>
+
+</html>

@@ -1,296 +1,616 @@
-# form
-1. 사용자로부터 정보를 입력 받을 때 사용하는 태그
-2. 주요속성
-    * action : 정보를 받아서 어디서 처리할 것인지 처리할 장소(위치, 경로)를 지정
-    * method : 정보를 전달하는 방식
-        - get :	default, 정보를 header에 포함시켜서 보냄 정보가 노출됨(보안 처리가 안됨) 빠름 (ex: 검색)            
-        - post : 정보를 body에 포함시켜서 보냄 정보가 보안처리됨 느림(ex:회원가입, 로그인)
-        - enctype : 파일 업로드 할때 사용
-# input
-1. 속성
-     * text - 문자를 입력받음
-     * passward - 문자를 숨심처리 하여 입력받음
-     * email - 메일 형식을 입력 받음
-     * tel - 전화번호를 입력받음
-     * number - 숫자만 입력
-     * date - 날짜 입력
-     * time - 시간 입력
-     * file - 파일 첨부
-     * range - 진행바
-     * color - 색상표
-     * checkbox - 체크 박스를 생성하며 중복 선택가능
-     * radio - 라디오 버튼을 생성하며 중복 선택불가
-     * button - 일반 버튼
-     * submit - 전송 버튼
-     * hidden - 숨김처리
-     * reset - 입력하던 값 초기화
-     * image - 이미지 주소로 생성
+### HTML 폼과 JavaScript 기초 예시
 
-# JavaScript
+#### **HTML 폼 (Form)**
 
-## 변수 & 상수
-    1. 선언 시 자료형을 명시하지 않는다.
-    2. 저장되는 값에 의해 자료형이 결정
-    3. 선언 방법
-    * 키워드 변수명
-    * ex) let name;
-    4. 문자 + 숫자 + 특수문자 (_ , $) 조합 가능
-    5. 공백 문자는 사용 X
-    6. 선언하지 않은 변수도 사용할 수 있다.
+1. **사용자 입력 받기 위한 태그**: 폼은 사용자로부터 데이터를 입력받기 위해 사용됩니다.
+2. **주요 속성**:
+    - **action**: 정보를 처리할 경로(서버 주소).
+    - **method**: 데이터 전송 방식.
+        - **get**: URL을 통해 데이터를 전송 (정보 노출).
+        - **post**: HTTP 본문을 통해 데이터를 전송 (보안 처리됨).
+        - **enctype**: 파일 업로드 시 사용.
+
+#### **Input 태그 속성 예시**
+
+- `text`: 문자를 입력받는 필드.
+- `password`: 비밀번호를 입력받는 필드.
+- `email`: 이메일을 입력받는 필드.
+- `tel`: 전화번호를 입력받는 필드.
+- `number`: 숫자만 입력받는 필드.
+- `date`: 날짜 입력 필드.
+- `time`: 시간 입력 필드.
+- `file`: 파일 업로드 필드.
+- `range`: 진행 상태를 나타내는 슬라이드 바.
+- `color`: 색상 선택 필드.
+- `checkbox`: 여러 개 선택 가능한 체크 박스.
+- `radio`: 하나만 선택 가능한 라디오 버튼.
+- `button`: 일반 버튼.
+- `submit`: 폼 제출 버튼.
+- `hidden`: 화면에 보이지 않는 숨김 처리된 필드.
+- `reset`: 입력 값을 초기화하는 버튼.
+- `image`: 이미지가 들어간 버튼.
+
+---
+
+#### **JavaScript 기초**
+
+##### **변수와 상수**
+- 자바스크립트에서는 자료형을 명시하지 않으며, 변수의 자료형은 값에 따라 자동으로 결정됩니다.
+- 변수는 `let`, `var`, `const` 키워드를 사용하여 선언합니다.
+
+##### **var, let, const 차이**
+
+1. **var**: ES6 이전에 사용된 변수 선언. 중복 선언 및 재할당 가능.
+2. **let**: ES6에서 추가된 변수 선언 방법. 재할당은 가능하나 중복 선언 불가.
+3. **const**: 상수 선언. 반드시 초기화가 이루어져야 하며, 재할당 불가.
+
+---
+
+##### **자료형**
+
+- **숫자**: `number`
+- **문자열**: `string`
+- **논리형**: `boolean`
+- **널**: `null`
+- **언디파인드**: `undefined`
+
+**형변환 예시**:
+1. **문자 -> 숫자**: `Number()`, `parseInt()`, `parseFloat()`
+2. **숫자/문자 -> 문자열**: `String()`, `+` 연산자.
+
+---
+
+##### **비교 연산자**
+- `==`은 타입을 변환하여 비교, `===`는 타입과 값을 모두 비교.
+- `true`는 1, `false`는 0.
+
+---
+
+##### **메시지 출력창**
+
+1. **alert**: 경고 메시지 출력
+    ```javascript
+    alert("경고 메시지");
+    ```
+2. **confirm**: 확인 메시지 출력, 사용자가 확인을 클릭하면 `true`, 취소를 클릭하면 `false` 반환.
+    ```javascript
+    let yn = confirm("계속 진행할까요?");
+    console.log(yn);
+    ```
+3. **prompt**: 사용자 입력 받기, 반환값은 문자열.
+    ```javascript
+    let inputName = prompt('이름을 입력하세요');
+    console.log(inputName);
+    ```
+
+---
+
+##### **반복문**
+
+1. **for문**:
+    ```javascript
+    for(let i = 0; i < 10; i++) {
+        console.log(i);  // i 값 출력
+    }
+    ```
+
+2. **for-of문**:
+    배열의 값을 반복할 때 사용.
+    ```javascript
+    let names = ['김', '이', '박', '최', '정'];
+    for (let name of names) {
+        console.log(name);  // 이름 출력
+    }
+    ```
+
+3. **for-in문**:
+    객체나 배열의 인덱스를 반복.
+    ```javascript
+    const person = { name: '김', age: 20, address: '서울' };
+    for (let key in person) {
+        console.log(`${key}: ${person[key]}`);
+    }
+    ```
+
+---
+
+##### **내장객체**
+
+**내장객체: Date 객체**
+
+JavaScript의 `Date` 객체는 날짜와 시간을 다루는 데 사용되는 내장 객체로, 다양한 메서드를 통해 날짜 및 시간 정보를 생성하고 조작할 수 있습니다.
+
+**1. 객체 생성하기**
+
+- **현재 날짜와 시간 생성**:
+  
+```javascript
+  let now = new Date();
+  console.log(now);  // 현재 날짜와 시간 출력
+  ```
 
 
-## var, let, const 차이
-    1. var
-        * ES6 이전에 사용하던 변수
-        * 변수 중복 선언 및 재 할당 가능
-        * 변수 선언 전 변수를 참조하면 undefined 반환
+- **특정 날짜와 시간 생성**:
+  
+```javascript
+  // 월은 0부터 시작하므로 0은 1월을 의미합니다.
+  let specificDate = new Date(2025, 1, 26, 17, 48, 12);
+  console.log(specificDate);  // 2025년 2월 26일 17시 48분 12초 출력
+  ```
 
-    2. let
-        * ES6 버전에서 추가
-        * 변수 재 할당은 가능, 재 선언은 불가능
 
-    3. const
-        * ES6 버전에서 추가
-        * 반드시 선언과 동시에 초기화가 이루어져야 함
+**2. Getter 메서드**
+
+- **getFullYear()**:
+  
+```javascript
+  console.log(now.getFullYear());  // 현재 연도 출력
+  ```
+
+
+- **getMonth()**:
+  
+```javascript
+  console.log(now.getMonth());  // 현재 월 (0~11) 출력
+  ```
+
+
+- **getDate()**:
+  
+```javascript
+  console.log(now.getDate());  // 현재 일 출력
+  ```
+
+
+- **getDay()**:
+  
+```javascript
+  console.log(now.getDay());  // 현재 요일 (0:일요일, 1:월요일, ..., 6:토요일) 출력
+  ```
+
+
+- **getHours()**:
+  
+```javascript
+  console.log(now.getHours());  // 현재 시 (0~23) 출력
+  ```
+
+
+- **getMinutes()**:
+  
+```javascript
+  console.log(now.getMinutes());  // 현재 분 출력
+  ```
+
+
+- **getSeconds()**:
+  
+```javascript
+  console.log(now.getSeconds());  // 현재 초 출력
+  ```
+
+
+- **getMilliseconds()**:
+  
+```javascript
+  console.log(now.getMilliseconds());  // 현재 밀리초 출력
+  ```
+
+
+- **getTime()**:
+  
+```javascript
+  console.log(now.getTime());  // 1970년 1월 1일 00:00:00 UTC부터의 밀리초 경과 시간 출력
+  ```
+
+
+**3. Setter 메서드**
+
+- **setFullYear(year)**:
+  
+```javascript
+  now.setFullYear(2025);
+  console.log(now.getFullYear());  // 2025 출력
+  ```
+
+- **setMonth(month)**:
+```javascript
+  now.setMonth(1);  // 2월로 설정 (0:1월, 1:2월, ..., 11:12월)
+  console.log(now.getMonth());  // 1 출력
+  ```
+
+- **setDate(date)**:
+```javascript
+  now.setDate(15);
+  console.log(now.getDate());  // 15 출력
+  ```
+
+- **setHours(hours)**:
+```javascript
+  now.setHours(10);
+  console.log(now.getHours());  // 10 출력
+  ```
+
+- **setMinutes(minutes)**:
+```javascript
+  now.setMinutes(30);
+  console.log(now.getMinutes());  // 30 출력
+  ```
+
+- **setSeconds(seconds)**:
+```javascript
+  now.setSeconds(45);
+  console.log(now.getSeconds());  // 45 출력
+  ```
+- **setMilliseconds(milliseconds)**:
+  
+```javascript
+  now.setMilliseconds(500);
+  console.log(now.getMilliseconds());  // 500 출력
+  ```
+
+2. **Math 객체**:
+    수학적 함수 제공.
+    ```javascript
+    console.log(Math.PI);  // 파이 값 출력
+    console.log(Math.sqrt(4));  // 제곱근 출력
+    ```
+
+3. **Random 객체**:
+    난수 생성.
+    ```javascript
+    console.log(Math.floor(Math.random() * 10));  // 0~9 사이의 난수
+    ```
+
+---
+
+##### **함수 Function**
+
+1. **함수 선언**:
+    ```javascript
+    function add(a, b) {
+        return a + b;
+    }
+    console.log(add(2, 3));  // 5
+    ```
+
+2. **함수 표현식**:
+    함수는 변수에 저장 가능.
+    ```javascript
+    let subtract = function(a, b) {
+        return a - b;
+    };
+    console.log(subtract(5, 3));  // 2
+    ```
+
+3. **호이스팅**:
+    함수 선언식은 호이스팅되어 위로 올라가지만, 함수 표현식은 그렇지 않음.
+
+---
+
+##### **배열 예시**
+
+```javascript
+let arr = [1, 2, 3, 4, 5];  // 숫자 배열
+let arr2 = ["apple", "banana", "cherry"];  // 문자열 배열
+let arr3 = [10, "Hello", true, null];  // 다양한 자료형을 포함한 배열
+```
+
+---
+
+##### **배열 내장 함수 예시**
+
+1. **push()**: 배열의 끝에 값 추가.
+    ```javascript
+    arr.push(6);  // [1, 2, 3, 6]
+    ```
+
+2. **pop()**: 배열의 마지막 값 제거.
+    ```javascript
+    arr.pop();  // 4 (삭제된 값)
+    ```
+
+3. **shift()**: 배열의 첫 번째 값 제거.
+    ```javascript
+    arr.shift();  // 1 (삭제된 값)
+    ```
+
+4. **forEach()**: 배열의 각 요소를 순차적으로 실행.
+    ```javascript
+    arr.forEach(item => console.log(item));
+    ```
+
+5. **map()**: 배열의 각 요소를 변형한 새 배열 생성.
+    ```javascript
+    let doubled = arr.map(i => i * 2);  // [2, 4, 6]
+    ```
+
+6. **filter()**: 조건을 만족하는 요소만 필터링.
+    ```javascript
+    let evenNumbers = arr.filter(i => i % 2 === 0);  // [2, 4]
+    ```
+
+7. **sort()**: 배열의 요소를 정렬.
+    ```javascript
+    arr.sort((a, b) => a - b);  // 오름차순 정렬
+    ```
+
+8. **concat()**: 여러 배열을 합침.
+    ```javascript
+    let arr1 = [1, 2];
+    let arr2 = [3, 4];
+    let result = arr1.concat(arr2);  // [1, 2, 3, 4]
+    ```
+
+이 예시들을 통해 HTML 폼과 자바스크립트 기초에 대해 이해할 수 있습니다.
+
+9. **`join()`**: 배열의 요소들을 특정 구분자로 합쳐 문자열로 반환합니다.
+
+```javascript
+let arr = [1, 2, 3, 4, 5];
+console.log(arr.join('-'));  // "1-2-3-4-5"
+console.log(arr.join('/'));  // "1/2/3/4/5"
+console.log(arr.join(' '));  // "1 2 3 4 5"
+```
+
+10. **`every()`**: 배열의 모든 요소가 조건을 만족하는지 확인합니다.
+
+```javascript
+let arr = [2, 4, 6];
+let result = arr.every(i => i % 2 === 0);
+console.log(result);  // true
+```
+
+11. **`some()`**: 배열의 일부 요소라도 조건을 만족하는지 확인합니다.
+
+```javascript
+let arr = [1, 2, 3];
+let result = arr.some(i => i > 2);
+console.log(result);  // true
+```
+
+### 객체 생성 방법
+객체는 `{}`로 감싸고, 그 안에 속성 (키)과 값 (value)을 콜론(`:`)으로 구분하여 작성합니다. 여러 개의 속성은 쉼표(`,`)로 구분합니다.
+
+```javascript
+let person = { name: '김씨', age: 30, job: '배우' };
+```
+
+### 속성 접근 방법
+
+#### 1. **마침표 표기법 (Dot Notation)**
+속성의 이름을 직접 사용하여 접근합니다. 마침표 표기법은 간단하고 가독성이 좋습니다.
+
+```javascript
+console.log(person.name);  // "김씨"
+console.log(person.age);   // 30
+```
+
+#### 2. **대괄호 표기법 (Bracket Notation)**
+대괄호 표기법은 속성 이름을 문자열로 사용해야 할 때 유용합니다. 또한, 변수로 속성 이름을 다룰 때 사용됩니다.
+
+```javascript
+console.log(person['name']);  // "김씨"
+console.log(person['age']);   // 30
+```
+
+대괄호 표기법은 마침표 표기법과 달리 변수나 동적으로 생성된 속성 이름을 사용할 때 매우 유용합니다.
+
+```javascript
+let prop = 'job';
+console.log(person[prop]);  // "배우"
+```
+- - - - - - -
+
+### 객체 생성과 활용 예시
+
+#### 1. **일반 방식 (기존 방식)**
+
+```javascript
+const person1 = { name: '김씨', age: 30, job: '배우' };
+const person2 = { name: '박씨', age: 40, job: '개발자' };
+
+function printInfo(info) {
+    const str = `${info.name}의 나이는 ${info.age}살이고 직업은 ${info.job}`;
+    console.log("printInfo str : ", str);
+}
+
+printInfo(person1);
+```
+
+#### 2. **비구조화 할당 (객체 구조 분해)**
+
+객체 구조 분해(Destructuring)는 객체에서 값을 추출하여 변수에 바로 할당하는 방법입니다.
+
+```javascript
+function printInfo2(info) {
+    const { name, age, job } = info;
+    const str = `${name}의 나이는 ${age}살이고 직업은 ${job}`;
+    console.log("printInfo2 str : ", str);
+}
+
+printInfo2(person2);
+```
+
+#### 3. **`typeof`를 이용한 타입 확인**
+
+```javascript
+function printInfo3(info) {
+    const { name, age, job } = info;
+    console.log("printInfo3 typeof job : ", typeof job); // "string"
+    const str = `${name}의 나이는 ${age}살이고 직업은 ${job}`;
+    console.log("printInfo3 str : ", str);
+}
+
+printInfo3(person2);
+```
+
+### 객체에 프로퍼티 추가, 수정, 삭제
+
+#### 1. **객체 생성**
+
+```javascript
+let book = {
+    title: '백설공주',
+    price: 30000,
+    stock: 10
+};
+```
+
+#### 2. **프로퍼티 수정**
+
+객체의 속성 값을 수정하려면, 마침표 표기법이나 대괄호 표기법을 사용하여 수정할 수 있습니다.
+
+```javascript
+book.price = 35000;
+```
+
+#### 3. **프로퍼티 추가**
+
+새로운 속성을 객체에 추가할 때도 마찬가지로 마침표 표기법이나 대괄호 표기법을 사용할 수 있습니다.
+
+```javascript
+book.salePrice = book.price * 0.9;  // salePrice 추가
+console.log(book);  // salePrice 속성이 추가됨
+```
+
+#### 4. **프로퍼티 제거**
+
+속성을 삭제하려면 `delete` 키워드를 사용합니다.
+
+```javascript
+delete book.stock;  // stock 속성 제거
+console.log(book);   // stock 속성이 삭제됨
+```
+
+### `.표기법` vs `[] 표기법`
+
+- **`.표기법`**: 변수나 동적인 값을 사용할 수 없고, 직접 정의된 속성에만 접근 가능합니다.
+- **`[] 표기법`**: 변수나 동적인 속성 이름을 사용할 수 있습니다.
+
+```javascript
+let book = {
+    title: '백설공주',
+    price: 30000,
+    stock: 10
+};
+
+let prop = 'title';  // 변수 사용
+console.log(book[prop]);  // "백설공주"
+```
+
+### 객체를 `for...in` 루프로 순회하기
+
+객체의 속성을 순회할 때는 `for...in` 루프를 사용합니다. 이 방식은 객체의 속성 이름을 반복해서 가져옵니다.
+
+```javascript
+for (let key in book) {
+    console.log(`${key} : ${book[key]}`);
+}
+```
+
+이 코드에서는 `key`가 객체의 속성 이름을 차례대로 가져오고, `book[key]`를 통해 그 값을 출력합니다.
+
+### 생성자 함수
+
+생성자 함수는 객체를 생성하는 함수로, 객체를 동적으로 생성하여 각각 다른 값으로 초기화할 때 사용됩니다. 생성자 함수는 `new` 키워드와 함께 호출되며, 객체를 생성하고 초기화하는 역할을 합니다.
+
+#### 1. **생성자 함수 정의**
+
+생성자 함수는 일반적으로 첫 글자가 대문자로 시작하는 것이 관례입니다. 생성자 함수 내부에서는 `this`를 사용하여 객체의 속성(프로퍼티)을 정의합니다.
+
+```javascript
+function Person(name, age, gender) {
+    this.name = name;
+    this.age = age;
+    this.gender = gender;
+}
+```
+
+#### 2. **생성자를 이용하여 객체 2개 생성**
+
+`new` 키워드를 사용하여 생성자 함수를 호출하면, 그 함수는 새로운 객체를 생성하고, 그 객체의 `this`가 해당 객체를 가리키게 됩니다.
+
+```javascript
+let person1 = new Person('김씨', 20, '남');
+let person2 = new Person('이씨', 30, '여');
+
+console.log("person1 : ", person1);
+console.log("person2 : ", person2);
+```
+
+#### 출력
+
+```javascript
+person1 :  Person { name: '김씨', age: 20, gender: '남' }
+person2 :  Person { name: '이씨', age: 30, gender: '여' }
+```
+
+### 생성자 함수의 작동 원리
+
+1. `new Person()` 호출 시:
+    - 새로운 빈 객체가 생성됩니다.
+    - `this`는 그 빈 객체를 가리킵니다.
+    - 생성자 함수 내에서 `this.name`, `this.age`, `this.gender`와 같이 객체의 속성이 설정됩니다.
+    - 함수가 끝나면, 생성된 객체가 반환됩니다.
+
+### 생성자 함수 활용
+
+생성자 함수는 객체를 동적으로 생성할 때 유용하며, 여러 개의 객체를 동일한 구조로 생성할 때 사용됩니다. 이를 통해 코드의 재사용성과 효율성을 높일 수 있습니다.
+
+### 추가 예시: 메소드 추가
+
+생성자 함수 내부에서 메소드를 추가할 수도 있습니다.
+
+```javascript
+function Person(name, age, gender) {
+    this.name = name;
+    this.age = age;
+    this.gender = gender;
     
-## 자료형
-    * 기본 자료형
-    1. 숫자 - number
-    2. 문자열 - string
-    3. 논리형 - boolean
-    4. 널 - null (숫자인지 문자인지 모름)
-    5. 언디파인드 - undefined (값 자체를 모름)
-
-    * 데이터 타입을 확인하는 법
-    - typeof 데이터
-    - typeof(데이터)
-## 형변환
-    데이터 타입들 간 형태를 변환 시켜스 처리하는 경우에 사용
-
-    1. 문자 -> 숫자
-    - Number(값)
-      * 해당 값의 실수 부분까지 모두 변환
-      * 값을 변환 하지 못하면 NaN 반환
-    - parseInt(값)
-      * 해당 값을 변환 후 정수부분만 반환
-      * 특정 값에서 정수 부분만을 반환
-    - parseFloat(값)
-      * 해당 값을 변환 후 실수부분만 반환
-      * 특정 값에서 실수 부분만을 반환
-      
-    2. 다른 데이터 -> 문자열
-    - String(값) : 해당 값을 모두 다 문자열로 변환
-    - 문자열 + 값 : 변환할 값 앞에 문자열 데이터와 '+'연산자를 이용하여 변경
-
-    ** NaN : Not a Number 숫자아님 // 형변환시 나올수 있는 오류
-## 비교 연산자
-    두 값을 비교할 때에는 '==' 혹은 '===' 기호를 사용
-    '==' 경우 데이터 타입을 자동 변환하여 값을 비교
-    '===' 경우 값의 타입까지 비교 (오류 확률 감소);
-
-    true는 1 false는 0 의 값을 가지며 == 비교가능
-## 메시지 출력창
-    js 에서 사용 할수 있는 여러 알림 창들
-    
-    1. alert
-       * 경고 메세지를 출력하는 함수
-       EX)
-       window.alert("경고 메세지");
-       alert("경고 메세지");
-   
-    2. confirm
-       * 사용자에게 확인을 받는 함수
-       * (확인 버튼 클릭시 true 리턴)
-       EX)
-       let yn = confirm("계속 진행할까요?");
-       console.log(" yn : ", yn)
-   
-    3. prompt
-       * 사용자에게 값을 입력 받는 함수
-       * 입력 내용은 무조건 문자열로 반환
-       * 숫자사용시 형변환 필요
-       EX)
-       let inputName = prompt('이름을 입력하세요');
-       console.log(" inputName : ", inputName)
-## 반복문
-### 1. for 문
-<pre>
-    for(let i = 0; i < 10; i ++){
-        console.log(" i : ", i)
-    }
-</pre>
-
-### 2. for-of 문
-- 배열의 내용을 편하게 사용하기 위한 반복문
-- 배열 내의 각 인덱스 요소를 순차적으로 가져와서 사용하는 방식
-<pre>
-    let names = ['김','이','박','최','정'];
-    for( let name of names ){
-        console.log(name);
-    }
-</pre>
-### 3. for-in 문
-- 배열 사용시 인덱스를 가져와서 사용
-- 객체 사용시 프로퍼티(key)를 가져와서 사용
-<pre>
-    const person = {
-        name : '김',
-        age : 20,
-        address : '서울'
-    }
-    console.log(person);
-    console.log(person.address);
-    console.log(person['address']);
-    console.log(Object.entries(person)); // 배열
-    console.log(Object.keys(person));    // 프로퍼티 배열 형식
-    console.log(Object.values(person));  // 값만 배열 형식
-
-    for(let key in person){
-        console.log(`${key} : ${person[key]}`)
-    }
-</pre>
-## 내장객체
-### 1. Date
-#### getter : 날짜에서 필요한 정보 추출
-	1. getFullYear()		년도(yyyy)
-	2. getMonth()			월(0 ~ 11)
-	3. getDate()			일(1 ~ 31)
-	4. getDay()				요일번호(0:일, 1:월, ..., 6:토 )
-	5. getHours()			시(0 ~ 23)
-	6. getMinutes()			분(0 ~ 59)
-	7. getSeconds()			초(0 ~ 59)
-	8. getMilliseconds()	밀리초(0 ~ 999)
-	9. getTIme()			1970년 1월 1일 기준 몇 밀리초가 지났는지 추출
-	
-#### setter : 날짜나 시간을 원하는 정보로 변경	
-	1. setFullYear(년도)		년도(yyyy)
-	2. setMonth(월)			월 (0 ~11)
-	3. setDate(일)			일(1 ~ 31)
-	4. setHours(시)			시(0 ~ 23)
-	5. setMinutes(분)		분(0 ~ 59)
-	6. setSecond(초)			초(0 ~ 59)
-	7. setMillisecond(밀리초)	밀리초(0 ~ 999)
-#### EX )
-<pre>
-let now = new Date();   // 현재 날짜 시간
-console.log(now);
-
-// 년, 월, 일, 시, 분, 초 (월은 0 ~ 11)
-let date1 = new Date(2019, 8, 16, 12, 30, 50);
-console.log(date1);
-
-let date2 = new Date(2019, 10, 13);				// 년, 월, 일 
-console.log(date2);
-
-let date3 = new Date(2019, 11);					// 년, 월, 1일
-console.log(date3);
-
-let date4 = new Date( 24 * 60 * 60 * 1000 );		
-// 1970년 1월 1일 기준, 괄호 안 숫자는 밀리초 (1일 :24 * 60 * 60 * 1000 밀리초)
-console.log(date4);
-
-let date5 = new Date('2019-11-15');
-let y = date5.getFullYear();
-let m = date5.getMonth() + 1;
-let d = date5.getDate();
-let resultDate = `${y}-${m}-${d}`;
-console.log(resultDate);
-</pre>
-### 2. Math
-- 수학에 관련된 여러 정보를 담고있는 객체
-<pre>
-console.log(`파이 : ${Math.PI} `);
-console.log(`제곱 : ${Math.pow(2,3)} `);
-console.log(`제곱 : ${2 ** 3} `);
-console.log(`절대값 : ${Math.abs(-10)} `);
-console.log(`루트 : ${Math.sqrt(4)} `);
-console.log(`최대값 : ${ Math.max(1, 2, 3, 4, 5)} `);
-console.log(`최소값 : ${ Math.min(1, 2, 3, 4, 5)} `);
-console.log(`정수로 반올림 : ${ Math.round(123.456)} `);
-console.log(`소수 1자리 남기고 반올림 : ${(Math.round(123.456 * 10) / 10)} `);
-console.log(`소수 2자리 남기고 반올림 : ${(Math.round(123.456 * 100) / 100)} `);
-console.log(`올림 : ${ Math.ceil(123.456)} `);
-console.log(`내림 : ${ Math.floor(123.456)} `);
-</pre>
-
-### 3. Random
-- 난수를 추출하는 객체
-<pre>
-// 0 ~ 9 사이의 난수를 1개 출력하시오.
-console.log(`0 ~ 9 사이 난수 : ${Math.floor(Math.random() * 10)} `);
-// 1 ~ 10 사이의 난수를 1개 출력하시오.
-console.log(`1 ~ 10 사이 난수 : ${Math.floor(Math.random() * 10)+1} `);
-</pre>
-
-## 함수 Function
-### 1. 함수 (function)
-- 특정 기능을 수행할 수 있는 코드의 집합
-- 형식
-<pre>function 함수명(매게변수){
-    실행코드 
-    return 반환데이터;
-}</pre>
-### 2. 선언적 함수 (함수 선언식)
-* 이름 있는 함수 (자바스크립트 영역은 두 번 읽힌다.) 
-* 함수를 정의하고 , 호출하는 과정이 필요
-* 정의와 호출 순서 상관 없음
-* 동일한 함수를 두 개 이상 만들면 덮어쓴다.
-* 자바의 오버로드 불가
-<pre>
-// 선언적 함수를 변수에 저장할 수 있다. 
-// 변수 저장시 기존 함수명은 사용 불가능 
-let view = function yourFunction(){
-    console.log('yourFunction 실행');
+    // 메소드 추가
+    this.sayHello = function() {
+        console.log(`안녕하세요, 제 이름은 ${this.name}입니다.`);
+    };
 }
-view();</pre>
-<pre>
-// 정의된 선언적 함수를 나중에 변수에 저장할 수 있다.
-function ourFunction(){
-    console.log('ourFunction 실행');
+
+let person1 = new Person('김씨', 20, '남');
+person1.sayHello();  // "안녕하세요, 제 이름은 김씨입니다."
+```
+
+### 클래스 ( Class )
+1. 객체 지향 프로그램에서 특정 객체를 생성하기 위해 필드와 메소드를 정의해 놓은 틀
+2. 독적으로 여러 객체를 생성한는 것이 목적
+3. 클래스 작성 시 이름은 대문자로 시작하며, 앞에 class 키워드를 사용한다.
+```javascript
+class Person {
+    constructor(name) {
+        this.name = name;
+    }
+    print() {
+        console.log(`이름은 ${this.name}입니다.`);
+    }
 }
-let view2 = ourFunction;
-view2();</pre>
+let kim = new Person('김씨');
+kim.print();
 
-### 3. 표현식 (함수 표현식)
-* 이름이 없는 함수 (익명 함수)
-* 표현식 함수는 변수에 저장한 뒤 호출
-
-<pre>
-// 1. 표현식 함수 정의 + 변수에 저장
-let view1 = function(){
-console.log('첫 번째 표현식 함수');
+class Human {
+    constructor(age) {
+        this._age = age;
+    }
+    set name(name) {
+        if (name) {
+            this._name = name; 
+        }
+    }
+    get name() {
+        return this._name.toUpperCase(); 
+        // this.name 으로 호출할 경우 매개변수와 동일하여 
+        // 오류를 발생하므로 '_' 등을 붙여 차이를 둔다.
+    }
 }
-view1();
-view2();
-let view2 = function(){
-console.log('두 번째 표현식 함수');
-}
-</pre>
 
-### 4. 호이스팅
-    < view2() 함수가 실행되지 않는 이유 >
-    자바스크립트 영역은 두 번 읽히는데, 
-    첫 번째로는 '선언적 함수 정의' 부분을 읽고,
-    두 번째로는 나머지 부분을 순차적으로 읽어낸다. 
-    ( * 호이스팅 )
-
-    < * 호이스팅 >
-    자바스크립트 함수가 실행되기 전에 함수 안에 
-    필요한 변수값 들을 모두 모아서 
-    유효 범위의 최상단에 선언하는 것 ( 끌어올림 )
-    현재 스크립트 영역에는 선언적 함수 
-    정의 부분이 없기 때문에 
-    미리 view2 함수가 존재하는 지 알 수 없다. 
-    ( 변수인 view2 만 존재 )
-    선언적 함수 ( 함수 선언식 ) 은 호이스팅의
-    영향을 받지만 표현식 함수 ( 함수 표현식 )은
-    호이스팅 영향을 받지 않는다.
-<pre>
-function plus(){}
-let minus; //변수 먼저 생성
-
-plus();
-minus(); // 변수가 먼저 생성되어 undefined 이므로 오류 발생
-
-minus = function(){}
-</pre>
+let lee = new Human();
+lee.name ='lee';
+console.log(" lee.name : ", lee.name)
+```
