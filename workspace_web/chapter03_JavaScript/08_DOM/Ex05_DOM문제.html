@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+   <div>
+       <h1>DOM</h1>
+       <p class="ex">Document</p>
+       <p class="ex">Object</p>
+       <p>Model</p>
+   </div>
+</body>
+<script>
+//    Q. 클래스 명이 ex인 요소들의 글자색을 빨간색으로 변경
+    let els = document.querySelectorAll(".ex");
+    els.forEach( e => {
+        e.style['color'] = 'red';
+    });
+
+</script>
+</html>

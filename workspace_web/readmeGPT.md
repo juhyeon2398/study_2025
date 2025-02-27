@@ -778,14 +778,125 @@ let newElement = document.createElement('div');
 // 요소 추가
 document.body.appendChild(newElement);
 ```
-## 폼 (Form)
-* form 데이터를 전송하기 전 스크립트에서 데이터를 가공하거나, 검증을 거쳐야하는 경우가있다.
-* 그러기 위해서 form 요소 및 내부 요소들에 접근해서 데이터를 스크립트로 가져와야한다.
+자바스크립트에서 폼(Form) 요소에 접근하는 방법은 여러 가지가 있습니다. 주로 `id`, `class`, `name` 속성을 활용하여 폼과 그 내부 요소에 접근합니다.
 
-### 폼 요소 접근
-1. id 속성 접근
-2. class 속성 접근
-3. name 속성 접근
-    - **.표기법** : document.forms.폼name.요소name
-    - **[]표기법** : document.forms['폼name']['요소name']
-4. 주로 name 사용
+### 1. `id` 속성으로 접근
+
+`id` 속성은 문서 내에서 유일해야 하므로, 특정 요소를 정확하게 식별할 수 있습니다.
+
+```html
+<form id="myForm">
+    <input type="text" id="username" name="username">
+    <input type="password" id="password" name="password">
+    <button type="submit">로그인</button>
+</form>
+```
+
+```javascript
+// 폼 요소에 접근
+const form = document.getElementById('myForm');
+
+// 내부 입력 요소에 접근
+const username = document.getElementById('username');
+const password = document.getElementById('password');
+```
+
+### 2. `class` 속성으로 접근
+
+`class` 속성은 여러 요소에 동일하게 적용할 수 있어, 여러 요소를 한 번에 선택할 때 유용합니다.
+
+```html
+<form>
+    <input type="text" class="input-field" name="username">
+    <input type="password" class="input-field" name="password">
+    <button type="submit">로그인</button>
+</form>
+```
+
+```javascript
+// 클래스 이름으로 모든 입력 요소 선택
+const inputFields = document.getElementsByClassName('input-field');
+
+// 첫 번째 입력 요소에 접근
+const username = inputFields[0];
+const password = inputFields[1];
+```
+
+### 3. `name` 속성으로 접근
+
+`name` 속성은 폼 요소의 이름을 지정하며, 자바스크립트에서 해당 이름으로 요소에 접근할 수 있습니다.
+
+```html
+<form name="loginForm">
+    <input type="text" name="username">
+    <input type="password" name="password">
+    <button type="submit">로그인</button>
+</form>
+```
+
+```javascript
+// 폼 요소에 접근
+const form = document.forms['loginForm'];
+
+// 내부 입력 요소에 접근
+const username = form['username'];
+const password = form['password'];
+```
+
+
+또는 `document.forms`를 사용하여 폼에 접근할 수 있습니다.
+
+```javascript
+// 첫 번째 폼에 접근
+const form = document.forms[0];
+
+// 내부 입력 요소에 접근
+const username = form['username'];
+const password = form['password'];
+```
+
+### 4. `querySelector`와 `querySelectorAll` 사용
+
+CSS 선택자를 사용하여 요소를 선택할 수 있습니다.
+
+```html
+<form>
+    <input type="text" id="username" name="username">
+    <input type="password" id="password" name="password">
+    <button type="submit">로그인</button>
+</form>
+```
+
+```javascript
+// id로 요소 선택
+const username = document.querySelector('#username');
+const password = document.querySelector('#password');
+
+// name으로 요소 선택
+const username = document.querySelector('[name="username"]');
+const password = document.querySelector('[name="password"]');
+```
+
+
+`querySelector`는 첫 번째 일치하는 요소를 반환하며, `querySelectorAll`은 모든 일치하는 요소를 반환합니다.
+
+### 5. `elements` 컬렉션 사용
+
+폼의 `elements` 속성을 사용하여 폼 내부의 모든 요소에 접근할 수 있습니다.
+
+```html
+<form id="myForm">
+    <input type="text" name="username">
+    <input type="password" name="password">
+    <button type="submit">로그인</button>
+</form>
+```
+
+```javascript
+// 폼 요소에 접근
+const form = document.getElementById('myForm');
+
+// 내부 입력 요소에 접근
+const username = form.elements['username'];
+const password = form.elements['password'];
+```

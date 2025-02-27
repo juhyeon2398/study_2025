@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        #box {
+            width: 100px;
+            height: 100px;
+            color: #fff;
+            background: #f00;
+            text-align: center;
+            display: table-cell;
+            vertical-align: middle;
+            transition: 0.25s ease-in-out;
+        }
+
+        #text {
+            font-size: 2em;
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="box">
+        <p id="text">빨</p>
+    </div>
+</body>
+<script>
+    let i = 1;
+    let colors = ["red", "orange", "yellow", "green", "blue", "navy", "purple"];
+    let contents = ["빨", "주", "노", "초", "파", "남", "보"];
+
+    let box = document.querySelector("#box");
+    let text = document.querySelector("#text");
+    let interval;
+    let rainbos = function () {
+        if(interval){
+            clearInterval(interval);
+        }
+        interval = setInterval(() => {
+            box.style['background'] = colors[i];
+            text.innerHTML = contents[i]
+            
+            if (i == 2) {
+                text.style['color'] = '#222'
+            } else {
+                text.style['color'] = '#fff'
+            }
+            i++;
+            if(i == 7) i = 0;
+            
+        }, 1000);
+    }
+    rainbos();
+</script>
+
+</html>

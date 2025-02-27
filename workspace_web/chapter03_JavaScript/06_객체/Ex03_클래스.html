@@ -42,8 +42,46 @@
     }
 
     let lee = new Human();
-    lee.name ='lee';
+    lee.name = 'lee';
     console.log(" lee.name : ", lee.name)
+
+
+    /*
+        this._name을 사용하는 이유 
+        - 직접적인 속성과 세터/게터 충돌 방지
+        클래스 내의 setter 이름이 name으로 되어있으므로,
+        this.name = name 코드가 실행될 때
+        this.name은 setter 메소드를 실행하게 된다.
+        그렇게 무한루프를 돌게 되므로, 
+        setter 이름과 필드의 이름을 다르게 지정한다.
+    */
+    class Animal {
+        constructor(type, name, sound) {
+            this.type = type,
+            this.name = name,
+            this.sound = sound
+        }
+        say() {
+            console.log(this.sound);
+        }
+    }
+
+    class Dog extends Animal{
+        constructor(name, sound){
+            super('강아지', name, sound);
+        }
+    }
+    class Cat extends Animal{
+        constructor(name, sound){
+            super('고양이', name, sound);
+        }
+    }
+    const dog = new Dog('멍멍이','멍');
+    const cat = new Cat('치즈','야옹');
+    dog.say();
+    console.log(" dog : ", dog)
+    cat.say();
+    console.log(" cat : ", cat)
 
 </script>
 

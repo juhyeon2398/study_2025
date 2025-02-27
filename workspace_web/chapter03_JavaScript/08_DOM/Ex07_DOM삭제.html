@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>DOM삭제</h1>
+    <div id="box">
+        <p id="p1">첫 번째 문단</p>
+        <p id="p2">두 번째 문단</p>
+    </div>
+    <button id="btn">버튼 삭제</button>
+</body>
+<script>
+    let box = document.querySelector("#box");
+    let p1 = document.querySelector("#p1");
+    // 제거 
+    // 부모.removeChild(자식)
+    box.removeChild(p1);
+
+    let h1 = document.getElementsByTagName('h1');
+    console.log(" h1 : ", h1)
+    document.body.removeChild(h1[0]);
+
+    let btn = document.querySelector("#btn");
+    btn.addEventListener('click',function(e){
+        this.remove();
+    })
+
+
+
+</script>
+</html>

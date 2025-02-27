@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1 id="heading">DOM</h1>
+    <div id="box">
+        <p>Document</p>
+        <p>Object</p>
+        <p>Model</p>
+    </div>
+</body>
+<script>
+    // 1. css 속성을 그대로 사용하는 경우
+    // 마침표 표기법 사용
+    const h1 = document.querySelector("#heading");
+    h1.style.color = 'red';
+    h1.style.width = '400px';
+    h1.style.height = '100px';
+    h1.style.background = 'pink';
+    h1.style.border = '1px solid #222';
+
+    // 2. css 속성을 변경해서 사용하는 경우
+    // 하이픈(-)을 제거하고 ,camelCase 형식으로 변경
+    const box = document.querySelector("#box");
+    box.style.fontFamily = '궁서';
+    box.style.fontSize = '20px';
+    box.style.fontWeight = 'bold';
+
+    // 3. css 속성을 그대로 사용하고자 할 떄 
+    // 대괄호 표기법
+    const pList1 = document.querySelectorAll('p');
+    const pList2 = document.getElementsByTagName('p');
+
+    
+    console.log(" pList1 : ", pList1); // NodeList
+    console.log(" pList2 : ", pList2); // HTMLCollection
+
+    // HTMLCollection 객체에는 forEach() 메소드가 없기 때문에 사용할 수 없다.
+    pList1.forEach( p => {
+        p.style['color'] = 'red';
+        p.style['background'] = 'yellow';
+    })
+
+</script>
+</html>

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1>안녕하세요</h1>
+    <ul id="list">
+
+    </ul>
+</body>
+<script>
+    // 1. <h1>태그 만들기
+    let headElement = document.createElement('h1');
+    // 2. 텍스트 노트 만들기
+    let textNode = document.createTextNode("hello JavaScript");
+    // 3. h1 태그에 텍스트 노트 추가하기
+    headElement.appendChild(textNode);
+    // 4. h1 태그를 body에 추가하기
+    // * 추가하기 위해선 부모 노드를 알아야한다.
+    document.body.appendChild(headElement);
+
+    const fruite = ['apple', 'banana', 'orange', 'kiwi', 'mango'];
+
+    let ulEl = document.querySelector("#list");
+
+    // for (let a of fruite.map(a => document.createTextNode(a))) {
+    //     let createLi = document.createElement('li');
+    //     createLi.appendChild(a);
+    //     ulEl.appendChild(createLi);
+    // }
+
+    let msg = '';
+    fruite.forEach(f => {
+        msg += '<li>' + f + '</li>';
+    })
+    ulEl.innerHTML = msg;
+
+</script>
+
+</html>
