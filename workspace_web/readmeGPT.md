@@ -900,3 +900,146 @@ const form = document.getElementById('myForm');
 const username = form.elements['username'];
 const password = form.elements['password'];
 ```
+다듬은 버전을 아래에 정리해드릴게요. 마크다운 문법을 유지하면서 더욱 깔끔하게 정리했습니다.  
+
+---
+
+# 정규식 (Regular Expressions)
+
+정규 표현식(Regular Expression, RegExp)은 특정 패턴을 가진 문자열을 찾거나 검증하는 데 사용됩니다.  
+주로 **입력값 검증**, **문자열 검색 및 치환** 등에 활용됩니다.
+
+## 1. 정규식 기본 문법
+
+| 기호 | 설명 |
+|------|------|
+| `^`  | 문자열의 **시작**을 의미 |
+| `$`  | 문자열의 **끝**을 의미 |
+| `[0-9]` | 숫자(0~9) 범위 |
+| `[a-z]` | 알파벳 소문자 범위 |
+| `[A-Z]` | 알파벳 대문자 범위 |
+| `+`  | 앞의 패턴이 **1개 이상 반복** |
+| `*`  | 앞의 패턴이 **0개 이상 반복** |
+| `?`  | 앞의 패턴이 **0개 또는 1개 존재** |
+| `{n}`  | 정확히 **n개 반복** |
+| `{n,}` | **최소 n개 이상 반복** |
+| `{n,m}` | **n개 이상 m개 이하 반복** |
+
+### 예제
+
+```javascript
+let regExp = /^[a-zA-Z0-9]+$/;  // 영문 + 숫자만 허용
+console.log(regExp.test("abc123"));  // true
+console.log(regExp.test("abc 123")); // false (공백 포함)
+```
+
+---
+
+## 2. 정규식 생성 방법
+
+1. **슬래시(`/`)를 이용한 생성**
+   ```javascript
+   let re = /ab+c/;
+   ```
+2. **RegExp 객체를 이용한 생성**
+   ```javascript
+   let re = new RegExp('ab+c');
+   ```
+
+---
+
+## 3. 정규식 메서드
+
+### `test()`
+- 문자열이 정규식을 만족하는지 검사 (`true` 또는 `false` 반환)
+- 주로 조건문에서 사용됨
+
+```javascript
+let regExp = /^[0-9]+$/;  // 숫자로만 구성된 문자열 체크
+console.log(regExp.test("12345"));  // true
+console.log(regExp.test("12a45"));  // false
+```
+
+---
+
+### `exec()`
+- 패턴에 매칭되는 값을 배열로 반환 (`null` 반환 가능)
+- 찾은 값의 **자세한 정보**를 알고 싶을 때 사용
+
+```javascript
+let regExp = /([0-9]+)px/;
+console.log(regExp.exec("width: 120px;"));  
+// ["120px", "120"]
+```
+
+---
+
+### `search()`
+- 문자열에서 패턴을 찾아 **인덱스 반환** (`-1` 반환 가능)
+
+```javascript
+let regExp = /hello/;
+console.log("hello world".search(regExp));  // 0 (첫 번째 위치)
+console.log("hi world".search(regExp));     // -1 (찾지 못함)
+```
+
+---
+
+### `match()`
+- 패턴과 일치하는 **배열 반환** (`null` 반환 가능)
+- 여러 개의 일치하는 값을 찾을 수 있음
+
+```javascript
+let regExp = /\d+/g;  // 모든 숫자 찾기
+console.log("오늘은 2025년 2월 28일입니다.".match(regExp));  
+// ["2025", "2", "28"]
+```
+
+---
+
+# 이벤트
+
+## 1. 주요 이벤트 종류
+
+| 이벤트명 | 설명 |
+|----------|----------------|
+| `onclick` | 요소를 클릭할 때 발생 |
+| `onchange` | 입력값이 변경될 때 발생 |
+| `onload` | 문서가 로드될 때 발생 |
+| `onmouseover` | 마우스가 요소 위로 올라올 때 발생 |
+| `onmouseout` | 마우스가 요소에서 벗어날 때 발생 |
+| `onkeyup` | 키를 눌렀다 뗄 때 발생 |
+| `onkeydown` | 키를 누를 때 발생 |
+
+---
+
+## 2. 기본 이벤트 제거
+
+어떤 요소들은 기본적으로 동작하는 이벤트가 존재합니다.  
+예를 들어 `<a href="#">` 태그는 클릭 시 페이지가 이동합니다.  
+이러한 기본 이벤트를 막고 추가적인 작업을 수행할 때 `preventDefault()`를 사용할 수 있습니다.
+
+```javascript
+document.querySelector("a").addEventListener("click", function(event) {
+    event.preventDefault();  // 기본 이벤트 제거
+    alert("링크 클릭 방지됨!");
+});
+```
+
+---
+
+## 3. 이벤트 리스너 추가 방법
+
+### `addEventListener()` 사용
+```javascript
+document.getElementById("btn").addEventListener("click", function(event) {
+    alert("버튼 클릭됨!");
+});
+```
+
+### 프로퍼티 방식
+```javascript
+document.getElementById("btn").onclick = function() {
+    alert("버튼 클릭됨!");
+};
+```

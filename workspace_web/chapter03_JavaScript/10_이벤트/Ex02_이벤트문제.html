@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="box">마우스 올리기</div>
+    <div id="click">
+        <span>target</span>
+    </div>
+
+    <form action="#">
+        <input type="text" id="keyInput">
+        <div id="content">
+
+        </div>
+    </form>
+    <h2 id="count">0</h2>
+    <div class="btns">
+        <button id="increase">+1</button>
+        <button id="decrease">-1</button>
+    </div>
+</body>
+
+<script>
+    let box = document.querySelector('#box');
+    box.addEventListener('mouseover',function(){
+        this.innerHTML = '안녕하세요.';
+    })
+    box.addEventListener('mouseout',function(){
+        this.innerHTML = '안녕히 가세요.';
+    })
+
+   // =========================================================================== 
+    let click = document.querySelector('#click');
+    let content = document.querySelector('#content');
+    click.addEventListener('click', (e) => {
+        console.log(" clicked e : ", e)
+        console.log(" clicked e : ", e.target)
+        console.log(" clicked e : ", e.currentTarget)
+    })
+    
+    let input = document.querySelector('#keyInput');
+    input.addEventListener('keypress', (e) =>{
+        content.innerHTML += `${e.keyCode}<br>`;
+    })
+
+    // ===========================================================================
+    let btns = document.querySelectorAll(".btns button");
+    let countEle = document.querySelector("#count");
+    let num = 0;
+    
+    for(let btn of btns){
+        btn.addEventListener('click',function(){
+            if(this.id == 'increase') countEle.innerHTML = ++countEle.innerText;
+            else countEle.innerHTML = --countEle.innerText;
+        })
+    } 
+ 
+</script>
+</html>

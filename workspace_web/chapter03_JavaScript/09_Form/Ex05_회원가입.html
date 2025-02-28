@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{margin: 0;padding: 0;box-sizing: border-box;}
+        h1{text-align: center;padding:30px 0;}
+        .container{ width:100%; max-width: 750px;margin: 0 auto;position: relative;padding-bottom: 75px;}
+        table{text-align: left;border-collapse: 0;width: 100%;}
+        th.sub-tit{background:#008080;color:#fff;font-size: 1em;padding:10px 0;text-align: center;}
+        table th,
+        table td{border:1px solid #d9d9d9;vertical-align: middle;padding: 5px;}
+        table input[type="text"],
+        table input[type="password"]{height: 25px;width: 250px;padding:5px;font-size: 0.8em;}
+
+        .email-box input[type="text"]{width: 130px;}
+        .email-box button{width: 50px;padding:2px 0}
+
+        .birth-box input[type="text"]{width: 100px;}
+        .birth-box input[type="text"]:disabled{background: #ccc;}
+
+        .flex-box{display: flex;align-items: center;gap: 5px;}
+        textarea{width: 70%;height: 150px;resize: none;margin:15px 0}
+
+        .btns{display: flex;justify-content: center;margin-top: 15px;gap: 5px;}
+        .btns button{color:#fff;background: #008080;padding: 15px 25px;border: 1px solid #222;;}
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1 class="title">회원가입</h1>
+        <form action="#" name="myForm">
+            <table cellspacing="0">
+                <colgroup>
+                    <col width="130px">
+                    <col width="*">
+                </colgroup>
+                <tbody>
+                    <tr>
+                        <th class="sub-tit" colspan="2">회원기본정보</th>
+                    </tr>
+                    <!-- 아이디 -->
+                    <tr>
+                        <th><label for="uId">아이디</label></th>
+                        <td><input type="text" id="uId" name="uId" placeholder="※ 8~16자 소문자+숫자"></td>
+                    </tr>
+                    <!-- 비밀번호 -->
+                    <tr>
+                        <th><label for="pw">비밀번호</label></th>
+                        <td><input type="password" id="pw" name="pw" placeholder="※ 8~16자 대문자+소문자+숫자"></td>
+                    </tr>
+                    <tr>
+                        <th><label for="pwChk">비밀번호확인</label></th>
+                        <td><input type="password" id="pwChk" name="pwChk"></td>
+                    </tr>
+                    <!-- 이메일 -->
+                    <tr>
+                        <th><label>이메일</label></th>
+                        <td>
+                            <input type="text" name="email1">
+                            <span>@</span>
+                            <input type="text" name="email2" list="emailWrite" placeholder="직접입력">
+                            <datalist id="emailWrite">
+                                <option value="naver.com">naver.com</option>
+                                <option value="gmail.com">gmail.com</option>
+                            </datalist>
+                        </td>
+                    </tr>
+                    <!-- 이름 -->
+                    <tr>
+                        <th><label for="userName">이름</label></th>
+                        <td><input type="text" id="userName" name="userName"></td>
+                    </tr>
+                    <tr>
+                        <th class="sub-tit" colspan="2">개인정보</th>
+                    </tr>
+                    <!-- 주민등록번호 -->
+                    <tr>
+                        <th><label for="">주민등록번호</label></th>
+                        <td class="email-box">
+                            <div class="flex-box">
+                                <input type="text" name="pId1">
+                                <span>-</span>
+                                <input type="text" name="pId2">
+                                <p>예) 123456-1234567</p>
+                                <button type="button" onclick="pIdChk();">확인</button>
+                            </div>
+                        </td>
+                    </tr>
+                    <!-- 생년월일 -->
+                    <tr>
+                        <th>생일</th>
+                        <td>
+                            <div class="birth-box">
+                                <input type="text" name="year" id="birthY" readonly disabled>
+                                <label for="birthY">년</label>
+                                <input type="text" name="month" id="birthM" readonly disabled>
+                                <label for="birthM">월</label>
+                                <input type="text" name="date" id="birthD" readonly disabled>
+                                <label for="birthD">일</label>
+                            </div>
+                        </td>
+                    </tr>
+                    <!-- 성별 -->
+                    <tr>
+                        <th>성별</th>
+                        <td>
+                            <div class="flex-box">
+                                <input type="radio" name="gender" value="1" id="g1" disabled>
+                                <label for="g1">남</label>
+                                <input type="radio" name="gender" value="2" id="g2" disabled>
+                                <label for="g2">여</label>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>관심분야</th>
+                        <td>
+                            <div class="flex-box">
+                                <input type="checkbox" name="hobby" id="h1">
+                                <label for="h1">여행</label>
+                                <input type="checkbox" name="hobby" id="h2">
+                                <label for="h2">영화</label>
+                                <input type="checkbox" name="hobby" id="h3">
+                                <label for="h3">독서</label>
+                                <input type="checkbox" name="hobby" id="h4">
+                                <label for="h4">음악</label>
+                                <input type="checkbox" name="hobby" id="h0">
+                                <label for="h0">관심없음</label>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>자기소개</th>
+                        <td>
+                            <textarea name="" id=""></textarea>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <div class="btns">
+                <button type="button" onclick="validate();">회원가입</button>
+                <button type="reset">다시입력</button>
+            </div>
+        </form>
+    </div>
+</body>
+<script>    
+
+    // 아이디 정규식      
+    let regId = /^[0-9a-z]{8,16}$/;       
+    // 비밀번호 정규식
+    let regPw = /^[0-9a-zA-Z]{8,16}$/;   
+    // 성함 정규식 
+    let regName = /^[가-힣]{2,6}$/;    
+    // 이메일 정규식
+    let regEmail = /^[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*\.[a-zA-Z]{2,3}$/i;
+    // 주민등록번호 정규식(앞자리)
+    let regPid1 = /^\d{6}$/;
+    // 주민등록번호 정규식(뒷자리)
+    let regPid2 = /^\d{7}$/;
+
+    let isPidChk = false;
+    let form = document.forms.myForm;
+    let date = new Date();
+    let now =  String(date.getFullYear()).slice(2,4);
+    
+    function validate(){
+        let email = form.email1.value + '@' + form.email2.value;
+        let pId1 = form.pId1.value;
+        let pId2 = form.pId2.value;
+
+        // 아이디 체크
+        if(!regId.test(form.uId.value)){
+            alert("아이디는 8~16자 소문자+숫자 형식으로 입력해주세요.");
+            form.uId.focus();
+            return;
+        }
+        
+        // 비밀번호 체크
+        if(!regPw.test(form.pw.value)){
+            alert("비밀번호는 8~16자 대문자+소문자+숫자 형식으로 작성해주세요");
+            form.pw.focus();
+            return;
+        }
+        
+        // 비밀번호 동일 체크
+        if(form.pw.value != form.pwChk.value){
+            alert("비밀번호가 일치하지 않습니다.");
+            form.pwChk.focus();
+            return;
+        }
+        
+        // 이메일 체크
+        if(!regEmail.test(email)){
+            alert("정확한 이메일을 작성해주세요")
+            form.email1.focus();
+            return;
+        }
+        
+        // 이름체크
+        if(!regName.test(form.userName.value)){
+            alert("성함을 작성해주세요");
+            form.userName.focus();
+            return;
+        }
+        
+        // 주민번호 앞자리
+        if(!regPid1.test(pId1)){
+            alert("주민등록번호를 정확히 작성해주세요")
+            form.pId1.focus() ;
+            return;
+        }
+        // 주민번호 뒷자리
+        if(!regPid2.test(pId2)){
+            alert("주민등록번호를 정확히 작성해주세요")
+            form.pId2.focus() ;
+            return;
+        }
+
+        // 주민등록번호 확인 여부
+        if(!isPidChk){
+            alert('주민등록번호 확인을 해주세요.');
+            return;        
+        }
+
+        // 관심분야 체크
+        let hobby = document.querySelectorAll("input[name='hobby']:checked");
+        if(hobby.length < 1){
+            alert("관심분야를 1개 이상 선택해주세요");
+            return;
+        }
+
+        form.submit();
+        alert("회원가입이 완료되었습니다");
+        window.close();
+    }
+    
+    function pIdChk() {
+        let pId1 = form.pId1.value;
+        let pId2 = form.pId2.value;
+
+        let yearTxt;
+        if (pId1.slice(0, 2) >= 0 && pId1.slice(0, 2) <= now) {
+            yearTxt = "20";
+        }else{
+            yearTxt = "19";
+        }
+
+        if (regPid1.test(pId1) && regPid2.test(pId2)) {
+            // 생년월일 추가
+            form.year.value = String(pId1.slice(0, 2)).padStart(4, yearTxt);
+            form.month.value = pId1.slice(2, 4);
+            form.date.value = pId1.slice(4, 6);
+
+            // 성별 체크
+            if (pId2.slice(0, 1) == 1 || pId2.slice(0, 1) == 3) {
+                form.gender.value = 1;
+            } else {
+                form.gender.value = 2;
+            }
+
+            isPidChk = true;
+        } else {
+            alert("주민등록번호를 재확인해주세요.")
+            return;
+        }
+    }
+</script>
+
+</html>

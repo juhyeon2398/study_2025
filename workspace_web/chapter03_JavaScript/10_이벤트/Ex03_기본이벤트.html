@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form action="#">
+        <input type="text">
+        <input type="submit" value="전송">
+    </form>
+    <br>
+    <a href="https://www.google.com/" id="a">구글로이동</a>
+</body>
+
+<script>
+    // 이벤트를 직접 부여하지 않아도 기본적으로 실행되는 이벤트가 있다.
+    // <a>태그의 href속성
+    // <input type='submit'>등
+
+    // 기존적으로 부여되는 이벤트를 무시하고 추가작업을 해야되는 경우에
+    // event.preventDefault()로 기본이벤트를 무시할 수 있다.
+ 
+    let a= document.querySelector('#a');
+    a.addEventListener('click',function(e){
+        e.preventDefault(); // 기본 이벤트 무시
+
+    })
+</script>
+</html>

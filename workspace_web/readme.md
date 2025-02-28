@@ -789,3 +789,90 @@ document.body.appendChild(newElement);
     - **.표기법** : document.forms.폼name.요소name
     - **[]표기법** : document.forms['폼name']['요소name']
 4. 주로 name 사용
+
+### 정규식 ( Regular Expressions )
+- 정규 표현식을 줄여서 정규식이라고 부른다.
+- 데이터 검증 용도로 사용되며, 특정 패턴을 정규식으로 만들고 비교한다.
+- 만드는 방법
+    1. let re = /ab+c/
+    2. let re = new RegExp('/ab+c/');
+
+### 정규식 기본 문법
+- ^ : 패턴 시작
+- [0-9] : 괄호 안의 숫자로 범위 지정
+- + : 문자 수 상관 없음
+- $ : 패턴 종료
+- [a-z] : 알파벳 소문자로 범위 지정
+- [A-Z] : 알파벳 대문자로 범위 지정
+
+1. **정규식.test(데이터)**
+* boolean 반환
+```javascript
+if(regExp.test(target)){
+    console.log('숫자가 맞습니다.');
+}else{
+    console.log('숫자가 아닙니다.');
+}
+```
+2. **정규식.exec(데이터)**
+* 정보를 가지고 있는 배열 반환
+* 문자열을 못 찾으면 null 반환
+```javascript
+if(regExp.exec(target)){
+    console.log('숫자가 맞습니다.');
+}else{
+    console.log('숫자가 아닙니다.');
+}
+```
+3. **문자열.search(정규식)**
+* 인덱스 번호 반환
+* 문자열에서 사용
+* 대응되는 문자열을 찾이 못하면 -1 반환
+```javascript
+if(String(target).search(regExp) != -1){
+    console.log('숫자가 맞습니다.');
+}else{
+    console.log('숫자가 아닙니다.');
+}
+```
+
+4. **문자열.match(정규식)**
+* 정보르 가지고있는 배열 반환
+* 대응되는 문자열을 찾지 못하면 null 반환
+```javascript
+if(String(target).match(regExp) != null){
+    console.log('숫자가 맞습니다.');
+}else{
+    console.log('숫자가 아닙니다.');
+}
+```
+
+### 대표적인 이벤트
+1. onclick : 객체를 클릭했을 때
+2. onchange : 객체의 내용이 변경되었을 때
+3. onload : 객체(문서)가 로딩 되었을 때
+4. onmouseover : 마우스가 객체위로 올라왔을 때
+5. onmouseout : 마우스가 객체위로 올라왔을 때
+6. onkeyup: 키를 눌렀다 떼어졌을 때     
+7. onkeydown: 키를 눌렀을 때
+
+### 기본이벤트
+* 이벤트를 직접 부여하지 않아도 기본적으로 실행되는 이벤트가 있다.
+* &lt;a&gt;태그의 href속성
+* &lt;input type='submit'&gt;등
+
+기존적으로 부여되는 이벤트를 무시하고 추가작업을 해야되는 경우에 event.preventDefault()로 기본이벤트를 무시할 수 있다.
+
+```javascript
+// addEventListener 형식
+btn.addEventListener('click',function(e){
+    alert("aaaa ");
+    e.target; // 자식노드
+    e.currentTarget // 본인노드
+    e.preventDefault(); // 기본 이벤트 무시
+})
+// 프로퍼티 형식
+btn.onclick = function(){
+    alert("clicked");
+}
+```
