@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="./js/jquery-3.4.1.js"></script>
+    <title>Document</title>
+</head>
+<body>
+    <h2 id="header">MouseOver / MouseOut</h2>
+    이름을 입력하세요 <input type="text" id="inputName">
+    <p style="margin:0">
+        count : <span>0</span>
+    </p>
+</body>
+<script>
+    $('#header').mouseover(function(){
+        $(this).css('background','#ff0');
+    })
+    $('#header').mouseout(() => {
+        $('#header').css('background','pink');
+    })
+    $('#inputName').keydown(() => {
+        let count = $("p > span").text();
+        count++
+        $("p > span").text(count);
+    })
+
+</script>
+</html>

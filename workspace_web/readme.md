@@ -876,3 +876,107 @@ btn.onclick = function(){
     alert("clicked");
 }
 ```
+## 프로미스 (Promise)
+* 자바스크립트의 비동기 작업을 처리하고, 결과를 다루는 객체
+* 이전 콜백 함수로 모든 비동기를 처리향되는 상황을 편리하게 사용하기 위해 ES6부터 도입
+
+### 상태
+1. 대기(Pending) - 비동기 작업이 완료되지 않음
+2. 이행(Fulfilled) - 비동기 작업이 성공적으로 완료되지
+3. 거부(Rejected) - 비동기 작업 실패
+
+### 프로미스 생성
+- new 키워드를 이용하여 Promise 생성자 호출 - 호출하면서 두개의 콜백 함수를 파라미터로 받는다.
+- 첫 번째 resolve - 작업이 성공하면 호출
+- 두 번째 reject - 작업이 실패하면 호출
+```javascript
+const prom = new Promise((resolve, reject) => {
+   // 코드
+});
+```
+프로미스 객체가 담긴 prom을 호출할 때 
+**성공**하면 **then()** 함수를, 
+**실패**했을 때는  **catch()** 함수를 붙여서 사용
+
+
+### async
+1. 비동기  처리를 위해 사용하는 문법
+2. async 키워드를 함수 앞에 붙인다.
+3. async 함수는 프로미스를 만환하게 된다.
+(일반 데이터를 리턴할 시 프로미스 객체로 감싼다.)
+
+```javascript
+//기존함수 
+function addOne(n){
+    return n+1;
+}
+console.log(" addOne addOne : ", addOne(2))
+
+async function addTwo(n){
+    return n+2;
+}
+
+addTwo(2).then(n =>{console.log(n)});
+```
+
+### await
+1. async 함수 안에서만 동작(일반 함수 사용 불가)
+2. 프로미스의 then() 부분을 대신할 수 있다.
+3. await 키워드를 만나면 프로미스가 끝날 때 까지 기다린다.
+
+```javascript
+function myProm(){
+    return new Promise(resolve =>{
+        resolve('완료');
+    })
+}
+async function print(){
+    // await 사용 X
+    // myProm().then(result => console.log(" print result : ", result));
+    // myProm().then(console.log);
+
+    // await 사용
+    const result = await myProm();
+    console.log(" print result : ", result)
+}
+
+print();
+```
+
+### fetch()
+- 서버와 비동기로 데이터를 주고 받는 기술로 ajax, axios와 같은 외부 라이브러리가 아닌 브라우저 자체 함수
+- window 객체의 프로퍼티로 , window.fetch()로 사용가능
+- 다양한 데이터 형식을 지원하지만 기본적으로 JSON 형식의 데이터를 주고 받을 때에 가장 쉽게 사용 가능
+
+#### **1. 형식**
+* url : 요청할 경로
+* option : 요청 방식 , 해더 ,내용 등 설정  
+fetch(url, options){}
+    .then()   
+    .then()   
+    .catch();
+```javascript
+fetch('https://jsonplaceholder.typicode.com/posts', {
+    method: 'POST',
+    body: JSON.stringify({ 
+        title: 'foo',
+        body: 'bar',
+        userId: 1
+    }),
+    headers: {
+        'Content-type' : 'application/json; charset=utf-8'
+    }
+})
+.then(response => response.json())
+.then(json => {
+    console.log(" json : ", json)
+})
+
+async function send(){
+    let response = await fetch('https://jsonplaceholder.typicode.com/posts/1');
+    let json = await response.json();
+    console.log(" send response : ", json)
+
+}
+send();
+``` 
