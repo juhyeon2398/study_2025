@@ -170,6 +170,7 @@
     let now =  String(date.getFullYear()).slice(2,4);
     
     function validate(){
+        document.querySelectorAll("input[name=hobbies]:checked")
         let email = form.email1.value + '@' + form.email2.value;
         let pId1 = form.pId1.value;
         let pId2 = form.pId2.value;

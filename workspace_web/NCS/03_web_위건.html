@@ -97,17 +97,17 @@
     function goLogin(){
         if(form.uId.value.length == 0){
             alert("아이디를 입력하세요");
-            form.uId.value.focus();
+            form.uId.focus();
             return;
         }
         if(form.uPw.value.length == 0){
             alert("비밀번호를 입력하세요");
-            form.uPw.value.focus();
+            form.uPw.focus();
             return;
         }
         if(form.uPw.value !== form.pwChk.value){
             alert("비밀번호가 같지 않습니다.");
-            form.pwChk.value.focus();
+            form.pwChk.focus();
             return;
         }
         if(document.querySelectorAll('input[type=radio]:checked').length == 0){
