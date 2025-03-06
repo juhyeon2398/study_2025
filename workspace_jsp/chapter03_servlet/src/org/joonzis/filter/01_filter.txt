@@ -1,0 +1,45 @@
+1. 필터(Filter)
+	1) 클라이언트(Client)에서 서버(Server)로 요청이 
+	들어오기 전 서블릿을 거쳐서 필터링 하는 것
+		HTTP 요청 -> WAS -> 필터 -> 서블릿
+	2) 서블릿 3.x 버전 이후 추가된 기술
+	3) Servlet과 ServletFilter의 차이
+		(1) Servlet은 HTTPServeltRequest
+			Filter는 ServletRequest
+			=> Filter의 ServletRequest가 부모 클래스
+	4) 주요 사용 기능
+		(1) 사용자 인증
+		(2) 로깅
+	5) 사용 방법
+		- Filter 인터페이스를 구현하여 사용
+		- init(), doFilter(), destroy() 메소드 사용
+		- init()
+			- 서블릿 컨테이너가 필터 인스턴스를 초기화 할 때 호출되는 메소드
+		- doFilter()
+			- 실제 필터링 코드 구현 메소드
+		- destroy()
+			- 필터 인스턴스가 종료될 때 호출되는 메소드
+	
+		(1) WEB-INF/web.xml에 필터 추가
+			<!-- 필터 정의 -->
+			<filter>
+				<filter-name>EncodingFilter</filter-name>
+					<!-- 필터 이름 -->
+				<filter-class>org.joonzis.filter.EncodingFilter</filter-class>
+				<init-param>
+					<param-name>encoding</param-name>
+					<param-value>utf-8</param-value>
+				</init-param>
+			</filter>
+			<!-- 필터 맵핑하기 (요청 pattern 확인)
+			<filter-mapping>
+				<filter-name>EncodingFilter</filter-name>
+				<url-pattern>/*</url-pattern>
+			</filter-mapping>
+		
+		(2) Filter 파일 내에서 @WebFilter() 어노테이션 사용
+		
+		
+		
+	
+		
