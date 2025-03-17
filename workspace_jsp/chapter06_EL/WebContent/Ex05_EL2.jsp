@@ -15,7 +15,7 @@
 		2. EL표기법으로 바로 계산하여 출력
 	 -->
 	 ${
-	 	Integer.parseInt(request.getParameter("num1")) + Integer.parseInt(request.getParameter("num2"))  
+	 	request.getParameter("num1")  
 	 }
 	 <br>
 	 

@@ -17,5 +17,7 @@
 	<classpathentry kind="lib" path="C:/wi/dev/jar/jstl-20250317T003521Z-001/taglibs-standard-impl-1.2.5.jar"/>
 	<classpathentry kind="lib" path="C:/wi/dev/jar/jstl-20250317T003521Z-001/taglibs-standard-jstlel-1.2.5.jar"/>
 	<classpathentry kind="lib" path="C:/wi/dev/jar/jstl-20250317T003521Z-001/taglibs-standard-spec-1.2.5.jar"/>
+	<classpathentry kind="lib" path="C:/wi/dev/jar/ojdbc5.jar"/>
+	<classpathentry kind="lib" path="C:/wi/dev/jar/ojdbc6.jar"/>
 	<classpathentry kind="output" path="build/classes"/>
 </classpath>

@@ -326,8 +326,106 @@ cookieBox[0].getValue(); // 쿠키 값
     - ${"문자" += "열" += "연결"} -> 문자열연결
     - ${"제목 : " += title} -> 제목 : JSP 프로그래밍
 
-        
-        
-        
-		 
-		
+
+## JSTL 
+* JSP 표준 태그 라이브러리(여러 태그들의 집합)
+
+### core 라이브러리
+1. **변수 지원**   
+    (1) set		: 변수 선언 (EL의 setAttribute)   
+    (2) remove	: 변수 삭제 (EL의 removeAttribute)
+2. **제어문 지원**
+    * if		: else는 없다.~
+    ```jsp
+    <c:if test="조건"></c:if>
+    ```
+    * choose	: 다중 if 처리
+    ```jsp
+    <c:choose>
+        // if 영역
+		<c:when test="${ avg >= 90 }"> 
+			<c:set var="grade" value="A" />
+		</c:when>
+        // else 영역
+		<c:otherwise>                
+			<c:set var="grade" value="F" />
+		</c:otherwise>
+	</c:choose>
+    ```
+    * forEach	: 루프, 컬렉션 루프  		
+    ```jsp
+    <c:forEach var="i" begin="1" end="10" step="1">$
+        { i }<br>
+    </c:forEach>
+    ```
+    ```jsp
+    // 향상 forEach
+    <c:forEach var="name" items="${ Names }">
+		${ name }
+	</c:forEach>
+
+    ```
+    * forTokens: 구분자(delim)로 데이터를 분리(토큰 생성)
+	```jsp
+    <c:set var="animals" value="사자,호랑이;사슴,곰;이구아나^뱀" />
+	<!-- 값에 특수기호가 포함된 경우 -->
+	<c:forTokens items="${animals}" delims=",;^" var="animal">
+		${animal}<br>
+	</c:forTokens>
+    ```	 
+
+### **formatNumber**
+
+```
+<c:set var="n" value="123456789.123456789" />
+<h3>formatNumber의 groupingUsed</h3>
+천 단 위 구분 기호 + 소수 3자리 : 
+<fmt:formatNumber value="${n}" /><br>
+천 단 위 구분 기호 없이 + 소수 3자리 : 
+<fmt:formatNumber value="${n}" groupingUsed="no"/><br>
+<hr>
+<h3>formatingNumber의 pattern</h3>
+천 단위 구분 기호 + 소수 2자리 : 
+<fmt:formatNumber value="${n}" pattern="#,##0.00"/><br>
+천 단위 구분 기호 + 정수 : 
+<fmt:formatNumber value="${n}" pattern="#,000"/><br>
+<hr>
+<h3>formatingNumber의 type</h3>
+퍼센트 : <fmt:formatNumber value="0.1" type="percent" /><br>
+원화 표기 : <fmt:formatNumber value="${n }" type="currency" /><br>
+달러 표기 : <fmt:formatNumber value="${n }" type="currency" currencySymbol="$"/>
+<hr>
+<h3>parseNumber</h3>
+<c:set var="a" value="13" />
+<fmt:parseNumber var="num1" value="${a }" 
+```
+
+### **formatDate**
+
+```
+<c:set var="now" value="<%= new Date() %>"></c:set>
+	
+<h3>formatDate의 타입</h3>
+date타입 : 
+<fmt:formatDate value="${now }" type="date"/><br>
+time 타입 : 
+<fmt:formatDate value="${now }" type="time"/><br>
+both 타입 : 
+<fmt:formatDate value="${now }" type="both"/><br>
+<hr>
+<h3>formatDate의 스타일</h3>
+default : 
+<fmt:formatDate value="${now }" type="both" dateStyle="default" timeStyle="default"/><br>
+short : 
+<fmt:formatDate value="${now }" type="both" dateStyle="short" timeStyle="short"/><br>
+medium : 
+<fmt:formatDate value="${now }" type="both" dateStyle="medium" timeStyle="medium"/><br>
+long : 
+<fmt:formatDate value="${now }" type="both" dateStyle="long" timeStyle="long"/><br>
+full : 
+<fmt:formatDate value="${now }" type="both" dateStyle="full" timeStyle="full"/><br>
+<hr>
+<h3>formatDate의 패턴</h3>
+사용자 패턴 : 
+<fmt:formatDate value="${now }" pattern="yyyy년 MM월 dd일 E요일 a hh:mm:ss"/><br>
+```
