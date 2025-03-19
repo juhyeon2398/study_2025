@@ -164,7 +164,87 @@ public class MemberDao {
 	}
 
 	// 수정 데이터 가져오기 - getUpdateView
-	public int getUpdateView(MemberVO vo) {
+	public MemberVO getUpdateView(String id, String pw) {
+		MemberVO vo = null;
+		try {
+			conn = ds.getConnection();
+			String sql = "select * from member where id = ? and pw = ?";
+			ps = conn.prepareStatement(sql);
+			ps.setString(1, id);
+			ps.setString(2, pw);
+			rs = ps.executeQuery();
+			
+			if (rs.next()) {
+				vo = new MemberVO();
+				vo.setIdx(rs.getInt(1));
+				vo.setId(rs.getString(2));
+				vo.setPw(rs.getString(3));
+				vo.setName(rs.getString(4));
+				vo.setAge(rs.getInt(5));
+				vo.setAddr(rs.getString(6));
+				vo.setRegdate(rs.getDate(7));
+			}
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				if (rs != null)
+					rs.close();
+				if (ps != null)
+					ps.close();
+				if (conn != null)
+					conn.close();
+			} catch (Exception e) {
+				e.printStackTrace();
+			} finally {
+
+			}
+		}
+		return vo;
+	}
+	
+	public MemberVO getUserInfoById(String id) {
+		MemberVO vo = null;
+		try {
+			conn = ds.getConnection();
+			String sql = "select * from member where id = ?";
+			ps = conn.prepareStatement(sql);
+			ps.setString(1, id);
+			rs = ps.executeQuery();
+			
+			if (rs.next()) {
+				vo = new MemberVO();
+				vo.setIdx(rs.getInt(1));
+				vo.setId(rs.getString(2));
+				vo.setPw(rs.getString(3));
+				vo.setName(rs.getString(4));
+				vo.setAge(rs.getInt(5));
+				vo.setAddr(rs.getString(6));
+				vo.setRegdate(rs.getDate(7));
+			}
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				if (rs != null)
+					rs.close();
+				if (ps != null)
+					ps.close();
+				if (conn != null)
+					conn.close();
+			} catch (Exception e) {
+				e.printStackTrace();
+			} finally {
+
+			}
+		}
+		return vo;
+	}
+	
+	
+	public int update(MemberVO vo) {
 		int result = 0;
 
 		try {
@@ -202,44 +282,5 @@ public class MemberDao {
 		}
 
 		return result;
-	}
-	
-	public MemberVO getUserInfoById(String id) {
-		MemberVO vo = null;
-		try {
-			conn = ds.getConnection();
-			String sql = "select * from member where id = ?";
-			ps = conn.prepareStatement(sql);
-			ps.setString(1, id);
-			rs = ps.executeQuery();
-			
-			while (rs.next()) {
-				vo = new MemberVO();
-				vo.setIdx(rs.getInt(1));
-				vo.setId(rs.getString(2));
-				vo.setPw(rs.getString(3));
-				vo.setName(rs.getString(4));
-				vo.setAge(rs.getInt(5));
-				vo.setAddr(rs.getString(6));
-				vo.setRegdate(rs.getDate(7));
-			}
-			
-		} catch (Exception e) {
-			e.printStackTrace();
-		} finally {
-			try {
-				if (rs != null)
-					rs.close();
-				if (ps != null)
-					ps.close();
-				if (conn != null)
-					conn.close();
-			} catch (Exception e) {
-				e.printStackTrace();
-			} finally {
-
-			}
-		}
-		return vo;
 	}
 }

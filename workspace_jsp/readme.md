@@ -429,3 +429,85 @@ full :
 사용자 패턴 : 
 <fmt:formatDate value="${now }" pattern="yyyy년 MM월 dd일 E요일 a hh:mm:ss"/><br>
 ```
+## **mybatis**
+* mapper에서는 ?(물음표)를 사용할 수 없다.  
+* 대신 전달한 파라미터의 이름은 #{}을 통해 적는다.   
+* sql문 뒤에 ;(세미콜론)이 없다.
+
+### **각 태그 속성**
+1. id : id를 통해서 sql문을 선택 (임의로 결정 가능)
+2. parameterType : 매개변수의 타입
+3. resultType : 리턴 데이터의 타입 (풀 패키지로 작성)
+    - insert, update, delete의 경우 무조건 int 형식이기 때문에 작성할 필요가 없다
+
+* SqlSessionFactoryBuilder에서   SqlSessionFactory 을 생성하고,
+* Factory에서  SqlSession을 생성한다.
+* mybaytis를 이용하려면 SqlSession이 필요하다!!!!!!
+
+* openSession() &emsp;&emsp;&emsp;// select 문에서 사용(커밋을 하지 않음)
+* openSession(true)&ensp;&emsp;// 자동 커밋
+* openSession(false)&emsp; // 수동 커밋
+
+### **SqlSession의 메소드 종류**
+1. selectList("mapper에서 사용할 id")				
+    * 검색 결과가 여러 개 일때 List(테이블)
+2. selectList("mapper에서 사용할 id", 파라미터)		
+    * 파라미터 전달 시
+3. selectOne("mapper에서 사용할 id")				
+    * 검색 결과가 한 개 일 때(테이블)
+4. selectOne("mapper에서 사용할 id", 파라미터)
+5. insert("mapper에서 사용할 id", 파라미터)
+6. update("mapper에서 사용할 id")
+7. delete("mapper에서 사용할 id")
+
+  *** 각 메소드의 두번 째 인자 값으로 파라미터를 던질 수 있다.
+  던질 파라미터가 없을 시 생략
+
+
+### 모델 1/2 차이
+
+1. 모델 1 구조
+	1) JSP 파일 하나로 처리 가능
+	2) 간단한 로직, 프로젝트에 적합
+	3) Java코드와 JSP코드가 섞여있어 가독성이 떨어짐
+```
+   ┌───────┐   요청/응답
+   │Browser│ <────────> JSP <────────> Service, JavaBean
+   └───────┘			 
+```					 
+						 
+2. 모델 2 구조
+	1) 웹 브라우저의 요청을 하나의 서블릿이 받는다(단일 진입점)
+```					 
+			       요청
+   ┌───────┐ ──────────> Servlet <────> Logic Class 	
+   │Browser│	응답		   ↓ 
+   └───────┘<──────────	  JSP <────────> Service, JavaBean		 
+```					 
+
+3. 모델 1 대비 모델 2의 장/단점
+	* 장점
+		- 출력을 위한 뷰 코드와 로직 처리를 위한 자바 코드를 분리였기 때문에
+			모델 1 방식에 비해 코드가 복잡하지 않다.
+		- 뷰, 로직처리 분업 용이
+		- 기능이 분리됨에 따라 유지보수가 용이
+	* 단점
+		- 구조가 복잡하여 습득이 어렵고 작업량이 많다.
+		- java에 대한 이해도가 필요
+
+
+4. MVC 패턴
+	* M : model, 비지니스 로직 / DB 처리, JAVA 파일 (POJO : 순수 자바)
+	* V : view, 화면처리, JSP 파일
+	* C : controller, 흐름 제어, Servlet 파일 
+	* 기본 흐름   
+		화면(JSP) => 요청(검색,로그인 등) => 컨트롤러 (Servlet) => 요청에 맞는 Model 호출 
+	* 이동 경로   
+		jsp -> Controller -> action(Model) -> dao -> mapper -> dto -> Controller -> jsp
+		
+```
+				요청				           로직 처리
+   ┌───────┐ ──────────> Controller <────────> Model 
+   │Browser│	응답		   ↓
+   └───────┘<──────────	  View 
+```

@@ -20,19 +20,20 @@
 	
 	MemberDao dao = MemberDao.getInstance();
 	int result = dao.update(vo);
+	
 	pageContext.setAttribute("result", result);
 %>
 
 <c:choose>
 	<c:when test="${result > 0}">
 		<script type="text/javascript">
-			alert("등록에 성공하였습니다.");
+			alert("수정에 성공하였습니다.");
 			location.href="view_all.jsp";
 		</script>
 	</c:when>
 	<c:otherwise>
 		<script type="text/javascript">
-			alert("등록에 실패해였습니다");
+			alert("수정에 실패해였습니다");
 			location.href="view_all.jsp";
 		</script>
 	</c:otherwise>

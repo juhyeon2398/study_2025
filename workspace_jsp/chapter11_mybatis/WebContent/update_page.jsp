@@ -9,8 +9,11 @@
 	String pw = request.getParameter("pw");
 		
 	MemberVO vo = new MemberVO();
+	vo.setId(id);
+	vo.setPw(pw);
+	
 	MemberDao dao = MemberDao.getInstance();
-	MemberVO info = dao.getUpdateView(id,pw);	
+	MemberVO info = dao.getUpdateView(vo);	
 	pageContext.setAttribute("info", info);
 	pageContext.setAttribute("inputPw", pw);
 %>
