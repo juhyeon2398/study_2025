@@ -55,7 +55,6 @@
 <script type="text/javascript">
 	
 	function search_dept(f) {
-		console.log(f.department_id.value)
 		if(f.department_id.value == ""){
 			alert("부서 번호를 선택해주세요");
 			return;

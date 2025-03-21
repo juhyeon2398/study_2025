@@ -91,9 +91,7 @@
 </body>
 
 <script type="text/javascript">
- 	const regExp = /^[0-9]+$/;
-    const target = "";
-	
+ 	
 	function search_employee(f) {
 		if(!f.searchText.value){
 			alert("검색어를 입력해주세요.");
