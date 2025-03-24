@@ -1,7 +1,7 @@
-package org.joonzis.dao;
+package org.joonzis.service;
 
 import org.joonzis.vo.CVO;
 
-public interface CDao {
+public interface CService {
 	public int insertComment(CVO cvo);
 }

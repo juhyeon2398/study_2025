@@ -14,4 +14,4 @@
 	location.href = "BBSController?cmd=allList";
 </script>
 
-</html>
+</html> 

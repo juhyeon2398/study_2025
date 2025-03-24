@@ -1,5 +1,6 @@
 package org.joonzis.controller;
 
+import java.io.File;
 import java.io.IOException;
 import java.net.Inet4Address;
 import java.net.InetAddress;
@@ -10,7 +11,10 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
+import org.apache.ibatis.reflection.SystemMetaObject;
+import org.joonzis.model.FileDownload;
 import org.joonzis.service.BService;
 import org.joonzis.service.BServiceImpl;
 import org.joonzis.vo.BVO;
@@ -63,23 +67,38 @@ public class BBSController extends HttpServlet {
 		// 리턴 객체
 		int result = 0;
 		List<BVO> list = null;
+		// 세션 객체 생성
+		HttpSession session = request.getSession();
 
+		// 세션 정보 저장
+		String open = null;
+		
+		
 		switch (cmd) {
+		// 전체 게시글 리스트
 		case "allList":
 			path = "bbs/allList.jsp";
 			list = bservice.getList();
 			request.setAttribute("list", list);
+			
+			open = (String) session.getAttribute("open");
+			if (open != null) {
+				session.removeAttribute("open");
+			}
+			
 			break;
+		// 게시글 작성 페이지 이동
 		case "insertBBSPage":
 			path = "bbs/insert_page.jsp";
 			break;
+		// 게시글 작성
 		case "insertBBS":
 			bvo = new BVO();
 			bvo.setWriter(mr.getParameter("writer"));
 			bvo.setPw(mr.getParameter("pw"));
 			bvo.setContent(mr.getParameter("content"));
 			bvo.setTitle(mr.getParameter("title"));
-//			bvo.setIp(request.getRemoteAddr()); IPv6
+		 // bvo.setIp(request.getRemoteAddr()); IPv6
 			bvo.setIp(Inet4Address.getLocalHost().getHostAddress()); // IPv4
 			if(mr.getFile("filename") != null) {
 				bvo.setFilename(mr.getFilesystemName("filename"));
@@ -93,7 +112,82 @@ public class BBSController extends HttpServlet {
 			isForward = false;
 			path = "BBSController?cmd=allList";
 			break;
+		// 게시글 보기
+		case "view":
+			bvo = bservice.getViewInfo(Integer.parseInt(request.getParameter("b_idx")));
+			
+			open = (String) session.getAttribute("open");
+			if(open == null) {
+				session.setAttribute("open", "yes");
+				int hit = bvo.getHit() + 1;
+				bvo.setHit(hit);
+				bservice.updateHit(bvo);
+			}
+			
+			session.setAttribute("bvo", bvo);
+			path = "bbs/view.jsp";
+			break;
+		// 삭제
+		case "remove":
+			bservice.removeBBS(Integer.parseInt(request.getParameter("b_idx")));
+			isForward = false;
+			path = "BBSController?cmd=allList";
+			break;
+		// 파일 다운로드
+		case "download":
+			FileDownload fd = new FileDownload();
+			try {
+				fd.doDownload(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+			break;
+			
+		// 수정 페이지
+		case "updatePage":
+			path = "bbs/update_page.jsp";
+			break;
+			
+		// 수정 실행
+		case "update":
+			bvo = new BVO();
+			bvo.setB_idx(Integer.parseInt(mr.getParameter("b_idx")));
+			bvo.setContent(mr.getParameter("content"));
+			bvo.setTitle(mr.getParameter("title"));
+			
+			// 새 첨부 파일
+			File newFile = mr.getFile("filename");
+			// 기존 첨부 파일 이름
+			String oldFile = mr.getParameter("oldfile");
+			
+			if(newFile != null) {
+				// 새 첨부 파일 O
+				if(oldFile != null) {
+					File removeFile = new File(realPath + "/" + oldFile);
+					if(removeFile.exists()) {
+						removeFile.delete();
+					}
+				}
+				bvo.setFilename(newFile.getName());
+			}else {
+				// 새 첨부 파일 X
+				if(oldFile != null) {
+					// 기존 첨부 파일 O
+					bvo.setFilename(oldFile);
+				}else {
+					// 새 첨부파일, 기존 첨부 파일 X
+					bvo.setFilename("");
+				}
+				
+			}
+			bservice.updateBBS(bvo);
+			isForward = false;
+			request.setAttribute("bvo", bvo);
+			path = "BBSController?cmd=view&b_idx="+bvo.getB_idx();
+			
+			break;
 		}
+	
 
 		if (isForward) {
 			request.getRequestDispatcher(path).forward(request, response); // 데이터를 가지고 갈 경우
