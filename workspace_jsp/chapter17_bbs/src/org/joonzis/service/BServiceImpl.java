@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.joonzis.dao.BDao;
 import org.joonzis.dao.BDaoImpl;
+import org.joonzis.model.Criteria;
 import org.joonzis.vo.BVO;
 
 public class BServiceImpl implements BService{
@@ -13,6 +14,16 @@ public class BServiceImpl implements BService{
 	@Override
 	public List<BVO> getList() {
 		return bdao.getList();
+	}
+	@Override
+	public List<BVO> getListWithPaging(Criteria cri) {
+		return bdao.getListWithPaging(cri);
+	}
+
+	//전체 게시글 수
+	@Override
+	public int getTotalRecordCount() {
+		return bdao.getTotalRecordCount();
 	}
 	@Override
 	public int InsertBBS(BVO bvo) {

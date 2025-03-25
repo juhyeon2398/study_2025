@@ -8,6 +8,25 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<select id="select_all" resultType="org.joonzis.vo.BVO">
 		SELECT * FROM BBS_T ORDER BY B_IDX DESC
 	</select>
+	
+	<!-- 전체 목록 + 페이징 처리 -->
+	<select id="select_all_paging" resultType="org.joonzis.vo.BVO">
+		<!-- 영역내 태그기호 무시 <![CDATA[ ]]> -->
+		<![CDATA[ 
+		select *
+		from (select b_idx, writer, title, hit, reg_date, ROWNUM rn
+			from (select b_idx, writer, title, hit, reg_date
+			    from bbs_t
+			    order by b_idx desc)
+			where rownum <= #{pageNum} * #{amount})
+		where rn > (#{pageNum} - 1) * #{amount}
+		]]>
+	</select>
+
+	<select id="select_bbs_total" resultType="int">
+		select count(*) FROM BBS_T
+	</select>
+	
 
 	<!-- 게시글 view -->
 	<select id="select_view" resultType="org.joonzis.vo.BVO">

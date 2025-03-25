@@ -3,12 +3,13 @@ package org.joonzis.dao;
 import java.util.List;
 
 import org.apache.ibatis.session.SqlSession;
+import org.joonzis.model.Criteria;
 import org.joonzis.mybatis.config.DBService;
 import org.joonzis.vo.BVO;
 
 public class BDaoImpl implements BDao{
 
-	// DAO 객체 생성
+	// DAO 객체 생성    
 	private static BDaoImpl instance = null;
 	private BDaoImpl() {}
 	public static BDaoImpl getInstance() {
@@ -32,6 +33,18 @@ public class BDaoImpl implements BDao{
 	public List<BVO> getList() {
 		return getSqlSession().selectList("select_all");
 	}
+	
+	@Override
+	public List<BVO> getListWithPaging(Criteria cri) {
+		return getSqlSession().selectList("select_all_paging",cri);
+	}
+
+	// 전체 게시글 수
+	@Override
+	public int getTotalRecordCount() {
+		return getSqlSession().selectOne("select_bbs_total");
+	}
+	
 	@Override
 	public int InsertBBS(BVO bvo) {
 		int result = getSqlSession().insert("insert_bbs", bvo);

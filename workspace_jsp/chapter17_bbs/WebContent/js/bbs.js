@@ -68,9 +68,19 @@ function update(f,session){
 
 // 게시글 삭제
 function removeBBS(b_idx){
-	let remove = confirm("삭제하시겠습니까?");
-	if(remove){
+	// let remove = confirm("삭제하시겠습니까?");
+	let clist = document.querySelector("#commBody").dataset['clist'];
+	
+	if(clist > 0){
+		let sendData= `cmd=comment_all_delete&b_idx=${b_idx}`;
+		fetch(`CommentController?${sendData}`)
+			.then(response => response.json())
+			.then(json => {
+				location.href="BBSController?cmd=remove&b_idx="+b_idx;
+			})
+			.catch(err => console.log(err));
+	}else{
 		location.href="BBSController?cmd=remove&b_idx="+b_idx;
-	}
+	} 
 }
 
