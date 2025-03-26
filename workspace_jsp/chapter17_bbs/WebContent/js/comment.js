@@ -84,3 +84,7 @@ function comment_del(c_idx){
 		})
 		.catch(err => console.log(err));
 }
+
+
+
+

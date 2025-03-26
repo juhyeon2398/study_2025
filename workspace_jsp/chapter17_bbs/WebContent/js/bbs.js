@@ -1,5 +1,8 @@
 console.log("bbs.js >> load")
 
+let pageNumData = new URLSearchParams(location.search).get("pageNum");
+let amountData = new URLSearchParams(location.search).get("amount");
+
 function moveInsertPage() {
 	location.href = "BBSController?cmd=insertBBSPage";
 }
@@ -32,18 +35,18 @@ function insert(f){
 
 // 리스트 전체 출력
 function view_all(){
-	// history.back();
-	location.href="BBSController?cmd=allList";
+	
+	location.href=`BBSController?cmd=allList&pageNum=${pageNumData}&amount=${amountData}`;
 }
 
 // 게시글 수정 함수
 function updatePage(){
-	location.href="BBSController?cmd=updatePage";
+	location.href=`BBSController?cmd=updatePage&pageNum=${pageNumData}&amount=${amountData}`;
 }
 
 // 게시글 수정
 function update(f,session){
-	
+
 	if(!f.title.value){
 		alert("제목을 입력해주세요.");
 		f.title.focus();
@@ -84,3 +87,15 @@ function removeBBS(b_idx){
 	} 
 }
 
+document.querySelectorAll("tbody a").forEach(aEle =>{
+	aEle.addEventListener("click", function(e){
+		e.preventDefault();
+		
+		let b_idx = this.getAttribute('href');
+		let pageNum = this.getAttribute('pageNum');
+		let amount = this.getAttribute('amount');
+		
+		let sendData = `cmd=view&b_idx=${b_idx}&pageNum=${pageNum}&amount=${amount}`;
+		location.href=`BBSController?${sendData}`;
+	})
+})
