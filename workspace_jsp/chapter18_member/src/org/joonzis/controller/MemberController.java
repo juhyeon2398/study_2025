@@ -46,8 +46,10 @@ public class MemberController extends HttpServlet {
 		case "joinPage":
 			path = "member/joinPage.jsp";
 			break;
-
-		default:
+		case "logOutPage":
+			isForward = false;
+			session.removeAttribute("member");
+			path = "MemberController?cmd=mainPage";
 			break;
 		}
 		

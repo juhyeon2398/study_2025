@@ -100,7 +100,6 @@ function validateId() {
 			if(data.result == 0){
 				validated(target, mIdValidState, '사용가능한 아이디 입니다.');
 				idCk = true;
-				target.setAttribute("disabled", true);
 			}else{
 				invalidate(target, mIdValidState, '이미 사용중인 아이디입니다.');
 				idCk = false;
@@ -187,7 +186,6 @@ function join() {
 
     // formdata to json
     let jsonData = JSON.stringify(Object.fromEntries(formData.entries()))
-    
 
 	// post 방식 
 	fetch(`MemberAsyncController`, {
@@ -196,7 +194,6 @@ function join() {
 		header : {
 			'Content-type' : 'application/json; charset=utf-8'
 		}
-		
 	})
         .then(response => response.json())
         .then(data => {

@@ -12,9 +12,9 @@ btn.forEach(el => {
 	el.addEventListener("click", function(){
 		let target = this.getAttribute("id")
 		if(target === 'loginBtn'){
-			login();
+			login(); 
 		}else{
-			location.href="MemberController?mainPage";
+			location.href="MemberController?cmd=mainPage";
 		}
 	})
 })
@@ -29,10 +29,17 @@ function login(){
 		return;
 	}
 	
+	sendData = {
+		mId : f.mId.value,
+		mPw : f.mPw.value,
+		cmd : "login"
+	}
+	
     // FormData 객체 새엉
     let formData = new FormData(f);
     // formdata to json
-    let jsonData = JSON.stringify(Object.fromEntries(formData.entries()))
+    // let jsonData = JSON.stringify(Object.fromEntries(formData.entries()))
+    let jsonData = JSON.stringify(sendData);
 	// post 방식 
 	fetch(`MemberAsyncController`, {
 		method : 'post',
@@ -46,7 +53,7 @@ function login(){
         .then(data => {
 			if(data.result === "success"){
 				alert("로그인되었습니다.")
-				location.href="MemberController?mainPage";
+				location.href="MemberController?cmd=mainPage";
 			}else{
 				alert(LOGIN_FAIL_MSG);
 				f.reset();
