@@ -847,6 +847,13 @@ if(String(target).match(regExp) != null){
 }
 ```
 
+```javascript
+const regExpId = /^[a-z]+[0-9a-z]{3,12}$/;   // 아이디 검증 정규식
+const regExpPw = /^[0-9a-zA-Z]{8,16}$/;      // 비밀번호 검증 정규식
+const regExpName = /^[가-힣a-zA-Z]{2,12}$/;   // 이름 검증 정규식 
+const regExpEmail = /^[a-zA-Z0-9+-\_.]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/;   // 이메일 검증 정규식
+```
+
 ### 대표적인 이벤트
 1. onclick : 객체를 클릭했을 때
 2. onchange : 객체의 내용이 변경되었을 때

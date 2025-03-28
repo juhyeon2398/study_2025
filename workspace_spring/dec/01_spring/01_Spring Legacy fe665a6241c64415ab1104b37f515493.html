@@ -1,0 +1,716 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>01_Spring Legacy</title><style>
+/* cspell:disable-file */
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 3px;
+	padding: 1rem;
+}
+
+figure {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.column-list {
+	display: flex;
+	justify-content: space-between;
+}
+
+.column {
+	padding: 0 1em;
+}
+
+.column:first-child {
+	padding-left: 0;
+}
+
+.column:last-child {
+	padding-right: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding: 0.125rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+	border-collapse: collapse;
+}
+
+table {
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	padding-inline-start: 0;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+.page-description {
+    margin-bottom: 2em;
+}
+
+.simple-table {
+	margin-top: 1em;
+	font-size: 0.875rem;
+	empty-cells: show;
+}
+.simple-table td {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table th {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table-header-color {
+	background: rgb(247, 246, 243);
+	color: black;
+}
+.simple-table-header {
+	font-weight: 500;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-block;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	max-height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	transform: scale(1.5);
+	margin-right: 0.6em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1.25em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.sans { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, ui-serif, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP'; }
+.pdf:lang(zh-CN) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC'; }
+.pdf:lang(zh-TW) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC'; }
+.pdf:lang(ko-KR) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR'; }
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP'; }
+.pdf:lang(zh-CN) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC'; }
+.pdf:lang(zh-TW) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC'; }
+.pdf:lang(ko-KR) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR'; }
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.highlight-default {
+	color: rgba(55, 53, 47, 1);
+}
+.highlight-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.highlight-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.highlight-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.highlight-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.highlight-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.highlight-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.highlight-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.highlight-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.highlight-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.highlight-default_background {
+	color: rgba(55, 53, 47, 1);
+}
+.highlight-gray_background {
+	background: rgba(241, 241, 239, 1);
+}
+.highlight-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.highlight-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.highlight-yellow_background {
+	background: rgba(251, 237, 214, 1);
+}
+.highlight-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.highlight-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.highlight-purple_background {
+	background: rgba(244, 240, 247, 0.8);
+}
+.highlight-pink_background {
+	background: rgba(249, 238, 243, 0.8);
+}
+.highlight-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.block-color-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.block-color-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.block-color-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.block-color-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.block-color-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.block-color-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.block-color-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.block-color-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.block-color-default_background {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray_background {
+	background: rgba(241, 241, 239, 1);
+}
+.block-color-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.block-color-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.block-color-yellow_background {
+	background: rgba(251, 237, 214, 1);
+}
+.block-color-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.block-color-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.block-color-purple_background {
+	background: rgba(244, 240, 247, 0.8);
+}
+.block-color-pink_background {
+	background: rgba(249, 238, 243, 0.8);
+}
+.block-color-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.select-value-color-uiBlue { background-color: rgba(35, 131, 226, .07); }
+.select-value-color-pink { background-color: rgba(245, 224, 233, 1); }
+.select-value-color-purple { background-color: rgba(232, 222, 238, 1); }
+.select-value-color-green { background-color: rgba(219, 237, 219, 1); }
+.select-value-color-gray { background-color: rgba(227, 226, 224, 1); }
+.select-value-color-transparentGray { background-color: rgba(227, 226, 224, 0); }
+.select-value-color-translucentGray { background-color: rgba(0, 0, 0, 0.06); }
+.select-value-color-orange { background-color: rgba(250, 222, 201, 1); }
+.select-value-color-brown { background-color: rgba(238, 224, 218, 1); }
+.select-value-color-red { background-color: rgba(255, 226, 221, 1); }
+.select-value-color-yellow { background-color: rgba(249, 228, 188, 1); }
+.select-value-color-blue { background-color: rgba(211, 229, 239, 1); }
+.select-value-color-pageGlass { background-color: undefined; }
+.select-value-color-washGlass { background-color: undefined; }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style></head><body><article id="fe665a62-41c6-4415-ab11-04b37f515493" class="page sans"><header><div class="page-header-icon undefined"><img class="icon" src="01_Spring%20Legacy%20fe665a6241c64415ab1104b37f515493/springbooticon.png"/></div><h1 class="page-title">01_Spring Legacy</h1><p class="page-description"></p></header><div class="page-body"><p id="fb81c246-797a-4dd5-b459-d065236b1dba" class="">
+</p><nav id="9981a572-e223-48aa-9a2b-5a3d8b1e1e87" class="block-color-gray table_of_contents"><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#6b9cfaa7-1257-4308-8ae4-9d745cea97bb">1. 스프링 프레임워크란?</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#798dc1e5-fb7b-442d-af22-fc3505c655d2">2. 스프링의 주요 특징</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#16796911-0da7-49a6-943a-ce9a02b848d5">3. 프로젝트 ( Legacy ) 만들기</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#c70d4293-b5de-4c7e-a6e1-eb352cc4db54">4. 스프링의 구조</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#b738a1ec-84b0-415f-b17f-d8d8e687ac12">중요하게 고려해야 하는 부분</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#251998e1-7812-4a59-b9d6-5d6eee50fc5d">스프링 MVC의 기본 구성</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#066f1bf1-a4b1-4d51-a760-3d2f8ee73fd2">스프링 MVC와 Mybatis 구조</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#044f4c3f-6a2c-422a-8b6a-748fd54a9fc6">프로젝트 및 파일 네이밍 규칙</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#5f9a6c5c-6bc5-437d-b9bb-1e2b4f08c5f6">프로젝트 구조 및 요소들의 특징</a></div></nav><p id="11b03a50-90a1-44b0-ac2f-f62bcf7f5dbf" class="">
+</p><p id="0c1f2832-312d-4935-83e0-48331609c844" class="">
+</p><h2 id="6b9cfaa7-1257-4308-8ae4-9d745cea97bb" class="">1. 스프링 프레임워크란?</h2><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="a9e0e601-4f9f-4cab-90ec-2143f9e4bd2e"><div style="font-size:1.5em"><span class="icon">💡</span></div><div style="width:100%">프레임워크 ( Framework )<ul id="1f5de6c8-e9df-47d8-84b5-a324a022ba7c" class="bulleted-list"><li style="list-style-type:disc">사전적 의미는 뼈대 혹은 틀로서 소프트웨어 관점에서 접근하면 아키텍처에 해당하는 골격 코드이다.<p id="d450390b-5a88-4ca6-8854-24fab502b81d" class="">→ 어플리케이션의 구조를 결정하는 코드를 프레임워크가 제공한다.</p></li></ul><ul id="9cd62bd8-5c0c-4976-aa58-f4a13bb79a6b" class="bulleted-list"><li style="list-style-type:disc">장점<p id="cde9fac6-6019-4af5-abaa-b781b930a695" class="">1) 빠른 구현 시간</p><p id="6f171116-e13b-4d1e-9812-7b57765599df" class="">2) 쉬운 관리</p><p id="519fbe26-d13f-407d-b51f-7462a2953bcf" class="">3) 개발자들의 역량 획일화</p></li></ul></div></figure><p id="788d15bd-b5c5-45b1-a0f5-830977d79d94" class="">
+</p><ol type="1" id="bcf1cf64-61bf-4304-af9f-ccd1231902ee" class="numbered-list" start="1"><li>JDK 버전 관리<ul id="768a5b5f-53ea-4634-ae31-a50800e9fbad" class="bulleted-list"><li style="list-style-type:disc">프로젝트 우클릭 Properties -&gt; Project Facets, Java Compiler 확인</li></ul></li></ol><ol type="1" id="6498b5e1-f52f-4f46-8ee5-095eaa78bcae" class="numbered-list" start="2"><li>Maven의 주 용도(pom.xml)<ul id="7d304b8a-76b0-4c69-8da8-5cd8166a9115" class="bulleted-list"><li style="list-style-type:disc">프로젝트에 필요한 의존적인 라이브러리를 자동으로 관리해주는 용도</li></ul></li></ol><ol type="1" id="ae07e3de-c0e2-49ca-96cc-ec86e7e28929" class="numbered-list" start="3"><li>MVC 프로젝트 템플릿의 구조<ul id="07c433a5-cb78-4c91-b1e1-1ab8e856636a" class="bulleted-list"><li style="list-style-type:disc">src/main/java	개발되는 java 코드의 경로</li></ul><ul id="651ad601-666e-4c70-82f2-5caa5fb5d134" class="bulleted-list"><li style="list-style-type:disc">src/main/resources	서버가 실행될 때 필요한 파일들의 경로</li></ul><ul id="145aea76-9ba2-4ac3-8c54-617a0c99411c" class="bulleted-list"><li style="list-style-type:disc">src/test/java	테스트 전용 경로</li></ul><ul id="20cdfb1c-8507-4848-9f83-b2ecf5c92eea" class="bulleted-list"><li style="list-style-type:disc">src/test/resources	테스트 시에만 사용되는 파일들 경로</li></ul><ul id="4034ea42-19fc-4e9a-ad0d-9b86025e1a38" class="bulleted-list"><li style="list-style-type:disc">src/main/webapp/WEB-INF/spring	Spring 설정 파일의 경로</li></ul><ul id="a53a113b-40b9-40d3-89fb-2379ee8dbc43" class="bulleted-list"><li style="list-style-type:disc">src/main/webapp/WEB-INF/views	JSP 파일 경로</li></ul><ul id="a927d4b5-1881-4ee3-984d-a22a57310338" class="bulleted-list"><li style="list-style-type:disc">pom.xml	Maven의 설정 파일</li></ul></li></ol><ol type="1" id="889cb763-7a47-4122-a033-8df271c9d0a9" class="numbered-list" start="4"><li>스프링 프레임워크를 사용해야 하는 이유<ul id="a70e52de-c340-4df3-b2a2-5c4bf16d31a9" class="bulleted-list"><li style="list-style-type:disc">개발자의 구성에 따라 프로젝트의 결과 차이가 크기 때문에 그 상황을 극복하기 위해 기본 흐름, 구조를 맞춤 그에 따라 개발 시간을 단축</li></ul></li></ol><ol type="1" id="2b3697a9-19ea-4129-a5bc-8f0755a01d35" class="numbered-list" start="5"><li>다른 프레임워크와의 차별성<p id="829c7e19-dff3-4b91-a92d-b6b096a03058" class="">1) 복잡함에 반기를 들어서 만든 프레임워크<div class="indented"><ul id="21057818-a075-4cca-a683-a1a8b5d72191" class="bulleted-list"><li style="list-style-type:disc">일반적인 Java 클래스, 인터페이스 이용으로 진입장벽 낮음</li></ul><ul id="a60f058c-2a4f-4ecc-9a62-ea7abe96d4e6" class="bulleted-list"><li style="list-style-type:disc">EJB에 비해 가볍기 때문에 빠른 시간에 엔터프라이즈급의 시스템 작성 가능</li></ul><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="7b82be33-12eb-4812-8ab8-f8529a563b55"><div style="font-size:1.5em"><span class="icon">💡</span></div><div style="width:100%">EJB<br/><br/>서버 측 컴포넌트 모델로, 동시 접속자가 10,000명 이상인 사이트 구축 시 사용하는 기술.<br/>동시 접속자가 많은 가운데 안정적인 트랜잭션이 필요한 경우에 구축<br/></div></figure></div></p><p id="e4c27b00-dd35-4d47-aa9f-de254eae57c6" class="">2) 프로젝트의 전체 구조를 설계할 때 유용한 프레임워크</p><p id="07742c7e-6aec-413a-8c8b-5dd2dcfccd4e" class="">3) 다른 프레임워크들의 포용<div class="indented"><ul id="4c08192d-70f6-4d5f-8b56-be423480ba00" class="bulleted-list"><li style="list-style-type:disc">다른 프레임워크들과의 통합을 지원하여 최소한의 수정 가능</li></ul><ul id="a97182f7-7c1e-4d10-b0a0-012d0c7c9123" class="bulleted-list"><li style="list-style-type:disc">여러 종류의 프레임워크를 혼용해서 사용 가능</li></ul></div></p><p id="97c64ea6-4a30-4f76-815d-08ec6254a1fd" class=""> 4) 개발 생산성과 개발 도구의 지원<div class="indented"><ul id="ea2ea56d-9bb0-42c8-87c9-56310af28b19" class="bulleted-list"><li style="list-style-type:disc">유지보수에 있어서 xml의 설정 등을 사용</li></ul><ul id="abb3d563-116c-422c-9046-271258e9ca7e" class="bulleted-list"><li style="list-style-type:disc">STS, Eclipse 등의 플러그인 빠른 업데이트</li></ul><p id="c77bbb00-c575-45da-9f4e-9b897c980c18" class="">
+</p></div></p></li></ol><p id="4d8fb3d0-27ca-4cc5-8007-3f55270f135b" class="">
+</p><p id="ffaf267f-8df0-49b2-8835-99e1618a6486" class="">
+</p><h2 id="798dc1e5-fb7b-442d-af22-fc3505c655d2" class="">2. 스프링의 주요 특징</h2><ol type="1" id="a9fd0ce0-3d6f-4663-899a-a0081a2c778b" class="numbered-list" start="1"><li>POJO 기반의 구성 ( Plain Old Java Object )<ul id="6eae9c69-cde8-4d51-ad98-584b782c8890" class="bulleted-list"><li style="list-style-type:disc">자바 객체의 라이프 사이클을 스프링 컨테이너가 직접 관리하며, 스프링 컨테이너로부터 필요한 객체를 얻어올 수 있다.</li></ul></li></ol><ol type="1" id="bc1a82a7-862b-42d5-b7f1-45d911eb2095" class="numbered-list" start="2"><li>의존성 주입 DI ( Dependency Injection ) 지원<ul id="12ca4cfd-1eab-49e2-8bc1-2bb73559364e" class="bulleted-list"><li style="list-style-type:disc">각 계층이나 서비스들 사이 또는 객체들 사이에 의존성이 존재할 경우 스프링 프레임워크가 서로를 연결시켜준다. 이는 클래스 사이에 약한 결합을 가능케 한다.</li></ul><ul id="77c8a3d4-7046-4e6f-94d6-d83f4afb58c0" class="bulleted-list"><li style="list-style-type:disc">생성자, set method, Annotation</li></ul></li></ol><ol type="1" id="d2ab454a-e921-44bf-9c85-724debdf343c" class="numbered-list" start="3"><li>AOP(Aspect Oriented Programming) 지원<ul id="da82e4d3-8ce5-4927-a960-c0dc056f3363" class="bulleted-list"><li style="list-style-type:disc">트랜잭션, 로깅, 보안 등 여러 모듈에서 공통적으로 지원하는 기능을 분리하여 사용 가능(반복 코드 x)</li></ul></li></ol><ol type="1" id="1c42b266-a3b9-4648-af69-cbd7b21ebb32" class="numbered-list" start="4"><li>확장성이 높다.</li></ol><p id="61d0f1e8-5616-4163-a9f7-6023bfbda72a" class="">
+</p><p id="0a7f9e6e-808f-4313-a73e-c6aeb25e0c75" class="">
+</p><p id="f05f5525-8154-4e78-b310-fc686088dc63" class="">2. 개발 환경 및 설치</p><ol type="1" id="96f40cde-2a11-4b51-8844-e9371b9ec5ba" class="numbered-list" start="1"><li>개발 툴<ul id="ec9632cc-164f-46f2-a2a8-341eadd71c50" class="bulleted-list"><li style="list-style-type:disc">Java Framework를 사용하기 툴은 크게 Eclipse, STS, IntelliJ 정도가 있고 각각의 특징은 아래와 같다.<p id="b96e91d9-a0fa-41c5-b375-c0e908cde1e7" class="">1) <strong>Eclipse</strong><div class="indented"><p id="27cea150-b63c-4dc0-8b86-68b5bcf48005" class="">Market Place에서 플러그인을 추가해서 사용해야 하며, Legacy프로젝트는 현재 버전 문제로 설치가 불가하다.</p></div></p><p id="428d4b86-cfea-4bcf-b3b7-7659107e33dd" class="">2) <strong>STS ( Spring Tool Suite )</strong><div class="indented"><p id="a1cdd652-d5d4-4da8-8ce9-da58f2c74bd9" class="">스프링 프레임워크 전용 툴로써 레거시 방식과 부트 둘 다 사용 가능하나, 4버전 부터는 레거시를 사용할 수 없다.</p><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="785ad5b6-4c82-48e7-ac01-97eb354fe39e"><div style="font-size:1.5em"><span class="icon">💡</span></div><div style="width:100%">이클립스를 기반으로 작성된 툴이기 때문에 UI 및 기능이 똑같다.<br/>( 자바 및 웹 개발 가능 )<br/></div></figure></div></p><p id="ca975eed-b202-4401-9e5b-0853502688eb" class="">3) <strong>intelliJ</strong><div class="indented"><p id="b7c45710-113f-4582-92fe-79b307d617c4" class="">지원해주는 기능이 강력하나, 많은 기능들을 사용하려면 금액을 지불해야하는 유료 라는 점이 단점이다.</p><p id="26f9bad6-e65c-4e78-88b1-ce9de4b2f7e9" class="">
+</p></div></p></li></ul></li></ol><ol type="1" id="d8284ee0-029b-450a-b0ab-3892732ae3c3" class="numbered-list" start="2"><li>WAS<ul id="8dc70371-379e-4b4c-8774-edebd0f77d8e" class="bulleted-list"><li style="list-style-type:disc">아파치-톰캣을 사용할 것이나, 부트는 톰캣이 내장되어있어 추가적으로 설치 불필요</li></ul></li></ol><p id="00282b6e-1e4e-4742-afc8-bbdef71a0bda" class="">
+</p><ol type="1" id="279039a5-a4d5-4932-a410-0b40ae0265dd" class="numbered-list" start="3"><li>DB<ul id="2a704959-6e03-44bb-83cb-876ba218ca0a" class="bulleted-list"><li style="list-style-type:disc">Oracle, MySQL, MariaDB 등 RDB 위주로 개발진행</li></ul></li></ol><p id="c3104604-ef99-4261-bcb4-f809b47850d8" class="">
+</p><p id="5a20ffd5-78b0-48c2-905b-b756bb6b0f30" class="">
+</p><h2 id="16796911-0da7-49a6-943a-ce9a02b848d5" class="">3. 프로젝트 ( Legacy ) 만들기</h2><p id="23128c08-38e6-4ce9-948e-62e238e6bef0" class="">스프링은 크게 레거시 버전과 부트 버전으로 나뉜다.</p><p id="8a11f87d-251d-4a5a-aa03-091b204b73da" class="">이번 내용에서는 레거시 버전을 다룰 예정이다.</p><p id="71b6a310-90d5-4545-9296-508d96f23c34" class="">
+</p><figure id="fafbb291-7cf7-42a8-943a-813cdcdb6461" class="image"><a href="01_Spring%20Legacy%20fe665a6241c64415ab1104b37f515493/Untitled.png"><img style="width:713px" src="01_Spring%20Legacy%20fe665a6241c64415ab1104b37f515493/Untitled.png"/></a></figure><p id="0ea8d387-6126-4648-9c91-7fbc232b3db6" class="">
+</p><figure id="83168935-4d3a-45fa-867d-938c872ea694" class="image"><a href="01_Spring%20Legacy%20fe665a6241c64415ab1104b37f515493/Untitled%201.png"><img style="width:732px" src="01_Spring%20Legacy%20fe665a6241c64415ab1104b37f515493/Untitled%201.png"/></a></figure><p id="f5c2f43e-8c03-44d1-bc4e-487eedc974dc" class="">프로젝트명을 입력하고, 아래에 생성할 프로젝트의 구조(MVC)를 선택한 뒤 다음으로 넘어간다.</p><p id="fa9e0ac8-b565-47f3-aad1-6b9f2346b20c" class="">
+</p><p id="86e5a946-374d-4ecb-81fb-26697e00d560" class="">
+</p><p id="6eb8544a-8c1e-43bb-93e1-26b93f3b8c06" class="">
+</p><figure id="4205b6b8-b614-48d3-a8e2-3cd5d7642257" class="image"><a href="01_Spring%20Legacy%20fe665a6241c64415ab1104b37f515493/Untitled%202.png"><img style="width:734px" src="01_Spring%20Legacy%20fe665a6241c64415ab1104b37f515493/Untitled%202.png"/></a></figure><p id="a001324d-add2-4a40-8c23-e4017064f27b" class="">기본 패키지를 설정하는 부분으로 3단계 이상의 패키지를 작성하는 곳이다.</p><p id="c8c6d61f-b32e-4d09-9f46-b45211050ef9" class="">마지막 경로 ( controller ) 가 컨텍스트 패스가 되니 신경 써주도록 한다.</p><p id="46acf288-9624-4482-8b8b-0ba36fffb681" class="">
+</p><p id="bd229f23-7c23-46cf-a0f1-2eb0874fe861" class="">
+</p><h2 id="c70d4293-b5de-4c7e-a6e1-eb352cc4db54" class="">4. 스프링의 구조</h2><h3 id="b738a1ec-84b0-415f-b17f-d8d8e687ac12" class="">중요하게 고려해야 하는 부분</h3><ol type="1" id="97abda3e-e601-4fe9-b416-5f7b06f37b4a" class="numbered-list" start="1"><li>스프링 MVC를 이용하는 웹 프로젝트 전체 구조에 대한 이해.</li></ol><ol type="1" id="4292dd33-e8b3-47ae-83b3-6001dfba3ffd" class="numbered-list" start="2"><li>개발의 각 단계에 필요한 설정 및 테스트 환경</li></ol><ol type="1" id="74fc3e28-7c7b-4762-af77-9f6a5aafea81" class="numbered-list" start="3"><li>기본적인 CRUD 구현 ( 리스트, 페이징, 검색 등등)</li></ol><p id="b22f8af1-9511-4724-872a-a52d9835a986" class="">
+</p><h3 id="251998e1-7812-4a59-b9d6-5d6eee50fc5d" class="">스프링 MVC의 기본 구성</h3><p id="92d7c2ed-b813-4224-9463-c451405bb5c0" class="">일반적인 웹 프로젝트 구성 : 3-tier 방식</p><figure id="223b8006-997b-42bc-bc28-44d3d20e917a" class="image"><a href="01_Spring%20Legacy%20fe665a6241c64415ab1104b37f515493/Untitled%203.png"><img style="width:731px" src="01_Spring%20Legacy%20fe665a6241c64415ab1104b37f515493/Untitled%203.png"/></a></figure><p id="0c86e991-86ce-4075-9d8b-f6486de9c31c" class="">
+</p><ol type="1" id="8ce40a7b-7242-4bb6-8dce-5982a9211bd6" class="numbered-list" start="1"><li><strong>Presentation ( 화면 계층 )</strong><p id="bfca9a3e-3ac0-4435-a90c-48b3dd8ab5d3" class="">화면에 보여주는 기술을 사용하는 영역</p><p id="5ab96870-0f92-4a08-8a0a-d22e285055f1" class="">Servelt / JSP이나 스프링 MVC가 담당하는 영역</p><p id="a551dba4-fb36-4839-acc9-258780d9b781" class="">프로젝트의 성격에 맞추어 앱으로 제작하거나 CS(Client-Server)로 구성될 수도 있음</p><p id="ed8bd398-aa69-4409-b8ef-4d5fe3fb5bcf" class=""><mark class="highlight-red_background">스프링 MVC와 JSP를 이용한 화면 구성이 이에 속함</mark></p></li></ol><p id="d17f7556-cd80-4e25-a150-ef9caed92f95" class="">
+</p><ol type="1" id="5b251f27-d6a5-4d36-8b4e-6d21f3fee712" class="numbered-list" start="2"><li><strong>Business ( 비즈니스 계층 )</strong><p id="9c59435b-5cd0-44ed-a003-451e84f07589" class="">순수 비즈니스 로직 담당 영역</p><p id="be2ff92a-3fd3-425b-aaf4-bb0f712929ff" class=""><mark class="highlight-red_background">주로 xxxService 파일이 담당</mark></p><p id="1c4e2bcb-8fcf-4253-835a-2d7ef292f1c1" class="">
+</p></li></ol><ol type="1" id="6b78c8b4-3598-4a37-804f-e0ba5feca686" class="numbered-list" start="3"><li><strong>Persistence ( 영속 or 데이터 계층 )</strong><p id="67edd189-76dd-40a4-a0c3-2497e0fb91fd" class="">데이터를 어떤 방식으로 보관, 사용할지 설계가 들어가는 영역</p><p id="b8d0684e-c218-46cb-80b0-b18e41e676ae" class="">경우에 따라 네트워크나 원격 호출 기술이 접목될 수 있음</p><p id="5f49abaf-c32f-4cc0-9023-750bd6ecce84" class=""><mark class="highlight-red_background">Mybatis와 mybatis-spring 을 이용</mark></p></li></ol><p id="3d73c85d-8f7d-4803-bbd1-822aeca426d5" class="">
+</p><p id="a85e3061-36de-4d0c-8d5f-b446f4b6e422" class="">
+</p><h3 id="066f1bf1-a4b1-4d51-a760-3d2f8ee73fd2" class="">스프링 MVC와 Mybatis 구조</h3><figure id="50099ea5-8118-4780-8b19-3d23e0b5c116" class="image"><a href="01_Spring%20Legacy%20fe665a6241c64415ab1104b37f515493/Untitled%204.png"><img style="width:757px" src="01_Spring%20Legacy%20fe665a6241c64415ab1104b37f515493/Untitled%204.png"/></a></figure><ol type="1" id="7fdefb82-9a8d-4b0a-b04e-a9721b7e904a" class="numbered-list" start="1"><li><strong>Spring MVC</strong><p id="e1763d0c-b7da-4346-89c1-6275c8b668ec" class="">Presentation Tier 구성</p><p id="274bebb2-16e5-4e40-adbd-83b7006e31c1" class="">root-context.xml, servlet-context.xml 등의 설정 파일이 해당 영역의 설정을 담당</p><p id="441c22b2-6660-4b6a-b383-baa05f9e52fd" class="">
+</p></li></ol><ol type="1" id="a66d653f-fadc-43c0-ac8a-c36fceb45e0f" class="numbered-list" start="2"><li><strong>Spring Core</strong><p id="6b31d39c-cde0-43af-a9b0-1b40af584853" class="">POJO ( Plain-Old-Java-Object ) 영역</p><p id="e32b8310-c071-4f23-a4e1-2089e062c938" class="">스프링의 의존성 주입을 이용해서 객체 간의 연관 구조를 완성하여 사용</p><p id="e83b3ed9-fd23-4989-91f6-a9fff8409dfd" class="">
+</p></li></ol><ol type="1" id="df7e625b-d59f-4932-b0d5-556a4ac4fff6" class="numbered-list" start="3"><li><strong>MyBatis</strong><p id="f0fb3952-0c22-482b-bcfe-f24412025094" class="">SQL 처리를 담당하는 구조</p></li></ol><p id="90278dcc-4969-4995-976e-e3def2cba0f7" class="">
+</p><p id="7897daee-23b8-4f6b-aa66-748b815f11e6" class="">
+</p><h3 id="044f4c3f-6a2c-422a-8b6a-748fd54a9fc6" class="">프로젝트 및 파일 네이밍 규칙</h3><ol type="1" id="926d6e53-af05-4767-99e1-cedb48162801" class="numbered-list" start="1"><li><strong>Controller </strong><ul id="96b639eb-d086-4412-b198-8e5a6cd8add1" class="bulleted-list"><li style="list-style-type:disc">스프링 MVC에서 동작하는 Controller 클래스</li></ul></li></ol><ol type="1" id="addf7d05-72b0-42f8-b890-a8af9a85a3b6" class="numbered-list" start="2"><li><strong>Service, ServiceImpl</strong><ul id="beedd4a8-c476-4b74-9b82-a29c84fb92d5" class="bulleted-list"><li style="list-style-type:disc">비즈니스 영역을 담당하는 인터페이스와 구현 클래스</li></ul></li></ol><ol type="1" id="f7b9cc97-8785-42a6-a638-671ca91a7986" class="numbered-list" start="3"><li><strong>DAO or Repository</strong><ul id="496cd0bc-33e7-431d-9710-34ed01e719d7" class="bulleted-list"><li style="list-style-type:disc">DAO ( Data-Access-Object ) 나 Repository( 저장소 ) 이름으로 영역을 따로 구성하는 것이 보편적,</li></ul><ul id="9d0d195b-97fc-4cdd-9d4a-56789f6558ba" class="bulleted-list"><li style="list-style-type:disc">별도의 DAO를 구성하는 대신 Mybatis의 Mapper 인터페이스를 활용</li></ul></li></ol><ol type="1" id="2bc0dcfa-d430-4300-856d-5c261e0915e6" class="numbered-list" start="4"><li><strong>VO or DTO</strong><ul id="ec5c4054-3c46-4f28-b151-9b1684dbdf31" class="bulleted-list"><li style="list-style-type:disc">VO 나 DTO는 일반적으로 유사한 의미로 사용하며 데이터를 담는 객체를 의미</li></ul><p id="55150519-3db6-48dd-842d-8879b89f900a" class="">
+</p><p id="23317c2a-b42e-4074-9ae5-fedcf7cf5a19" class="">
+</p></li></ol><h3 id="5f9a6c5c-6bc5-437d-b9bb-1e2b4f08c5f6" class="">프로젝트 구조 및 요소들의 특징</h3><figure id="a240c134-131e-4a59-9e1c-d644e96cd373" class="image"><a href="01_Spring%20Legacy%20fe665a6241c64415ab1104b37f515493/Untitled%205.png"><img style="width:720px" src="01_Spring%20Legacy%20fe665a6241c64415ab1104b37f515493/Untitled%205.png"/></a></figure></div></article><span class="sans" style="font-size:14px;padding-top:2em"></span></body></html>

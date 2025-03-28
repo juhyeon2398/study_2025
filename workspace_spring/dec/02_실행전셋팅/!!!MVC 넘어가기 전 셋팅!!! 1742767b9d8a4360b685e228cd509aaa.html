@@ -1,0 +1,740 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>!!!MVC 넘어가기 전 셋팅!!!</title><style>
+/* cspell:disable-file */
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 3px;
+	padding: 1rem;
+}
+
+figure {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.column-list {
+	display: flex;
+	justify-content: space-between;
+}
+
+.column {
+	padding: 0 1em;
+}
+
+.column:first-child {
+	padding-left: 0;
+}
+
+.column:last-child {
+	padding-right: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding: 0.125rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+	border-collapse: collapse;
+}
+
+table {
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	padding-inline-start: 0;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+.page-description {
+	margin-bottom: 2em;
+}
+
+.simple-table {
+	margin-top: 1em;
+	font-size: 0.875rem;
+	empty-cells: show;
+}
+.simple-table td {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table th {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table-header-color {
+	background: rgb(247, 246, 243);
+	color: black;
+}
+.simple-table-header {
+	font-weight: 500;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-block;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	max-height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	transform: scale(1.5);
+	margin-right: 0.6em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1.25em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.sans { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, ui-serif, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP'; }
+.pdf:lang(zh-CN) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC'; }
+.pdf:lang(zh-TW) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC'; }
+.pdf:lang(ko-KR) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR'; }
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP'; }
+.pdf:lang(zh-CN) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC'; }
+.pdf:lang(zh-TW) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC'; }
+.pdf:lang(ko-KR) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR'; }
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.highlight-default {
+	color: rgba(55, 53, 47, 1);
+}
+.highlight-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.highlight-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.highlight-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.highlight-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.highlight-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.highlight-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.highlight-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.highlight-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.highlight-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.highlight-default_background {
+	color: rgba(55, 53, 47, 1);
+}
+.highlight-gray_background {
+	background: rgba(248, 248, 247, 1);
+}
+.highlight-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.highlight-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.highlight-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.highlight-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.highlight-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.highlight-purple_background {
+	background: rgba(248, 243, 252, 1);
+}
+.highlight-pink_background {
+	background: rgba(252, 241, 246, 1);
+}
+.highlight-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.block-color-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.block-color-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.block-color-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.block-color-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.block-color-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.block-color-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.block-color-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.block-color-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.block-color-default_background {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray_background {
+	background: rgba(248, 248, 247, 1);
+}
+.block-color-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.block-color-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.block-color-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.block-color-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.block-color-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.block-color-purple_background {
+	background: rgba(248, 243, 252, 1);
+}
+.block-color-pink_background {
+	background: rgba(252, 241, 246, 1);
+}
+.block-color-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.select-value-color-uiBlue { background-color: undefined; }
+.select-value-color-pink { background-color: rgba(225, 136, 179, 0.27); }
+.select-value-color-purple { background-color: rgba(168, 129, 197, 0.27); }
+.select-value-color-green { background-color: rgba(123, 183, 129, 0.27); }
+.select-value-color-gray { background-color: rgba(84, 72, 49, 0.15); }
+.select-value-color-transparentGray { background-color: undefined; }
+.select-value-color-translucentGray { background-color: undefined; }
+.select-value-color-orange { background-color: rgba(224, 124, 57, 0.27); }
+.select-value-color-brown { background-color: rgba(210, 162, 141, 0.35); }
+.select-value-color-red { background-color: rgba(244, 171, 159, 0.4); }
+.select-value-color-yellow { background-color: rgba(236, 191, 66, 0.39); }
+.select-value-color-blue { background-color: rgba(93, 165, 206, 0.27); }
+.select-value-color-pageGlass { background-color: undefined; }
+.select-value-color-washGlass { background-color: undefined; }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style></head><body><article id="1742767b-9d8a-4360-b685-e228cd509aaa" class="page sans"><header><div class="page-header-icon undefined"><span class="icon">⛔</span></div><h1 class="page-title">!!!<em><strong>MVC 넘어가기 전 셋팅</strong></em>!!!</h1><p class="page-description"></p></header><div class="page-body"><p id="a2845dfa-cbb5-4f3e-b51c-56636674ebf0" class="">
+</p><p id="d9ac8df6-ffbc-4338-b65b-121d0649f626" class="">pom.xml에 라이브러리 버전와 값들을 변경해주어야 한다.</p><p id="b8c3c208-3570-4982-8204-dd2fed6d63b2" class="">
+</p><p id="bd401b48-6b84-41a3-b420-10e1bc894651" class="">
+</p><h1 id="a21bd64e-f593-4272-8485-22f5b4bae809" class="">1. 변경 사항</h1><p id="8b929b14-a488-4f08-9f03-f162cdbfe141" class="">
+</p><h3 id="f6016676-2660-4cb3-8aac-72bdff323ff6" class="">1) 자바 및 스프링 버전</h3><figure id="40dc88fe-d3db-4095-903b-0785895a8420" class="image"><a href="Untitled.png"><img style="width:707.953125px" src="Untitled.png"/></a></figure><ul id="e41a3cbc-3e92-4e59-ad6d-623eb41ae213" class="bulleted-list"><li style="list-style-type:disc"> &lt;java-version&gt; 태그 내의 자바 버전을 현재 사용 중인 버전으로 변경 → <mark class="highlight-red_background"><strong>11</strong></mark></li></ul><ul id="fcd9556c-e9af-499a-a4b3-db42dcf897f4" class="bulleted-list"><li style="list-style-type:disc">&lt;org.springframework-version&gt; 스프링 버전 변경 → <mark class="highlight-red_background"><strong>5.0.7</strong></mark></li></ul><p id="1db56716-1b2e-4893-8f66-2107cab6f76c" class="">
+</p><h3 id="e033033e-2cfa-475f-859a-aa5208ab5251" class="">2) runtime 삭제</h3><figure id="8bb14b49-2f05-4b9c-9ec1-bb10ce87cebe" class="image"><a href="Untitled%201.png"><img style="width:620px" src="Untitled%201.png"/></a></figure><ul id="74b165af-8e38-4c13-b82e-7a26f0458d4f" class="bulleted-list"><li style="list-style-type:disc">하단 &lt;scope&gt; 태그 변경 → 삭제 or 주석 처리</li></ul><p id="48068de1-e04b-4771-8027-20b12114cbeb" class="">
+</p><h3 id="be5fc1d6-581f-4a35-9d45-22c1d7bdbc79" class="">3) servlet 버전 변경</h3><figure id="80707603-6e3c-4785-9461-bcba075bb3b8" class="image" style="text-align:left"><a href="Untitled%202.png"><img style="width:628px" src="Untitled%202.png"/></a></figure><ul id="fa77718e-8115-424c-a9c7-20780e92c43f" class="bulleted-list"><li style="list-style-type:disc">servlet-api → javax.servlet-api</li></ul><ul id="a3b9639d-058f-491c-a6a6-a2bdeb0cdefb" class="bulleted-list"><li style="list-style-type:disc">2.5 → 3.1.0</li></ul><p id="231f9290-b975-4bc9-b632-6e810b9ca191" class="">
+</p><h3 id="1f508173-5423-4499-b9bb-dfc457791b05" class="">4) JUnit 버전 변경</h3><figure id="2a15d239-8856-4a9f-b6ef-6ee94d9330ed" class="image" style="text-align:left"><a href="Untitled%203.png"><img style="width:483px" src="Untitled%203.png"/></a></figure><ul id="39c6a4bc-4439-471f-a428-bfed3e50d475" class="bulleted-list"><li style="list-style-type:disc">4.7 → 4.12</li></ul><p id="955fe53b-8c5d-4990-b80b-be26a64d717d" class="">
+</p><h3 id="a91f47aa-7f61-4815-ad59-e66dcc06a91e" class="">5) Plugin 버전 변경</h3><figure id="2c993942-bba8-4917-8c18-d7ddf2b150e2" class="image"><a href="Untitled%204.png"><img style="width:707.96875px" src="Untitled%204.png"/></a></figure><ul id="9cbaa269-a3e8-4a1c-8694-b6f1a83a296d" class="bulleted-list"><li style="list-style-type:disc">1.6 → 11 ( 자바 버전과 동일 )</li></ul><p id="d70aceb2-233b-4d48-bad5-3c165896b2d5" class="">
+</p><p id="20fbfb2e-7576-4e47-94dd-b9ecfa602c6c" class="">
+</p><h1 id="5ddc43eb-06db-4b7f-805d-bc952687da07" class="">2. 추가 - lombok</h1><p id="2012d412-049f-4fba-b5a3-af5483c51a8f" class="">lombok 라이브러리는 JavaBean 객체를 만들거나 추가적인 작업을 간단하게 변경해주는 역할을 한다.</p><p id="7b91d680-10d9-4f6a-85fc-af8a96086d7c" class="">
+</p><p id="021dc712-b94e-448a-bd83-9ee596de717e" class="">우선 lombok.jar 파일 위치를 파악한다.</p><p id="cd3e01d6-cb42-4925-b52c-5e1abed11872" class="">본인은 C:/dev/jar 경로에 모든 jar를 모아놓기 때문에 해당 경로를 참조하도록 한다.</p><p id="33a71d4d-946e-425f-bce2-453b0715770c" class="">
+</p><ol type="1" id="3dc1237e-f262-444f-95c2-3965e0fb3ab5" class="numbered-list" start="1"><li>롬복 설치</li></ol><p id="af4519b3-a697-431c-8a81-ac087a278ef6" class="">cmd 창을 이용하여 설치한다.</p><p id="65d889e0-c903-4c33-b77b-340f71c08364" class="">
+</p><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="8d109219-2137-4941-8b84-6ccb2968dc3f"><div style="font-size:1.5em"><span class="icon">💡</span></div><div style="width:100%">!! 명령어<br/>java -jar 경로<br/></div></figure><figure id="72c1761a-50c7-4274-b2a7-f86c8006f1eb" class="image" style="text-align:left"><a href="Untitled%205.png"><img style="width:624px" src="Untitled%205.png"/></a></figure><p id="d15cbbea-318d-4e6c-b63f-72da2b57f25c" class="">
+</p><p id="d307f0b1-7e46-4805-a0d5-2b39f8e7b430" class="">해당 명령어가 정상적으로 실행이 되면 아래와 같은 창이 뜨게 된다.</p><figure id="2bfe23fa-7338-4627-8f0a-6c72e1b2f2f8" class="image"><a href="Untitled%206.png"><img style="width:707.984375px" src="Untitled%206.png"/></a></figure><p id="7e114cb5-891d-4b4f-8231-070c47ec2253" class="">
+</p><p id="3b782f1b-4384-4685-acb1-b58adb2464e8" class="">해당 화면에서 Specify location 버튼을 클릭하여 sts 실행 파일을 선택해준다.</p><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="6a8970e3-3660-423a-b0c6-48f864012c66"><div style="font-size:1.5em"><span class="icon">💡</span></div><div style="width:100%"><mark class="highlight-orange_background"><strong>바탕화면에 바로가기 아이콘이 아닌 원래 경로에 있는 exe 파일을 선택한다.</strong></mark></div></figure><p id="2227313a-2b2b-48da-a6db-59389291942d" class="">
+</p><figure id="1a00f24f-00df-4b7e-b883-9ead8f7e1c3c" class="image"><a href="Untitled%207.png"><img style="width:699px" src="Untitled%207.png"/></a></figure><p id="d3005220-898b-4654-ae00-253f46a46d95" class="">
+</p><figure id="05a3d3fb-1a12-44ce-b248-e01e06c423d8" class="image"><a href="Untitled%208.png"><img style="width:707.984375px" src="Untitled%208.png"/></a></figure><p id="faf74f5d-0ff5-464e-959c-cc8c64dc61cd" class="">그 뒤 Install/Update 버튼을 클릭 한 후</p><p id="1fcf884d-abca-4d1d-9b17-67f3b7adfc79" class="">아래에 Quit Installer 버튼으로 설치를 마무리 한다.</p><p id="cb3c791c-9a5e-4752-af37-1909bf3dab80" class="">
+</p><figure id="77eeed20-d419-4901-b3a0-718896c64d1d" class="image" style="text-align:left"><a href="Untitled%209.png"><img style="width:336px" src="Untitled%209.png"/></a></figure><p id="5143d24a-a8e7-4215-9c78-5e1d7a2aab03" class="">그 뒤 sts 실행 파일이 있는 실제 경로에 가보면 lombok.jar 파일이 추가가 되어있고,</p><p id="b432d303-c72f-4796-9751-3396ad04449a" class="">STS.ini 파일을 열어보면 맨 아래에 </p><p id="3bf31072-f250-4295-98fc-b83fc2f490bd" class="">javaagent:C:\dev\sts-bundle\sts-3.9.11.RELEASE\lombok.jar</p><p id="32957ce4-c6c2-41af-9565-81f3e73864c6" class="">문구가 추가 된 것을 확인할 수 있다.</p><p id="dc416414-8ebb-46b1-9d9a-d9dcd84005b4" class="">
+</p><p id="5cfee1ef-2454-47a9-a438-58e52f06605f" class="">그 뒤 생성하는 Legacy Project 의 pom.xml의 Dependencty에 lombok을 추가해주어야 한다.</p><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="91c4986d-4893-4d74-9b9c-c9376edb6bbb" class="code"><code class="language-XML">&lt;!-- https://mvnrepository.com/artifact/org.projectlombok/lombok --&gt;
+&lt;dependency&gt;
+		&lt;groupId&gt;org.projectlombok&lt;/groupId&gt;
+		&lt;artifactId&gt;lombok&lt;/artifactId&gt;
+		&lt;version&gt;1.18.0&lt;/version&gt;
+		&lt;scope&gt;provided&lt;/scope&gt;
+&lt;/dependency&gt;</code></pre><p id="99bc7716-f835-4201-bf4a-7e9053348431" class="">
+</p><p id="e0a8176c-5e2f-4350-9edb-68dc7f2ce1b4" class="">
+</p><p id="c165de61-4376-4b76-be02-c5dc7d41e0e3" class="">!!! 디펜던시를 추가하고 난 뒤에는 메이븐 업데이트를 반드시 해줘야한다.</p><p id="cf9fdcb2-f292-47ae-97b9-dd00ffea75df" class="">
+</p><p id="f37eb424-bc2b-4bed-b8c2-7ab711cb10db" class=""><mark class="highlight-red"><strong>프로젝트 우클릭 → Maven → Update project</strong></mark></p><p id="3513d70d-99ee-4ed9-b935-4b5d83a0c8bd" class="">
+</p><p id="eedbefd1-0e7f-4970-b71c-6751175fb84d" class="">
+</p><h1 id="740836ad-9ef6-4167-b55f-3147d437ec41" class="">3. 추가 - 인코딩</h1><p id="97e29f60-b36a-4ed7-966d-42046607d152" class="">요청과 응답에 따른 한글 깨짐 처리 인코딩 부분을 필터로 처리해도 되지만,</p><p id="cb998464-3e05-4134-8faf-c9545f7a6679" class="">xml을 이용하여 설정해두도록 한다.</p><p id="bd05d06e-aa57-4c65-b393-f7ec18b77747" class="">
+</p><p id="c2ff37ca-9905-4853-a41d-2150d0e20088" class="">프로젝트 내의 web.xml 파일에 해당 코드를 추가한다.</p><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="0f83aaa3-f3f5-492c-b466-057890710e6e" class="code"><code class="language-XML">&lt;!-- 추가. 인코딩 --&gt;
+&lt;filter&gt;
+	&lt;filter-name&gt;encodingFilter&lt;/filter-name&gt;
+	&lt;filter-class&gt;org.springframework.web.filter.CharacterEncodingFilter&lt;/filter-class&gt;
+	&lt;init-param&gt;
+		&lt;param-name&gt;encoding&lt;/param-name&gt;
+		&lt;param-value&gt;utf-8&lt;/param-value&gt;
+	&lt;/init-param&gt;
+	&lt;init-param&gt;
+		&lt;param-name&gt;forceEncoding&lt;/param-name&gt;
+		&lt;param-value&gt;true&lt;/param-value&gt;
+	&lt;/init-param&gt;
+&lt;/filter&gt;
+&lt;filter-mapping&gt;
+	&lt;filter-name&gt;encodingFilter&lt;/filter-name&gt;
+	&lt;url-pattern&gt;/*&lt;/url-pattern&gt;
+&lt;/filter-mapping&gt;</code></pre><figure id="201959b9-56f8-4cfd-962e-ab46eba9d331" class="image"><a href="Untitled%2010.png"><img style="width:707.96875px" src="Untitled%2010.png"/></a></figure><p id="ec096452-c4eb-4fd2-b5a6-da02f34be0ff" class="">
+</p><p id="7edee2cd-a1ce-480b-bf05-fce542cc4be9" class="">
+</p><p id="bbfdf12b-7870-4cbf-b456-f3c316935e53" class="">
+</p><p id="ce4b0bcb-a1f7-4cc7-b23b-c521e6df419e" class="">
+</p><p id="f227245d-914f-4721-8af7-b02cd45753a8" class="">
+</p><p id="eaa34d47-f12a-4051-acd9-ab4be3c003db" class="">
+</p><p id="932114ce-56b5-4908-85e4-232c2eb7a487" class="">
+</p><p id="b49fd651-31ec-4aa4-99dc-644b3ea6b3db" class="">
+</p><p id="71fe3400-a719-45c4-b216-c9ce93da1a1f" class="">
+</p></div></article><span class="sans" style="font-size:14px;padding-top:2em"></span></body></html>
