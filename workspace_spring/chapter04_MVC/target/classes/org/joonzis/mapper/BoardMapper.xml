@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="org.joonzis.mapper.BoardMapper">
+	<!-- id는 메소드 명으로 맵핑 -->
+	<select id="getList" resultType="org.joonzis.domain.BoardVO">
+		SELECT * FROM TBL_BOARD ORDER BY BNO
+	</select>
+	
+	<select id="read" parameterType="int" resultType="org.joonzis.domain.BoardVO">
+		SELECT * FROM TBL_BOARD WHERE BNO = #{bno}
+	</select>
+	
+	<!-- 게시글 삽입 -->
+	<insert id="insert" parameterType="org.joonzis.domain.BoardVO">
+		INSERT INTO TBL_BOARD VALUES(
+			seq_board.nextval,
+			#{title},
+			#{content},
+			#{writer},
+			sysdate,
+			sysdate
+		)
+	</insert>
+	
+	<!-- 게시글 삭제 -->
+	<delete id="delete" parameterType="int">
+		DELETE tbl_board WHERE BNO = #{bno}
+	</delete>
+	
+	<!-- 게시글 업데이트 -->
+	<update id="update" parameterType="org.joonzis.domain.BoardVO">
+		UPDATE tbl_board 
+		SET 
+		    TITLE = #{title},
+		    CONTENT = #{content},
+		    WRITER = #{writer},
+		    UPDATEDATE = sysdate
+		WHERE 
+			BNO = #{bno}
+	</update>
+</mapper>

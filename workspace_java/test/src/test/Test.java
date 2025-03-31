@@ -1,19 +1,25 @@
 package test;
 
+import java.util.Arrays;
+
+
 public class Test {
 	public static void main(String[] args) {
 		Solution s = new Solution();
-	
-		s.solution(7,3);
+		s.solution("nice to meet you");
 		
 	}
 }
 
 class Solution {
-    public int solution(int num1, int num2) {
-        int answer = 0;
-        System.out.println(num1/num2 * 1000);
-        System.out.println(num1 % num2 * 1000);
-        return  answer;
+	public String solution(String my_string) {
+        String answer = my_string;
+        String[] arr = {"a", "e", "i", "o", "u"};
+        for (String mystr : arr) {
+        	answer = answer.replace(mystr, "");
+		}
+        System.out.println(answer);
+        
+        return answer;
     }
 }

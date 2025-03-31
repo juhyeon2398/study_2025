@@ -66,7 +66,7 @@ ojdbc class path 추가 -> deployment assembly -> java build path entries
     - https://mvnrepository.com/artifact/org.springframework/spring-jdbc
 * spring-test ⇒ 단위 테스트를 진행하기 위한 라이브러리 ( 5.0.7 )
     - https://mvnrepository.com/artifact/org.springframework/spring-test
-${org.springframework-version} 버전 받아옴
+    ${org.springframework-version} 버전 받아옴
 
 
 * HikariCP ⇒ 대용량 데이터 처리 속도를 빠르게 하기 위한 라이브러리 ( 2.7.8 )
@@ -115,6 +115,9 @@ root-context.xml -> namespace -> context, mybatis 선택
 
 HomeController -> 서블릿
 
+VO 와동ㅇ
+
+
 <hr><hr>
 
 1. dependencies
@@ -158,3 +161,11 @@ HomeController -> 서블릿
 
 3. Persistence (영속 or 데이터 계층)
 데이터를 어떤
+
+* @RequestParam("bno") int bno --> get 방식에서 파라미터를 가지고옴
+
+* @RequestMapping - 클래스 단위로 선언한 경우 해당 value를 전역으로 설정이 가능하다.
+
+* @GetMapping --> post 방식으로 전달받을때 탐
+
+* 경로 앞에 "redirect:"를 사용하면 redirect 방식으로 이동
