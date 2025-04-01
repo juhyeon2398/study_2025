@@ -5,7 +5,16 @@
 <mapper namespace="org.joonzis.mapper.BoardMapper">
 	<!-- id는 메소드 명으로 맵핑 -->
 	<select id="getList" resultType="org.joonzis.domain.BoardVO">
-		SELECT * FROM TBL_BOARD ORDER BY BNO
+		<!-- 영역내 태그기호 무시 <![CDATA[ ]]> -->
+		<![CDATA[ 
+		select *
+		from (select bno, title, writer, regdate, ROWNUM rn
+			from (select bno, title, writer, regdate
+			    from TBL_BOARD
+			    order by bno desc)
+			where rownum <= #{pageNum} * #{amount})
+		where rn > (#{pageNum} - 1) * #{amount}
+		]]>
 	</select>
 	
 	<select id="read" parameterType="int" resultType="org.joonzis.domain.BoardVO">
@@ -40,4 +49,9 @@
 		WHERE 
 			BNO = #{bno}
 	</update>
+	
+	
+	<select id="listAll" resultType="int">
+		SELECT COUNT(*) FROM tbl_board
+	</select>
 </mapper>

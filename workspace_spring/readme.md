@@ -115,14 +115,34 @@ root-context.xml -> namespace -> context, mybatis 선택
 
 HomeController -> 서블릿
 
-VO 와동ㅇ
 
 
-<hr><hr>
+<br><br><hr><hr><br><br>
+
+## 스프링 프레임워크
+
+### **Maven의 주 용도(pom.xml)**
+* 프로젝트에 필요한 의존적인 라이브러리를 자동으로 관리해주는 용도
+### **MVC 프로젝트 템플릿의 구조**
+* src/main/java	
+    - 개발되는 java 코드의 경로
+* src/main/resources	
+    - 서버가 실행될 때 필요한 파일들의 경로
+* src/test/java	테스트 전용 경로
+* src/test/resources	
+    - 테스트 시에만 사용되는 파일들 경로
+* src/main/webapp/WEB-INF/spring	
+    - Spring 설정 파일의 경로
+* src/main/webapp/WEB-INF/views	
+    - JSP 파일 경로
+* pom.xml 
+    - Maven의 설정 파일
+
 
 1. dependencies
 * 라이브러리의 선언 모음
 * dependency 태그로 라이브러리 추가
+
 
 1. 프레임워크 
 * 소프트웨어 관점에서 접근하면 아키텍처에 해당하는 골격 코드
@@ -133,6 +153,7 @@ VO 와동ㅇ
  - 개발자들의 역량 획일화
 
 2. Maven의 용도 (pom.xml)
+* 프로젝트에 필요한 의존적인 라이브러리를 자동으로 관리해주는 용도
 
 
 ## 스프링의 주요 특징
@@ -149,7 +170,7 @@ VO 와동ㅇ
 
 4. 확장성이 높다.
 
-## MVC 구조 
+## 스프링 MVC의 기본 구성
 * Presentation (화면계층) -> Business (비지니스 계층) -> Persistence (영속 or 데이터 계층)
 
 1. Presentation (화면계층)
@@ -162,10 +183,19 @@ VO 와동ㅇ
 3. Persistence (영속 or 데이터 계층)
 데이터를 어떤
 
-* @RequestParam("bno") int bno --> get 방식에서 파라미터를 가지고옴
 
-* @RequestMapping - 클래스 단위로 선언한 경우 해당 value를 전역으로 설정이 가능하다.
+## @ 어노테이션
+* @RequestParam("bno") int bno --> 파라미터를 가지고옴 // 어노테이션을 사용하면 파라미터 값을 강제함 
 
-* @GetMapping --> post 방식으로 전달받을때 탐
+* @RequestMapping 
+    - Controller과 매핑하여 지정하는 어노테이션
+    - 클래스 단위로 선언한 경우 해당 value를 전역으로 설정이 가능하다.
 
+* @GetMapping, @PostMapping 
+    - HTTP GET,POST 요청을 처리하는 메서드를 맵핑(@RequestMapping)하는 어노테이션
+
+* @Autowired
+    - @Autowired란 스프링 컨테이너에 등록한 빈에게 의존관계주입이 필요할 때, DI(의존성 주입)을 도와주는 어노테이션이다.
+## ETC
+ 
 * 경로 앞에 "redirect:"를 사용하면 redirect 방식으로 이동

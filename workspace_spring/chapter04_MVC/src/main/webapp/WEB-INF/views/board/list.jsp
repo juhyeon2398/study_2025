@@ -32,7 +32,7 @@
 				<c:forEach var="vo" items="${ list }">
 					<tr>
 						<td>${vo.bno}</td>
-						<td>${vo.title}</td>
+						<td><a href="${vo.bno}">${vo.title}</a></td>
 						<td>${vo.writer}</td>
 						<td>${vo.regdate}</td>
 					</tr>
@@ -40,7 +40,28 @@
 			</tbody>
 		</table>
 	</div>
+	
+	<!-- page -->
+	<div class="page-wrap">
+	   <ul class="page-nation" data-pageNum="${pageMaker.cri.pageNum}" data-amount="${pageMaker.cri.amount}">
+	      <c:if test="${pageMaker.prev }">
+	         <li class="previous">
+	            <a href="${pageMaker.startPage-1 }"> &lt; </a>
+	         </li>
+	      </c:if>
+	      <c:forEach var="num" begin="${pageMaker.startPage }" end="${pageMaker.endPage }" step="1">
+	         <li>
+	            <a href="${num }" class="${pageMaker.cri.pageNum == num ? 'active' : '' }"> ${num } </a>
+	         </li>
+	      </c:forEach>
+	      <c:if test="${pageMaker.next }">
+	         <li><a href="${pageMaker.endPage+1 }"> &gt; </a></li>
+	      </c:if>
+	   </ul>
+	</div>
+	
 	<jsp:include page="../layout/footer.jsp"/>
 	<script type="text/javascript" src="/resources/js/boardList.js"></script>
+	<script type="text/javascript" src="/resources/js/page.js"></script>
 </body>
 </html>

@@ -1,25 +1,30 @@
 package test;
 
-import java.util.Arrays;
 
 
 public class Test {
 	public static void main(String[] args) {
 		Solution s = new Solution();
-		s.solution("nice to meet you");
-		
+		String[] str = {"aya", "yee", "u", "maa", "wyeoo"};
+		s.solution(str);
 	}
 }
 
 class Solution {
-	public String solution(String my_string) {
-        String answer = my_string;
-        String[] arr = {"a", "e", "i", "o", "u"};
-        for (String mystr : arr) {
-        	answer = answer.replace(mystr, "");
+	public int solution(String[] babbling) {
+        int answer = 0;
+        String[] arr = {"aya", "ye", "woo", "ma"};
+        for (int i = 0; i < babbling.length; i++) {
+        	for(String a : arr) {
+        		babbling[i] = babbling[i].replace(a, "");
+        	}
+        	if(babbling[i].length() == 0) {
+        		answer++;
+        	}
 		}
-        System.out.println(answer);
+        System.out.println(babbling[1]);
         
         return answer;
+        
     }
 }

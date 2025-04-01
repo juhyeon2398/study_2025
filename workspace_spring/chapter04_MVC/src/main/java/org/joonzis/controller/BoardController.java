@@ -1,6 +1,10 @@
 package org.joonzis.controller;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.joonzis.domain.BoardVO;
+import org.joonzis.domain.Criteria;
+import org.joonzis.domain.PageDTO;
 import org.joonzis.service.BoardService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -19,12 +23,26 @@ import lombok.extern.log4j.Log4j;
 public class BoardController {
 	@Autowired
 	private BoardService service;
-
 	// 게시글 전체 조회
 	@GetMapping("/list")
-	public String list(Model model) {
-		log.info("list...");
-		model.addAttribute("list",service.getList());
+	public String list(Model model, Criteria cri) {
+		
+		int parsePageNum = cri.getPageNum();
+		int parseAmount = cri.getAmount();
+		
+		if(parsePageNum == 0) {
+			cri.setPageNum(1);
+		}
+		if(parseAmount == 0) {
+			cri.setAmount(15);
+		}
+		
+		int total = service.listAll();
+		PageDTO pdto = new PageDTO(cri, total);
+		
+		model.addAttribute("list",service.getList(cri));
+		model.addAttribute("pageMaker",pdto);
+		
 		return "board/list";
 	}
 	
@@ -42,9 +60,8 @@ public class BoardController {
 	}
 	
 	
-	
 	// 게시글 조회
-	@GetMapping("/read")
+	@GetMapping("/get")
 	public String get(@RequestParam("bno") int bno, Model model) {
 		log.info("get... " + bno);
 		model.addAttribute("vo", service.get(bno));
@@ -52,6 +69,13 @@ public class BoardController {
 	}
 	
 	// 게시글 수정
+	@GetMapping("/modify")
+	public String modify(@RequestParam("bno") int bno, Model model) {
+		log.info("modify... " + bno);
+		model.addAttribute("vo", service.get(bno));
+		return "board/modify";
+	}
+	
 	@PostMapping("/modify")
 	public String modify(BoardVO vo, RedirectAttributes rttr) {
 		log.info("modify... " + vo);

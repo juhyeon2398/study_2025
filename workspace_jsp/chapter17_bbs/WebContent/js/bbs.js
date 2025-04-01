@@ -1,7 +1,6 @@
 console.log("bbs.js >> load")
 
-let pageNumData = new URLSearchParams(location.search).get("pageNum");
-let amountData = new URLSearchParams(location.search).get("amount");
+
 
 function moveInsertPage() {
 	location.href = "BBSController?cmd=insertBBSPage";
