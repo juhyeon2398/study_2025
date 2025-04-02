@@ -109,6 +109,18 @@ root-context.xml -> namespace -> context, mybatis 선택
 <mybatis-spring:scan base-package="org.joonzis.mapper"/>
 ```
 
+### REST를 사용하기 위한 라이브러리
+* Jackson-databind ⇒ jackson-core 및 jackson-annotation 라이브러리의 의존성을 포함하여 사용할 수 있도록 하는 라이브러리 **( 2.12.2 )**
+    - https://mvnrepository.com/artifact/com.fasterxml.jackson.core/jackson-databind
+* Jackson-dataformat-xml ⇒ xml 형식으로 사용하기 위해 **( 2.12.2 )**
+    - https://mvnrepository.com/artifact/com.fasterxml.jackson.dataformat/jackson-dataformat-xml
+- gson ⇒ 테스트 시 json 타입의 문자열로 변환하기 위해 **( 2.8.6 )**
+    - https://mvnrepository.com/artifact/com.google.code.gson/gson
+* lombok **( 1. 18. 0 )**
+    - https://mvnrepository.com/artifact/org.projectlombok/lombok
+* spring-test **( 5.0.7 )**
+    - https://mvnrepository.com/artifact/org.springframework/spring-test
+
 
 <!-- 서버수정 기본 경로 수정 -->
 서버 클릭 -> path -> 경로 삭제
@@ -117,7 +129,7 @@ HomeController -> 서블릿
 
 
 
-<br><br><hr><hr><br><br>
+<br><br> <hr><hr> <br><br>
 
 ## 스프링 프레임워크
 
@@ -181,7 +193,58 @@ HomeController -> 서블릿
 * 순수 비즈니스 영역
 
 3. Persistence (영속 or 데이터 계층)
-데이터를 어떤
+
+
+### ResponseEntity
+* 200 - 통신 성공   
+* 404 - 파일 경로 error   
+* 500 - 서버 error
+* etc..
+```java
+@GetMapping(value = "/check", produces = {
+        MediaType.APPLICATION_JSON_UTF8_VALUE,
+        MediaType.APPLICATION_XML_VALUE
+})
+public ResponseEntity<TestVO> checkTest(@RequestParam("age") double age) {
+    ResponseEntity result = null;
+    
+    TestVO tvo = new TestVO(0, Double.toString(age));
+    if(age > 150) {
+        result = ResponseEntity.status(HttpStatus.BAD_GATEWAY).body(tvo);
+    }else {
+        result = ResponseEntity.status(HttpStatus.OK).body(tvo);
+    }
+    
+    return result;
+}
+```
+
+### REST 방식
+1. REST(Representational State Transfer)
+* 정의: 
+    - REST는 분산 시스템을 위한 소프트웨어 아키텍처 스타일 중 하나로, 자원을 정의 하고 이 자원에 대한 상태 전이를 표현하는 방식.
+    - HTTP를 기반으로 하며, 리소스를 URI로 식별하고 HTTP 메서드를 통해 리소스에 대한 행위를 정의
+* 장점: 
+    - REST는 간결하고 확장 가능한 구조를 가지며, HTTP 프로토콜을 기반으로 하기
+    때문에 널리 사용되는 웹 표준을 따른다.
+* 활용 예시: 
+    - REST는 주로 웹 서비스에서 사용되며, 클라이언트와 서버 간의 통신을 위해
+    HTTP 메서드(GET, POST, PUT, DELETE 등)를 이용한다.
+
+* 경로를 변수화 
+```
+@GetMapping("/product/{cat}/{pid}")
+	public String[] getPath(
+			@PathVariable("cat") String cat,
+			@PathVariable("pid") int pid) {
+		return new String[] {"category : "+ cat + ", productId : " + pid};
+	}
+```
+2. 전송방식
+    * Create ->  POST
+    * Read -> GET
+    * Update -> PUT
+    * Delete -> DELETE
 
 
 ## @ 어노테이션
@@ -193,9 +256,29 @@ HomeController -> 서블릿
 
 * @GetMapping, @PostMapping 
     - HTTP GET,POST 요청을 처리하는 메서드를 맵핑(@RequestMapping)하는 어노테이션
+    - produces : 응답에 대한 데이터 타입 (생략 가능)
+    ```java
+    @GetMapping(value = "/getObject", 
+        produces = {
+                MediaType.APPLICATION_JSON_UTF8_VALUE, 
+                MediaType.APPLICATION_XML_VALUE
+            })
+    ```
 
 * @Autowired
     - @Autowired란 스프링 컨테이너에 등록한 빈에게 의존관계주입이 필요할 때, DI(의존성 주입)을 도와주는 어노테이션이다.
+
+* @RestController 
+    - Controller가 REST 방식을 처리하기 위한 것을 명시
+* @ResponseBody 
+    - 일반적인 JSP와 같은 뷰로 전달하는 것이 아닌 데이터를 전달하기 위한 용도
+* @PathVariable 
+    - URL 경로에 있는 값을 파라미터로 추출할 때 사용
+* @CrossOrigin 
+    - 크로스 도메인 문제를 해결해주는 어노테이션
+* @RequestBody 
+    - JSON 데이터를 원하는 타입으로 바인딩 처리
+
 ## ETC
  
 * 경로 앞에 "redirect:"를 사용하면 redirect 방식으로 이동

@@ -1,7 +1,5 @@
 package org.joonzis.controller;
 
-import javax.servlet.http.HttpServletRequest;
-
 import org.joonzis.domain.BoardVO;
 import org.joonzis.domain.Criteria;
 import org.joonzis.domain.PageDTO;

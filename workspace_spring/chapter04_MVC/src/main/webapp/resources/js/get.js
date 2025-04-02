@@ -25,3 +25,36 @@ for (let el of btns) {
 		}
 	})
 }
+
+
+
+document.addEventListener("DOMContentLoaded",function(){
+	
+})
+
+const rs = replyService;
+
+rs.getList(656, function(data){
+	for(let replys in data){
+		let date = new Date(data[replys].replydate);
+		console.log(
+			"rno : " + data[replys].rno + "\n"
+			+"bno : " + data[replys].bno + "\n"
+			+"reply : " + data[replys].reply + "\n"
+			+"replyer : " + data[replys].replyer + "\n"
+			+"replydate : " + date.getFullYear()+ "-" + (date.getMonth() + 1)+ "-" +date.getDate()
+		)
+		console.log("==================================");
+	}
+	
+});
+
+// 댓글 관련
+//rs.add({
+//	reply : 'JS TEST',
+//	replyer : "TESTER",
+//	bno : 656
+//}, function(result){
+//	alert("result : " + result);
+//	
+//});
