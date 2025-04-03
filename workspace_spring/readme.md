@@ -59,15 +59,13 @@ C:\wi\dev\workspace\workspace_spring\.metadata\.sts\content\org.springframework.
 ojdbc class path 추가 -> deployment assembly -> java build path entries
 
 
-### 라이브러리 추가
+### 각종 라이브러리 추가
 * spring-tx ⇒ 트랜잭션을 사용하기 위한 라이브러리 ( 5.0.7 )
     - https://mvnrepository.com/artifact/org.springframework/spring-tx
 * spring-jdbc ⇒ DB와 연동하기 위한 라이브러리 ( 5.0.7 )
     - https://mvnrepository.com/artifact/org.springframework/spring-jdbc
 * spring-test ⇒ 단위 테스트를 진행하기 위한 라이브러리 ( 5.0.7 )
     - https://mvnrepository.com/artifact/org.springframework/spring-test
-    ${org.springframework-version} 버전 받아옴
-
 
 * HikariCP ⇒ 대용량 데이터 처리 속도를 빠르게 하기 위한 라이브러리 ( 2.7.8 )
     - https://mvnrepository.com/artifact/com.zaxxer/HikariCP
@@ -77,6 +75,11 @@ ojdbc class path 추가 -> deployment assembly -> java build path entries
     - https://mvnrepository.com/artifact/org.mybatis/mybatis-spring
 * Log4jdbc ⇒ 데이터베이스 실행 시, 단위 테스트를 위한 라이브러리 ( 1.16 )
     - https://mvnrepository.com/artifact/org.bgee.log4jdbc-log4j2/log4jdbc-log4j2-jdbc4.1
+
+* aspectjrt ( 1.9.5 ) ⇒ AspectJ 기능을 사용하기 위한 런타임 라이브러리
+    - https://mvnrepository.com/artifact/org.aspectj/aspectjrt
+* aspectjweaver ( 1.9.5 ) ⇒ aspect 정보를 바탕으로 코드를 생성하는데에 필요한 라이브러리
+    - https://mvnrepository.com/artifact/org.aspectj/aspectjweaver
 
 log4jdbc.log4j2.properties -> src/main/resources에 추가
 

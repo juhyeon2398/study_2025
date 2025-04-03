@@ -1,22 +1,24 @@
 package test;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 public class Test {
 	public static void main(String[] args) {
 		Solution s = new Solution();
-		int[] numlist = {4, 5, 6, 7, 8, 9, 10, 11, 12};
-		int n = 3;	
-		s.solution(1234);
+		int[] numlist = {1, 2, 3, 4, 5};
+		s.solution(numlist);
 	}
 }
 
 class Solution {
-	public int solution(int n) {
-        int answer = 0;
-        for(int i = Integer.toString(n).length() - 1; i >= 0; i--){
-            answer += (int) n / Math.pow(10, i);
+    public int[] solution(int[] num_list) {
+        int[] answer = {};
+        for(int num : num_list) {
+        	
         }
-        System.out.println(answer);
+        
         return answer;
     }
 }
