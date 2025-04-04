@@ -36,6 +36,11 @@ C:\wi\dev\workspace\workspace_spring\.metadata\.sts\content\org.springframework.
 ```
 ### web.xml 수정
 ```xml
+<!-- 서블릿 버전과 동일하게 변경 -->
+<web-app version="3.1" xmlns="http://java.sun.com/xml/ns/javaee"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee https://java.sun.com/xml/ns/javaee/web-app_3_1.xsd">
+
 // 추가 인코딩
 <filter>
     <filter-name>encodingFilter</filter-name>
@@ -60,26 +65,41 @@ ojdbc class path 추가 -> deployment assembly -> java build path entries
 
 
 ### 각종 라이브러리 추가
-* spring-tx ⇒ 트랜잭션을 사용하기 위한 라이브러리 ( 5.0.7 )
+* spring-tx ⇒ 트랜잭션을 사용하기 위한 라이브러리 **( 5.0.7 )**
     - https://mvnrepository.com/artifact/org.springframework/spring-tx
-* spring-jdbc ⇒ DB와 연동하기 위한 라이브러리 ( 5.0.7 )
+* spring-jdbc ⇒ DB와 연동하기 위한 라이브러리 **( 5.0.7 )**
     - https://mvnrepository.com/artifact/org.springframework/spring-jdbc
-* spring-test ⇒ 단위 테스트를 진행하기 위한 라이브러리 ( 5.0.7 )
+* spring-test ⇒ 단위 테스트를 진행하기 위한 라이브러리 **( 5.0.7 )**
     - https://mvnrepository.com/artifact/org.springframework/spring-test
 
-* HikariCP ⇒ 대용량 데이터 처리 속도를 빠르게 하기 위한 라이브러리 ( 2.7.8 )
+* HikariCP ⇒ 대용량 데이터 처리 속도를 빠르게 하기 위한 라이브러리 **( 2.7.8 )**
     - https://mvnrepository.com/artifact/com.zaxxer/HikariCP
-* MyBatis ⇒ DB 프레임워크 ( 3.4.6 )
+* MyBatis ⇒ DB 프레임워크 **( 3.4.6 )**
     - https://mvnrepository.com/artifact/org.mybatis/mybatis
-* mybatis-spring ⇒ MyBatis를 사용하기 위한 스프링 라이브러리 ( 1.3.2 )
+* mybatis-spring ⇒ MyBatis를 사용하기 위한 스프링 라이브러리 **( 1.3.2 )**
     - https://mvnrepository.com/artifact/org.mybatis/mybatis-spring
-* Log4jdbc ⇒ 데이터베이스 실행 시, 단위 테스트를 위한 라이브러리 ( 1.16 )
+* Log4jdbc ⇒ 데이터베이스 실행 시, 단위 테스트를 위한 라이브러리 **( 1.16 )**
     - https://mvnrepository.com/artifact/org.bgee.log4jdbc-log4j2/log4jdbc-log4j2-jdbc4.1
 
-* aspectjrt ( 1.9.5 ) ⇒ AspectJ 기능을 사용하기 위한 런타임 라이브러리
+### AOP
+* aspectjrt **( 1.9.5 )** ⇒ AspectJ 기능을 사용하기 위한 런타임 라이브러리
     - https://mvnrepository.com/artifact/org.aspectj/aspectjrt
-* aspectjweaver ( 1.9.5 ) ⇒ aspect 정보를 바탕으로 코드를 생성하는데에 필요한 라이브러리
+* aspectjweaver **( 1.9.5 )** ⇒ aspect 정보를 바탕으로 코드를 생성하는데에 필요한 라이브러리
     - https://mvnrepository.com/artifact/org.aspectj/aspectjweaver
+* root-context.xml -> namespace -> aop, tx checked
+
+### REST를 사용하기 위한 라이브러리
+* Jackson-databind ⇒ jackson-core 및 jackson-annotation      
+라이브러리의 의존성을 포함하여 사용할 수 있도록 하는 라이브러리 **( 2.12.2 )**
+    - https://mvnrepository.com/artifact/com.fasterxml.jackson.core/jackson-databind
+* Jackson-dataformat-xml ⇒ xml 형식으로 사용하기 위해 **( 2.12.2 )**
+    - https://mvnrepository.com/artifact/com.fasterxml.jackson.dataformat/jackson-dataformat-xml
+* gson ⇒ 테스트 시 json 타입의 문자열로 변환하기 위해 **( 2.8.6 )**
+    - https://mvnrepository.com/artifact/com.google.code.gson/gson
+* lombok **( 1. 18. 0 )**
+    - https://mvnrepository.com/artifact/org.projectlombok/lombok
+* spring-test **( 5.0.7 )**
+    - https://mvnrepository.com/artifact/org.springframework/spring-test
 
 log4jdbc.log4j2.properties -> src/main/resources에 추가
 
@@ -112,17 +132,47 @@ root-context.xml -> namespace -> context, mybatis 선택
 <mybatis-spring:scan base-package="org.joonzis.mapper"/>
 ```
 
-### REST를 사용하기 위한 라이브러리
-* Jackson-databind ⇒ jackson-core 및 jackson-annotation 라이브러리의 의존성을 포함하여 사용할 수 있도록 하는 라이브러리 **( 2.12.2 )**
-    - https://mvnrepository.com/artifact/com.fasterxml.jackson.core/jackson-databind
-* Jackson-dataformat-xml ⇒ xml 형식으로 사용하기 위해 **( 2.12.2 )**
-    - https://mvnrepository.com/artifact/com.fasterxml.jackson.dataformat/jackson-dataformat-xml
-- gson ⇒ 테스트 시 json 타입의 문자열로 변환하기 위해 **( 2.8.6 )**
-    - https://mvnrepository.com/artifact/com.google.code.gson/gson
-* lombok **( 1. 18. 0 )**
-    - https://mvnrepository.com/artifact/org.projectlombok/lombok
-* spring-test **( 5.0.7 )**
-    - https://mvnrepository.com/artifact/org.springframework/spring-test
+## 첨부파일 업로드 설정
+### 라이브러리 추가
+```xml
+<!-- https://mvnrepository.com/artifact/com.fasterxml.jackson.core/jackson-databind -->
+<dependency>
+    <groupId>com.fasterxml.jackson.core</groupId>
+    <artifactId>jackson-databind</artifactId>
+    <version>2.12.2</version>
+</dependency>     
+		
+<!-- https://mvnrepository.com/artifact/com.fasterxml.jackson.dataformat/jackson-dataformat-xml -->
+<dependency>
+    <groupId>com.fasterxml.jackson.dataformat</groupId>
+    <artifactId>jackson-dataformat-xml</artifactId>
+    <version>2.12.2</version>
+</dependency>
+		
+<!-- https://mvnrepository.com/artifact/com.google.code.gson/gson -->
+<dependency>
+    <groupId>com.google.code.gson</groupId>
+    <artifactId>gson</artifactId>
+    <version>2.8.6</version>
+</dependency>
+```
+### web.xml
+```xml
+<!-- 
+파일 업로드 기능
+servlet태그 -> load-on-startup아래 -->
+<multipart-config>
+    <location>C:\\upload</location>
+    <max-file-size>20971520</max-file-size>
+    <max-request-size>41943040</max-request-size>
+    <file-size-threshold>20971520</file-size-threshold>
+</multipart-config>
+```
+### servlet-context.xml
+```xml
+<beans:bean id="multipartResolver" class="org.springframework.web.multipart.support.StandardServletMultipartResolver"/>
+```
+
 
 
 <!-- 서버수정 기본 경로 수정 -->

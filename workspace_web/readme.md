@@ -852,6 +852,8 @@ const regExpId = /^[a-z]+[0-9a-z]{3,12}$/;   // 아이디 검증 정규식
 const regExpPw = /^[0-9a-zA-Z]{8,16}$/;      // 비밀번호 검증 정규식
 const regExpName = /^[가-힣a-zA-Z]{2,12}$/;   // 이름 검증 정규식 
 const regExpEmail = /^[a-zA-Z0-9+-\_.]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/;   // 이메일 검증 정규식
+const regex = new RegExp("(.*?)\.(exe|sh|zip|alz)$"); // 파일 형식 검증 정규식
+const MAX_SIZE = 5242880; //5MB  // 파일 최대 크기 
 ```
 
 ### 대표적인 이벤트

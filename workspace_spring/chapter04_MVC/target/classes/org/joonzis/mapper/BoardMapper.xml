@@ -8,8 +8,8 @@
 		<!-- 영역내 태그기호 무시 <![CDATA[ ]]> -->
 		<![CDATA[ 
 		select *
-		from (select bno, title, writer, regdate, ROWNUM rn
-			from (select bno, title, writer, regdate
+		from (select bno, title, writer, regdate, replycnt, ROWNUM rn
+			from (select bno, title, writer, regdate, replycnt
 			    from TBL_BOARD
 			    order by bno desc)
 			where rownum <= #{pageNum} * #{amount})
@@ -46,6 +46,15 @@
 		    CONTENT = #{content},
 		    WRITER = #{writer},
 		    UPDATEDATE = sysdate
+		WHERE 
+			BNO = #{bno}
+	</update>
+	
+	<!-- 댓글수 업데이트 -->
+	<update id="updateReplyCnt" >
+		UPDATE TBL_BOARD 
+		SET 
+			REPLYCNT = REPLYCNT + #{amount}
 		WHERE 
 			BNO = #{bno}
 	</update>

@@ -12,7 +12,7 @@
 		
 	<context:annotation-config></context:annotation-config>
 	<context:component-scan base-package="org.joonzis.service"/>
-	<context:component-scan base-package="aop"/>
+	<context:component-scan base-package="org.joonzis.aop"/>
 	<aop:aspectj-autoproxy></aop:aspectj-autoproxy>
 </beans>
  

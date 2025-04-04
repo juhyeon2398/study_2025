@@ -2,6 +2,7 @@ package org.joonzis.service;
 
 import java.util.List;
 
+import org.apache.ibatis.annotations.Param;
 import org.joonzis.domain.BoardVO;
 import org.joonzis.domain.Criteria;
 
@@ -18,4 +19,5 @@ public interface BoardService {
 	public boolean modify(BoardVO vo);
 	// 게시글 전체 수
 	public int listAll();
+	
 }

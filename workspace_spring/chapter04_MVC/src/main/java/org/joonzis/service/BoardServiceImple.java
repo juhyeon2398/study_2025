@@ -2,6 +2,7 @@ package org.joonzis.service;
 
 import java.util.List;
 
+import org.apache.ibatis.annotations.Param;
 import org.joonzis.domain.BoardVO;
 import org.joonzis.domain.Criteria;
 import org.joonzis.mapper.BoardMapper;
@@ -55,4 +56,5 @@ public class BoardServiceImple implements BoardService{
 		int result = mapper.listAll();
 		return result;
 	}
+
 }

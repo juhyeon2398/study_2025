@@ -1,8 +1,6 @@
 package test;
 
-import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.List;
 
 public class Test {
 	public static void main(String[] args) {
@@ -13,12 +11,11 @@ public class Test {
 }
 
 class Solution {
-    public int[] solution(int[] num_list) {
-        int[] answer = {};
-        for(int num : num_list) {
-        	
+	public int[] solution(int[] num_list) {
+        int[] answer = new int[num_list.length];
+        for(int i = num_list.length; i > 0 ; i--){
+        	answer[num_list.length - i] = num_list[i - 1];
         }
-        
         return answer;
     }
 }
