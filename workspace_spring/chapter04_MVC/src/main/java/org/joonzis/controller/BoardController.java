@@ -48,6 +48,13 @@ public class BoardController {
 	@PostMapping("/register")
 	public String register(BoardVO vo) {
 		log.info("register... " + vo);
+		
+		if(vo.getAttachList() != null) {
+			vo.getAttachList().forEach(attach -> {
+				log.info(attach);
+			});
+		}
+		
 		service.register(vo);
 		return "redirect:/board/list";
 	}

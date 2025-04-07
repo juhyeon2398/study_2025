@@ -7,10 +7,17 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<div>
+	<div class="uploadDiv">
 		<input type="file" name="uploadFile" multiple><br>
 		<button id="uploadBtn">upload</button>
 	</div>
+	
+	<div class="uploadResult">
+		<ul>
+			
+		</ul>
+	</div>
+	
 </body>
 <script type="text/javascript" src="/resources/js/upload.js"></script>
 </html>

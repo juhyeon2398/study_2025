@@ -23,13 +23,18 @@
 	
 	<!-- 게시글 삽입 -->
 	<insert id="insert" parameterType="org.joonzis.domain.BoardVO">
+		<selectKey  keyProperty="bno" resultType="int" order="BEFORE">
+			SELECT seq_board.nextval FROM DUAL
+		</selectKey>
+	
 		INSERT INTO TBL_BOARD VALUES(
-			seq_board.nextval,
+			#{bno},
 			#{title},
 			#{content},
 			#{writer},
 			sysdate,
-			sysdate
+			sysdate,
+			0
 		)
 	</insert>
 	
@@ -59,8 +64,12 @@
 			BNO = #{bno}
 	</update>
 	
-	
 	<select id="listAll" resultType="int">
 		SELECT COUNT(*) FROM tbl_board
+	</select>
+	
+	<!-- 마지막 BNO 값  -->
+	<select id="getBno" resultType="int">
+		SELECT MAX(BNO) FROM TBL_BOARD
 	</select>
 </mapper>

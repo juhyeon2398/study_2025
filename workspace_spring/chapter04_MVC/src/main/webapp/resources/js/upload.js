@@ -29,8 +29,9 @@ function showUploadedFile(uploadResultArr){
 		let fileCallPath = 
 			encodeURIComponent(
 					file.uploadPath + "/" + file.uuid + "_" + file.fileName)
-		str += `<li>`;
-		str += 		`<a href="/download?fileName=${fileCallPath}">${file.fileName}</a>`;
+		str += `<li path="${file.uploadPath}" uuid="${file.uuid}" filename="${file.fileName}">`;
+		//str += 		`<a href="/download?fileName=${fileCallPath}">${file.fileName}</a>`;
+		str += 		`<a>${file.fileName}</a>`;
 		str += 		`<span data-file='{$fileCallPath}'> X </span>`;
 		str += `</li>`;
 	});
@@ -51,6 +52,9 @@ uploadResult.addEventListener("click" ,function(e){
 		.then(response => response.text())
 		.then(result => {
 			console.log(result);
+			
+			let targetLi = e.target.closest('li');
+			targetLi.remove();
 		})
 		.catch(err => console.log(err));
 	}
@@ -59,19 +63,12 @@ uploadResult.addEventListener("click" ,function(e){
 
 
 
+const fileInput = document.querySelector("input[type='file']");
 
-
-
-
-
-
-const uploadBtn = document.querySelector("#uploadBtn");
-
-uploadBtn.addEventListener("click" ,() => {
+fileInput.addEventListener("change" ,() => {
 	const formData = new FormData();
 	
-	const inputFile = document.querySelector("input[type='file']");
-	const files = inputFile.files;
+	const files = fileInput.files;
 	
 	// file 객체들을 formData에 담기
 	for(let i = 0; i < files.length;i++){

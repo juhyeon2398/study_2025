@@ -19,5 +19,4 @@ public interface BoardService {
 	public boolean modify(BoardVO vo);
 	// 게시글 전체 수
 	public int listAll();
-	
 }
