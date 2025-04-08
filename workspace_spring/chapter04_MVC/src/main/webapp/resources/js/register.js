@@ -42,22 +42,5 @@ function register(){
 		return; 
 	}
 	
-	// 첨부파일 li들 가져와서 반복문 돌리기
-	// 해당 li에 포함된 속성들 꺼내서 화면에 출력
-	let str = "";
-	let uploadResult = document.querySelectorAll(".uploadResult ul > li");
-	uploadResult.forEach((el,idx) => {
-		let path = el.getAttribute("path");
-		let uuid = el.getAttribute("uuid");
-		let fileName = el.getAttribute("filename");
-		
-		str += `<input type="hidden" name="attachList[${idx}].fileName" value="${fileName}"/>`
-		str += `<input type="hidden" name="attachList[${idx}].uuid" value="${uuid}"/>`
-		str += `<input type="hidden" name="attachList[${idx}].uploadPath" value="${path}"/>`
-	})
-	
-	f.insertAdjacentHTML("beforeend", str);
-	console.log(f)
-	f.action = "/board/register";
-	f.submit();
+	uploadAsyncAction(f, "register");
 }

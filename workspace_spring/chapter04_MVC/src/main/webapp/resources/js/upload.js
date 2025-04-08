@@ -3,7 +3,6 @@ let cloneObj = uploadDiv.firstElementChild.cloneNode(true);
 
 const regex = new RegExp("(.*?)\.(exe|sh|zip|alz)$");
 const MAX_SIZE = 5242880; //5MB
-
 function checkExtension(fileName, fileSize){
 	console.log(regex.test(fileName));
 	if(fileSize >= MAX_SIZE){
@@ -18,13 +17,13 @@ function checkExtension(fileName, fileSize){
 
 let uploadResult = document.querySelector(".uploadResult ul");
 
-
-
-function showUploadedFile(uploadResultArr){
+let str = "";
+let hideStr = "";
+function showUploadedFile(uploadResultArr, f){
 	if(!uploadResultArr || uploadResultArr.length == 0){
 		return;
 	}
-	let str = "";
+
 	uploadResultArr.forEach(file =>{
 		let fileCallPath = 
 			encodeURIComponent(
@@ -32,10 +31,28 @@ function showUploadedFile(uploadResultArr){
 		str += `<li path="${file.uploadPath}" uuid="${file.uuid}" filename="${file.fileName}">`;
 		//str += 		`<a href="/download?fileName=${fileCallPath}">${file.fileName}</a>`;
 		str += 		`<a>${file.fileName}</a>`;
-		str += 		`<span data-file='{$fileCallPath}'> X </span>`;
+		str += 		`<span data-file='${fileCallPath}'> X </span>`;
 		str += `</li>`;
 	});
 	uploadResult.innerHTML = str;
+	
+	let uploadList = document.querySelectorAll(".uploadResult ul li");
+	uploadList.forEach((el,idx) => {
+		if(el.getAttribute('uuid') == null){
+			console.log("remove")
+			el.remove();
+		};
+		
+		let newIdx = uploadList.length;
+		let path = el.getAttribute("path");
+		let uuid = el.getAttribute("uuid");
+		let fileName = el.getAttribute("filename");
+		
+		hideStr += `<input type="hidden" name="attachList[${idx}].fileName" value="${fileName}"/>`
+		hideStr += `<input type="hidden" name="attachList[${idx}].uuid" value="${uuid}"/>`
+		hideStr += `<input type="hidden" name="attachList[${idx}].uploadPath" value="${path}"/>`
+	})
+	f.insertAdjacentHTML("beforeend", hideStr);
 }
 
 uploadResult.addEventListener("click" ,function(e){
@@ -66,6 +83,20 @@ uploadResult.addEventListener("click" ,function(e){
 const fileInput = document.querySelector("input[type='file']");
 
 fileInput.addEventListener("change" ,() => {
+	const files = fileInput.files;
+	for(let i = 0; i < files.length;i++){
+		let newStr = "";
+		
+		newStr += `<li>`;
+		newStr += 		`<a>${files[i].name}</a>`;
+		newStr += 		`<span data-file='{$fileCallPath}'> X </span>`;
+		newStr += `</li>`;
+		
+		uploadResult.innerHTML += newStr;
+	}
+})
+
+function uploadAsyncAction(f , page){
 	const formData = new FormData();
 	
 	const files = fileInput.files;
@@ -86,13 +117,15 @@ fileInput.addEventListener("change" ,() => {
 	})
 	.then(response => response.json())
 	.then(data => {
-		// 부모 Element.replaceChild(newElement, oldElement);
-		uploadDiv.replaceChild(
-			cloneObj.cloneNode(true),
-			uploadDiv.firstElementChild
-		);
+		showUploadedFile(data, f);
+		if(page === "modify"){
+			f.action = `/board/modify?pageNum=${pageNumData}&amount=${amountData}`;
+		}else{
+			f.action = `/board/register`;	
+		}
 		
-		showUploadedFile(data);
+		f.submit();
 	})
 	.catch(err => console.log(err));
-})
+	
+}

@@ -17,6 +17,7 @@ for (let el of btns) {
 	el.addEventListener("click", (e) =>{
 		switch (e.target.getAttribute("id")) {
 		case "modifyBtn":
+			
 			modify();
 			break;
 		case "removeBtn":
@@ -38,9 +39,7 @@ function modify(){
 		alert("내용을 입력해주세요.");
 		return;
 	}
-	
-	f.action = `/board/modify?pageNum=${pageNumData}&amount=${amountData}`;
-	f.submit();
+	uploadAsyncAction(f, "modify");
 }
 
 // 게시글 삭제 이벤트
@@ -52,3 +51,15 @@ function remove(){
 	f.action = "/board/remove";
 	f.submit();
 }
+
+
+
+// 게시글 수정시 파일 수정
+//=============== 첨부파일 스크립트 ===============
+
+fetch(`/board/getAttachList/`+f.bno.value)
+.then(response => response.json())
+.then(result =>{
+	showUploadedFile(result);
+})
+.catch(err => console.log(err))

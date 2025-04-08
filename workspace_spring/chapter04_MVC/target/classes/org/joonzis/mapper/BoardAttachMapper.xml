@@ -7,9 +7,9 @@
 	<!-- 파일 목록 -->
 	<select id="findByBno" parameterType="int" resultType="org.joonzis.domain.BoardAttachVO">
 		SELECT * FROM TBL_ATTACH 
-		WHERE BNO = #{bno} 
-		ORDER BY RNO ASC
+		WHERE BNO = #{bno}
 	</select>
+	
 	
 	<insert id="insert" parameterType="org.joonzis.domain.BoardAttachVO">
 		INSERT INTO TBL_ATTACH 
@@ -26,6 +26,20 @@
 		FROM tbl_attach 
 		WHERE UUID = #{uuid}
 	</delete>
-
 	
+	<delete id="deleteAll" parameterType="int">
+		DELETE 
+		FROM tbl_attach 
+		WHERE BNO = #{bno}
+	</delete>
+
+	<!-- 첨부된 파일 리스트  -->
+	<select id="getAttachList" parameterType="int" resultType="org.joonzis.domain.BoardAttachVO">
+		SELECT * FROM TBL_ATTACH WHERE BNO = #{bno}
+	</select>
+		
+	<select id="fileSearch" parameterType="String" resultType="int">
+		SELECT COUNT(*) FROM TBL_ATTACH WHERE UUID = #{uuid}
+	</select>
+
 </mapper>

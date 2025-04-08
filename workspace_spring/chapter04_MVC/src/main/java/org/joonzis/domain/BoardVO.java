@@ -18,5 +18,7 @@ public class BoardVO {
 	private Date regdate, updatedate;
 	
 	private List<BoardAttachVO> attachList;
+	private List<BoardAttachVO> newAttachList;
+	private List<String> uuidList;
 	
 }	

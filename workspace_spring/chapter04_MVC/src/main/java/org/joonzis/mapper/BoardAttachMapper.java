@@ -11,4 +11,7 @@ public interface BoardAttachMapper {
 	public void delete(String uuid);
 	// 파일 목록
 	public List<BoardAttachVO> findByBno(int bno);
+
+	public int fileSearch(String uuid);
+	public int deleteAll(int bno);
 }

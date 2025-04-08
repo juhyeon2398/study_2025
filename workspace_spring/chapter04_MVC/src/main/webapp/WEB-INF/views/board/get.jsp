@@ -39,6 +39,18 @@
 			<button type="button" class="btn btn-sec" id="modifyBtn">수정</button>
 			<button type="button" class="btn btn-fir" id="indexBtn">목록으로 이동</button>
 		</div>
+		<div class="file-container">
+		   <div class="file-header">
+		      <div class="file-title">
+		         <a>첨부 파일</a>
+		      </div>
+		   </div>
+		   <div class="file-body">
+		      <div class="uploadResult">
+		         <ul></ul>
+		      </div>
+		   </div>
+		</div>
 
 		<div class="panel-footer">
 			<div class="panel-footer-header">
@@ -62,7 +74,6 @@
 				</ul>
 			</div>
 		</div>
-
 		<div id="modal">
 			<div class="modal-content">
 				<div class="modal-title">

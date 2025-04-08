@@ -45,6 +45,7 @@
 	
 	<!-- 게시글 업데이트 -->
 	<update id="update" parameterType="org.joonzis.domain.BoardVO">
+
 		UPDATE tbl_board 
 		SET 
 		    TITLE = #{title},
@@ -68,8 +69,17 @@
 		SELECT COUNT(*) FROM tbl_board
 	</select>
 	
+	<select id="replyAll" resultType="int">
+		SELECT COUNT(*) FROM tbl_reply WHERE BNO = #{bno}
+	</select>
+	
+	<delete id="replyAllDelete">
+		DELETE FROM tbl_reply WHERE BNO = #{bno}
+	</delete>
+	
 	<!-- 마지막 BNO 값  -->
 	<select id="getBno" resultType="int">
 		SELECT MAX(BNO) FROM TBL_BOARD
 	</select>
+
 </mapper>

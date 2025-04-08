@@ -26,4 +26,8 @@ public interface BoardMapper {
 			@Param("amount") int amount);
 	
 	public int getBno();
+	
+	public int replyAll(int bno);
+	public int replyAllDelete();
+	
 }

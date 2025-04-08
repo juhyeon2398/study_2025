@@ -182,3 +182,29 @@ function removeReply(){
 		showList();
 	})
 }
+
+// =============== 첨부파일 스크립트 ===============
+let str = "";
+let uploadResult = document.querySelector(".uploadResult ul");
+
+fetch(`/board/getAttachList/`+f.bno.value)
+.then(response => response.json())
+.then(result =>{
+	showUploadFiles(result);
+})
+.catch(err => console.log(err))
+
+function showUploadFiles(result){
+	if(!result || result.length == 0){
+		return;
+	}
+	result.forEach(file => {
+		let fileCallPath = 
+			encodeURIComponent(
+					file.uploadPath + "/" + file.uuid + "_" + file.fileName)
+		str += `<li>`;
+		str += 		`<a href="/download?fileName=${fileCallPath}">${file.fileName}</a>`;
+		str += `</li>`;
+	})
+	uploadResult.innerHTML = str;
+}

@@ -2,7 +2,7 @@ package org.joonzis.service;
 
 import java.util.List;
 
-import org.apache.ibatis.annotations.Param;
+import org.joonzis.domain.BoardAttachVO;
 import org.joonzis.domain.BoardVO;
 import org.joonzis.domain.Criteria;
 import org.joonzis.mapper.BoardAttachMapper;
@@ -54,15 +54,41 @@ public class BoardServiceImple implements BoardService{
 	}
 	
 	@Override
+	@Transactional
 	public boolean remove(int bno) {
 		log.info("getList... " + bno);
+		
+		if(attachMapper.findByBno(bno).size() > 0) {
+			attachMapper.deleteAll(bno);
+		}
+		if(mapper.replyAll(bno) > 0) {
+			mapper.replyAllDelete();
+		}
 		return mapper.delete(bno) == 1;
 	}
 	
 	@Override
+	@Transactional
 	public boolean modify(BoardVO vo) {
-		log.info("modify.." + vo);
+		int currentBno = vo.getBno();
+//		if(vo.getUuidList() != null && vo.getUuidList().size() > 0) {
+//			attachMapper.findByBno(vo.getBno()).forEach(attach -> {
+//				if(vo.getUuidList().indexOf(attach.getUuid()) == -1) {
+//					attachMapper.delete(attach.getUuid());
+//				}
+//			});
+//		}else {
+//			attachMapper.deleteAll(vo.getBno());
+//		}
+		
+		if(vo.getAttachList() != null && vo.getAttachList().size() > 0) {
+			vo.getAttachList().forEach(attach -> {
+				attach.setBno(currentBno);
+				attachMapper.insert(attach);
+			});
+		}
 		int result = mapper.update(vo);
+		
 		if(result == 1) {
 			return true;
 		}else {
@@ -75,5 +101,18 @@ public class BoardServiceImple implements BoardService{
 		int result = mapper.listAll();
 		return result;
 	}
-
+	
+	
+	// 첨부 파일 리스트
+	@Override
+	public List<BoardAttachVO> getAttachList(int bno) {
+		log.info("getAttachList... " + bno);
+		return attachMapper.findByBno(bno);
+	}
+	
+	@Override
+	public int fileSearch(String uuid) {
+		int result = attachMapper.fileSearch(uuid);
+		return result;
+	}
 }
