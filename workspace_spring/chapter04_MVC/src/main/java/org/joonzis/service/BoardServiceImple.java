@@ -71,18 +71,18 @@ public class BoardServiceImple implements BoardService{
 	@Transactional
 	public boolean modify(BoardVO vo) {
 		int currentBno = vo.getBno();
-//		if(vo.getUuidList() != null && vo.getUuidList().size() > 0) {
-//			attachMapper.findByBno(vo.getBno()).forEach(attach -> {
-//				if(vo.getUuidList().indexOf(attach.getUuid()) == -1) {
-//					attachMapper.delete(attach.getUuid());
-//				}
-//			});
-//		}else {
-//			attachMapper.deleteAll(vo.getBno());
-//		}
+		if(vo.getUuidList() != null && vo.getUuidList().size() > 0) {
+			attachMapper.findByBno(vo.getBno()).forEach(attach -> {
+				if(vo.getUuidList().indexOf(attach.getUuid()) == -1) {
+					attachMapper.delete(attach.getUuid());
+				}
+			});
+		}else {
+			attachMapper.deleteAll(vo.getBno());
+		}
 		
-		if(vo.getAttachList() != null && vo.getAttachList().size() > 0) {
-			vo.getAttachList().forEach(attach -> {
+		if(vo.getNewAttachList() != null && vo.getNewAttachList().size() > 0) {
+			vo.getNewAttachList().forEach(attach -> {
 				attach.setBno(currentBno);
 				attachMapper.insert(attach);
 			});

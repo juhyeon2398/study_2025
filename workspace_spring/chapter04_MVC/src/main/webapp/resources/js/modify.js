@@ -17,7 +17,6 @@ for (let el of btns) {
 	el.addEventListener("click", (e) =>{
 		switch (e.target.getAttribute("id")) {
 		case "modifyBtn":
-			
 			modify();
 			break;
 		case "removeBtn":
@@ -39,7 +38,8 @@ function modify(){
 		alert("내용을 입력해주세요.");
 		return;
 	}
-	uploadAsyncAction(f, "modify");
+
+	uploadFile();
 }
 
 // 게시글 삭제 이벤트
@@ -60,6 +60,6 @@ function remove(){
 fetch(`/board/getAttachList/`+f.bno.value)
 .then(response => response.json())
 .then(result =>{
-	showUploadedFile(result);
+	showUploadedFile2(result);
 })
 .catch(err => console.log(err))

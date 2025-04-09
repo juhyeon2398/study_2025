@@ -96,30 +96,28 @@ public class BoardController {
 	public String modify(BoardVO vo, RedirectAttributes rttr) {
 		log.info(vo.getAttachList());
 		List<BoardAttachVO> list = new ArrayList<BoardAttachVO>(); 
-//		List<BoardAttachVO> newList = new ArrayList<BoardAttachVO>(); 
-//		List<String> uuidList = new ArrayList<String>(); 
-//
-//		if(vo.getAttachList() != null && vo.getAttachList().size() > 0) {
-//			vo.getAttachList().forEach(attach ->{
-//				log.info("fileSeach :" +service.fileSearch(attach.getUuid()));
-//				if(service.fileSearch(attach.getUuid()) < 1) {
-//					newList.add(attach);
-//				}else {
-//					uuidList.add(attach.getUuid());
-//				}
-//			});
-//			
-//			
-//			vo.setNewAttachList(newList);
-//			vo.setUuidList(uuidList);
-//		}
-		vo.setAttachList(list);
-		
+		List<BoardAttachVO> newList = new ArrayList<BoardAttachVO>(); 
+		List<String> uuidList = new ArrayList<String>(); 
+
+		log.info("size() : " + vo.getAttachList().size());
+		if(vo.getAttachList() != null && vo.getAttachList().size() > 0) {
+			vo.getAttachList().forEach(attach ->{
+				log.info("fileSeach :" +service.fileSearch(attach.getUuid()));
+				if(service.fileSearch(attach.getUuid()) < 1) {
+					newList.add(attach);
+				}else {
+					uuidList.add(attach.getUuid());
+				}
+			});
+			
+			
+			vo.setNewAttachList(newList);
+			vo.setUuidList(uuidList);
+		}
 		
 		if(service.modify(vo)) {
 			rttr.addFlashAttribute("result" ," success");
 		}
-		log.info("size : " + service.getAttachList(vo.getBno()).size());	
 		return "redirect:/board/list";
 	}
 	
