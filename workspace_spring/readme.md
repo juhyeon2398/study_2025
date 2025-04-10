@@ -101,6 +101,32 @@ ojdbc class path 추가 -> deployment assembly -> java build path entries
 * spring-test **( 5.0.7 )**
     - https://mvnrepository.com/artifact/org.springframework/spring-test
 
+
+### security 관련 라이브러리
+* spring-security-web ( 5.0.6 )
+    - https://mvnrepository.com/artifact/org.springframework.security/spring-security-web
+* spring-security-config ( 5.0.6 )
+    - https://mvnrepository.com/artifact/org.springframework.security/spring-security-config
+* spring-security-core ( 5.0.6 )
+    - https://mvnrepository.com/artifact/org.springframework.security/spring-security-core
+* spring-security-taglibs
+    - jsp에서 시큐리티 태그 라이브러리를 사용하기 위함 ( 5.0.6 )
+    - https://mvnrepository.com/artifact/org.springframework.security/spring-security-taglibs
+
+```xml
+<!-- 스프링 시큐리티 필터 -->
+<filter>
+    <filter-name>springSecurityFilterChain</filter-name>
+    <filter-class>org.springframework.web.filter.DelegatingFilterProxy
+    </filter-class>
+</filter>
+<filter-mapping>
+    <filter-name>springSecurityFilterChain</filter-name>
+    <url-pattern>/*</url-pattern>
+</filter-mapping>
+```
+
+
 log4jdbc.log4j2.properties -> src/main/resources에 추가
 
 root-context.xml -> namespace -> context, mybatis 선택
