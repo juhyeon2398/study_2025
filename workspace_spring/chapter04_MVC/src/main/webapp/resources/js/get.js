@@ -102,7 +102,7 @@ function registerModal(){
 	registerModalStyle();
 	// input 내용 초기화
 	inputReply.value = '';
-	inputReplyer.value = '';
+	inputReplyer.value = principal.username;
 	
 	openModal();
 }
@@ -110,8 +110,16 @@ function registerModal(){
 // 댓글 등록 버튼 클릭시 스타일 변경 함수
 function registerModalStyle(){
 	inputReplydate.closest("div").classList.add('hide');
-	modifyReplyBtn.classList.add("hide");
-	removeReplyBtn.classList.add('hide');
+	
+	
+	if(principal.username === f.writer.value){
+		modifyReplyBtn.classList.add("hide");
+		removeReplyBtn.classList.add('hide');
+	}else{
+		modifyReplyBtn.classList.remove("hide");
+		removeReplyBtn.classList.remove('hide');
+	}
+	
 	inputReplyer.removeAttribute('readonly');
 	addReplyBtn.classList.remove('hide');
 }
@@ -119,8 +127,14 @@ function registerModalStyle(){
 // 댓글 목록 클릭시 스타일 변경 함수
 function modifyReplyModalStyle(){
 	inputReplydate.closest("div").classList.remove('hide');
-	modifyReplyBtn.classList.remove("hide");
-	removeReplyBtn.classList.remove('hide');
+	
+	if(principal.username === f.writer.value){
+		modifyReplyBtn.classList.remove("hide");
+		removeReplyBtn.classList.remove('hide');
+	}else{
+		modifyReplyBtn.classList.add("hide");
+		removeReplyBtn.classList.add('hide');
+	}
 	
 	addReplyBtn.classList.add('hide');
 	inputReplydate.setAttribute('readonly',true);

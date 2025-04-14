@@ -1,9 +1,11 @@
 package org.joonzis.controller;
 
 import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import lombok.extern.log4j.Log4j;
 
@@ -39,5 +41,11 @@ public class CommonController {
 	@GetMapping("/customLogout")
 	public void logoutGET() {
 		log.info("custom logout");
+	}
+	
+	@ResponseBody
+	@GetMapping("/api/currentUser")
+	public Authentication getCurrentUser() {
+		return SecurityContextHolder.getContext().getAuthentication();
 	}
 }
