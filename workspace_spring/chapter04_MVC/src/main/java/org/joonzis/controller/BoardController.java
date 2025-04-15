@@ -6,8 +6,10 @@ import java.util.List;
 import org.joonzis.domain.BoardAttachVO;
 import org.joonzis.domain.BoardVO;
 import org.joonzis.domain.Criteria;
+import org.joonzis.domain.MemberVO;
 import org.joonzis.domain.PageDTO;
 import org.joonzis.mapper.BoardAttachMapper;
+import org.joonzis.mapper.MemberMapper;
 import org.joonzis.service.BoardService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -80,14 +82,20 @@ public class BoardController {
 		return "board/get";
 	}
 	
+
+	
 	// 게시글 수정
+	@PreAuthorize("isAuthenticated()")
 	@GetMapping("/modify")
 	public String modify(@RequestParam("bno") int bno, Model model) {
+		MemberVO vo = new MemberVO();
+		
 		log.info("modifyGET... " + bno);
 		model.addAttribute("vo", service.get(bno));
 		return "board/modify";
 	}
 	
+	@PreAuthorize("isAuthenticated()")
 	@PostMapping("/modify")
 	public String modify(BoardVO vo, RedirectAttributes rttr) {
 		log.info(vo.getAttachList());

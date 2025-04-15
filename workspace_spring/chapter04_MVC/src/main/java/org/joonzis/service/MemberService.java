@@ -1,12 +1,8 @@
-package org.joonzis.mapper;
-
+package org.joonzis.service;
 
 import org.joonzis.domain.MemberVO;
 
-public interface MemberMapper {
-	public MemberVO read(String userId);
-	
+public interface MemberService {
 	public int insert(MemberVO vo);
-	
 	public MemberVO findId(String userid);
 }

@@ -24,5 +24,15 @@
 			    join tbl_member_auth auth
 			    on mem.userid = auth.userid
 			where mem.userid = #{userId}
-	 </select>	
+	 </select>
+	 
+	 <select id="findId" parameterType="String" resultType="org.joonzis.domain.MemberVO">
+	 	SELECT * 
+	 	FROM TBL_MEMBER 
+	 	WHERE USERID = #{userId}
+	 </select>
+			
+	 <insert id="insert" parameterType="org.joonzis.domain.MemberVO">
+	 	INSERT INTO TBL_MEMBER VALUES(#{userId},#{userPw},#{userName},sysdate,sysdate,1)
+	 </insert>
 </mapper>

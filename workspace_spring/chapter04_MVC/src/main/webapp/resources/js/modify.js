@@ -60,6 +60,12 @@ function remove(){
 fetch(`/board/getAttachList/`+f.bno.value)
 .then(response => response.json())
 .then(result =>{
+	
+	if(principal.username != f.writer.value){
+		alert("잘 못된 접근입니다.");
+		history.back;
+	}
+	
 	showUploadedFile2(result);
 })
 .catch(err => console.log(err))

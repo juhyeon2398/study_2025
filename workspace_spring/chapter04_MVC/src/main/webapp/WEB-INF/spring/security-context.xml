@@ -8,8 +8,8 @@
 	<bean id="customAccessDenied" 
 		class="org.joonzis.security.CustomAccessDeniedHandler"></bean>
 	
-	<!-- <bean id="customLoginSuccess" 
-		class="org.joonzis.security.CustomLoginSuccessHandler"></bean> -->
+	<bean id="customLoginSuccess" 
+		class="org.joonzis.security.CustomLoginSuccessHandler"></bean>
 		
 	<bean id="customUserDetailService" 
 		class="org.joonzis.security.CustomUserDetailService"></bean>
@@ -28,7 +28,7 @@
 		<security:intercept-url pattern="/sample/admin" access="hasRole('ROLE_ADMIN')"/>
 		<!-- 권한없을 경우 로그인 페이지 이동 -->
 		<!-- <security:form-login/> -->
-		<!-- <security:form-login login-page="/customLogin" authentication-success-handler-ref="customLoginSuccess" /> -->
+		<security:form-login login-page="/member/login" authentication-success-handler-ref="customLoginSuccess" />
 		
 		<security:logout logout-url="/customLogout" invalidate-session="true" delete-cookies="remember-me"/>
 		

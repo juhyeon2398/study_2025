@@ -9,6 +9,14 @@ document.querySelectorAll('.menu a').forEach( a => {
 	});
 })
 
+function joinPage(){
+	location.href="/member/join";
+}
+
+function loginPage(){
+	location.href="/member/login";
+}
+
 
 // 로컬 스토리지 저장
 function setStorageData(pageNum, amount){
@@ -24,6 +32,8 @@ function getStorageData(){
 	return JSON.parse(localStorage.getItem("page_data"));
 }
 
+
+
 // 
 let principal;
 
@@ -32,7 +42,6 @@ async function getPrincipal(){
 		const response = await fetch("/api/currentUser.json");
 		const userPrincipal = await response.json();
 		principal = userPrincipal.principal;
-		
 	} catch (e) {
 		console.log("에러 : " , e);
 	}
