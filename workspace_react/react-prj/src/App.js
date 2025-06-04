@@ -1,10 +1,11 @@
 import './App.css';
-import TestComponent from './components/testComponent';
+import InputTest from './components/InputTest';
+
 
 function App() {
   return (
     <div className="App">
-      <TestComponent name='kim'/>
+        <InputTest/>
     </div>
   );
 }
