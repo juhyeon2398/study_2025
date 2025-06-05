@@ -1,11 +1,15 @@
+import { useReducer } from 'react';
 import './App.css';
-import InputTest from './components/InputTest';
+import Counter from './components/Counter';
+import CounterTest from './components/CounterTest';
+import ReducerTest from './components/ReducerTest';
+import RefTest from './components/RefTest';
 
 
 function App() {
   return (
     <div className="App">
-        <InputTest/>
+        <ReducerTest/>
     </div>
   );
 }
