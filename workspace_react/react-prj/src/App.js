@@ -9,6 +9,8 @@ import Calculator from './components/Calculator';
 import Gallery from './components/Gallery';
 import LoginPage from './components/LoginPage';
 import ShoppingList from './components/ShoppingList';
+import Timer from './components/Timer';
+import InputCount from './components/InputCount';
 
 
 
@@ -16,7 +18,7 @@ function App() {
   
   return (
     <div className="App">
-       <ShoppingList/>
+       <InputCount/>
     </div>
   );
 }
