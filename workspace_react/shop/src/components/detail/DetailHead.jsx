@@ -3,6 +3,12 @@ import styled from 'styled-components';
 
 import formatKoreanCurrency from '../../util/display/display';
 import DescriptionList from './DescriptionList';
+
+import {useDispatch, useSelector} from 'react-redux';
+import { addItem } from '../../actions/cartAction'; 
+import { useNavigate } from 'react-router-dom';
+
+
 const BR = styled.div`
   width: 100%;
   height: 13px;
@@ -82,7 +88,26 @@ const MyButton = styled.button`
     border : 1px solid ${props => props.border};
 `;
 
+
 const DetailHead = ({data}) => {
+    const cart = useSelector(state => state.cart);
+    const dispatch = useDispatch();
+    const navigate = useNavigate();
+
+    const handleCartAddItem = () => {
+        const obj = {
+            id : data.id,
+            productName : data.title,
+            price : data.price,
+            count : 1
+        }
+        dispatch(addItem(obj));
+
+        // eslint-disable-next-line no-restricted-globals
+        if(confirm("장바구니에 추가하였습니다.\n장바구니로 이동하시겠습니까?")){
+            navigate('/cart');
+        }
+    }
    return (
       <DetailHeadArea>
          <DetailMainImg image={data.main}/>
@@ -96,7 +121,7 @@ const DetailHead = ({data}) => {
                <DescriptionList contents={{dt:'배송비',dd:'3,000원'}}/>
             </InfoArea>
             <ButtonArea>
-               <CartAddButton>장바구니</CartAddButton>               
+               <CartAddButton onClick={handleCartAddItem}>장바구니</CartAddButton>               
                {/* <MyButton bg='#fff' color='3333' border='gay'>장바구니</MyButton>                */}
                <BuyButton>바로구매</BuyButton>
             </ButtonArea>

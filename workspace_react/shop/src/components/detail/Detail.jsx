@@ -3,6 +3,7 @@ import { useParams } from 'react-router-dom';
 import styled from 'styled-components';
 import DetailHead from './DetailHead';
 import DetailBody from './DetailBody';
+import Spinner from '../spinner/Spinner';
 const DetailWrapper = styled.div`
    margin : 60px auto 0;
    max-width : 1200px;
@@ -21,6 +22,8 @@ const Detail = ({data}) => {
       obj => obj.id === parseInt(pId)
    );
    
+   // 데이터를 불러오는 동안 출력할 페이지
+   if(!product) return <Spinner/>;
    return (
       <DetailWrapper>
          <DetailHead data={product}/>

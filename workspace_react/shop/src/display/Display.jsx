@@ -5,6 +5,7 @@ import Main from '../layout/Main';
 import { Route, Routes } from 'react-router-dom';
 import Detail from '../components/detail/Detail';
 import axios from 'axios';
+import Cart from '../components/cart/Cart';
 
 const Container = styled.div`
    width: 100%;
@@ -63,6 +64,7 @@ const Display = () => {
             <Routes>
                <Route path='/' element={<Main data={products}/>}/>
                <Route path='/detail/:pId' element={<Detail data={products}/>}/>
+               <Route path='/cart' element={<Cart/>}/>
             </Routes>
          </Body>
       </Container>
