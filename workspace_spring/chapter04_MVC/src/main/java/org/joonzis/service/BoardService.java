@@ -9,15 +9,15 @@ import org.joonzis.domain.Criteria;
 
 public interface BoardService {
 	// 전체 리스트
-	public List<BoardVO> getList(Criteria cri);
+	public List<BoardVO> getAllList();
 	// 데이터삽입
-	public void register(BoardVO vo);
+	public int register(BoardVO vo);
 	// 단일 데이터
-	public BoardVO get(int bno);
+	public BoardVO getBoard(int bno);
 	// 게시글 삭제
-	public boolean remove(int bno);
+	public boolean delete(int bno);
 	// 게시글 수정
-	public boolean modify(BoardVO vo);
+	public int update(BoardVO vo);
 	// 게시글 전체 수
 	public int listAll();
 	

@@ -5,7 +5,7 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import {legacy_createStore as createStore} from 'redux';
 import rootReducer from './reducers/index';
-import {Provider} from 'react-redux'
+import {Provider} from 'react-redux';
 
 // rootReducer를 이용하여 store를 생성
 const store = createStore(

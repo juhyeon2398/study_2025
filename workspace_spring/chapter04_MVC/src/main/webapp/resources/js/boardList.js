@@ -27,7 +27,7 @@ onload = function(){
 			e.preventDefault();
 			let bno = a.getAttribute("href");
 			
-			location.href=`/board/get?bno=${bno}&pageNum=${pageNumData}&amount=${amountData}`;
+			location.href=`/board/0`;
 		})
 	})
 }

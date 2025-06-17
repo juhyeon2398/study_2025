@@ -8,11 +8,11 @@ import org.joonzis.domain.Criteria;
 
 public interface BoardMapper {
 	// 전체 리스트
-	public List<BoardVO> getList(Criteria cri);
+	public List<BoardVO> getAllList();
 	// 데이터 삽입
-	public int insert(BoardVO vo);
+	public int register(BoardVO vo);
 	// 게시글 상세페이지
-	public BoardVO read(int bno);
+	public BoardVO getBoard(int bno);
 	// 게시글 삭제
 	public int delete(int bno);
 	// 게시글 수정

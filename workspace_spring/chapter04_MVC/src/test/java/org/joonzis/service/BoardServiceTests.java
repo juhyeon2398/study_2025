@@ -59,16 +59,16 @@ public class BoardServiceTests {
 //		log.info("remove... " + service.remove(8));
 //	}
 //	
-	@Test 
-	public void testModify() {
-		System.out.println("===================================================================================");
-		System.out.println("===================================================================================");
-		BoardVO vo = new BoardVO(); 
-		vo.setTitle("updateTest3");
-		vo.setContent("updateTest3"); 
-		vo.setWriter("updateTest3");
-		vo.setBno(9);
-		log.info("modify... " + service.modify(vo));
-	}
-	 
+//	@Test 
+//	public void testModify() {
+//		System.out.println("===================================================================================");
+//		System.out.println("===================================================================================");
+//		BoardVO vo = new BoardVO(); 
+//		vo.setTitle("updateTest3");
+//		vo.setContent("updateTest3"); 
+//		vo.setWriter("updateTest3");
+//		vo.setBno(9);
+//		log.info("modify... " + service.modify(vo));
+//	}
+//	 
 }

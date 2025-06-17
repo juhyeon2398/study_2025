@@ -22,78 +22,34 @@ public class BoardServiceImple implements BoardService{
 	private BoardAttachMapper attachMapper;
 	
 	@Override
-	public List<BoardVO> getList(Criteria cri) {
+	public List<BoardVO> getAllList() {
 		log.info("getList...");
-		return mapper.getList(cri);
+		return mapper.getAllList();
 	}
 	
 	@Override
-	public BoardVO get(int bno) {
+	public BoardVO getBoard(int bno) {
 		log.info("get..." + bno);
-		return mapper.read(bno);
+		return mapper.getBoard(bno);
 	}
 	
 	@Override
-	@Transactional
-	public void register(BoardVO vo) {
+	public int register(BoardVO vo) {
 		log.info("register... " + vo);
-		
-		// 1. tbl_board 테이블에 게시글 등록
-		mapper.insert(vo);
-		
-		// 2. 위에서 등록된 게시글 번호 가져오기
-		int currentBno = vo.getBno();
-		
-		// 3. 첨부파일이 존재하면, 파일 테이블에 데이터 등록
-		if(vo.getAttachList() != null && vo.getAttachList().size() > 0) {
-			vo.getAttachList().forEach(attach -> {
-				attach.setBno(currentBno);
-				attachMapper.insert(attach);
-			});
-		}
+		return mapper.register(vo);
 	}
 	
 	@Override
 	@Transactional
-	public boolean remove(int bno) {
+	public boolean delete(int bno) {
 		log.info("getList... " + bno);
-		
-		if(attachMapper.findByBno(bno).size() > 0) {
-			attachMapper.deleteAll(bno);
-		}
-		if(mapper.replyAll(bno) > 0) {
-			mapper.replyAllDelete();
-		}
 		return mapper.delete(bno) == 1;
 	}
 	
 	@Override
 	@Transactional
-	public boolean modify(BoardVO vo) {
-		int currentBno = vo.getBno();
-		if(vo.getUuidList() != null && vo.getUuidList().size() > 0) {
-			attachMapper.findByBno(vo.getBno()).forEach(attach -> {
-				if(vo.getUuidList().indexOf(attach.getUuid()) == -1) {
-					attachMapper.delete(attach.getUuid());
-				}
-			});
-		}else {
-			attachMapper.deleteAll(vo.getBno());
-		}
-		
-		if(vo.getNewAttachList() != null && vo.getNewAttachList().size() > 0) {
-			vo.getNewAttachList().forEach(attach -> {
-				attach.setBno(currentBno);
-				attachMapper.insert(attach);
-			});
-		}
-		int result = mapper.update(vo);
-		
-		if(result == 1) {
-			return true;
-		}else {
-			return false;
-		}
+	public int update(BoardVO vo) {
+		return mapper.update(vo);
 	}
 	
 	@Override

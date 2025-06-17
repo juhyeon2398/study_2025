@@ -13,12 +13,7 @@ import lombok.Setter;
 @Getter
 @Setter
 public class BoardVO {
-	private int bno, replycnt;
-	private String title, content, writer;
-	private Date regdate, updatedate;
-	
-	private List<BoardAttachVO> attachList;
-	private List<BoardAttachVO> newAttachList;
-	private List<String> uuidList;
-	
+	private int idx;
+	private String writer, content,title;
+	private Date regdate;
 }	

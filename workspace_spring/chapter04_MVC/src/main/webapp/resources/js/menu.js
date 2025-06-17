@@ -4,7 +4,7 @@ document.querySelectorAll('.menu a').forEach( a => {
 		
 		let menu = e.target.getAttribute("href");
 		if(menu === 'boardList'){
-			location.href="/board/list";
+			location.href="/boardList";
 		}
 	});
 })

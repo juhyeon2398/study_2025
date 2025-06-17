@@ -3,83 +3,36 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="org.joonzis.mapper.BoardMapper">
-	<!-- id는 메소드 명으로 맵핑 -->
-	<select id="getList" resultType="org.joonzis.domain.BoardVO">
-		<!-- 영역내 태그기호 무시 <![CDATA[ ]]> -->
-		<![CDATA[ 
-		select *
-		from (select bno, title, writer, regdate, replycnt, ROWNUM rn
-			from (select bno, title, writer, regdate, replycnt
-			    from TBL_BOARD
-			    order by bno desc)
-			where rownum <= #{pageNum} * #{amount})
-		where rn > (#{pageNum} - 1) * #{amount}
-		]]>
-	</select>
-	
-	<select id="read" parameterType="int" resultType="org.joonzis.domain.BoardVO">
-		SELECT * FROM TBL_BOARD WHERE BNO = #{bno}
-	</select>
-	
-	<!-- 게시글 삽입 -->
-	<insert id="insert" parameterType="org.joonzis.domain.BoardVO">
-		<selectKey  keyProperty="bno" resultType="int" order="BEFORE">
-			SELECT seq_board.nextval FROM DUAL
-		</selectKey>
-	
-		INSERT INTO TBL_BOARD VALUES(
-			#{bno},
-			#{title},
-			#{content},
-			#{writer},
-			sysdate,
-			sysdate,
-			0
-		)
-	</insert>
-	
-	<!-- 게시글 삭제 -->
-	<delete id="delete" parameterType="int">
-		DELETE tbl_board WHERE BNO = #{bno}
-	</delete>
-	
-	<!-- 게시글 업데이트 -->
-	<update id="update" parameterType="org.joonzis.domain.BoardVO">
+	<select id="getAllList" resultType="org.joonzis.domain.BoardVO">
+       SELECT * FROM board
+    </select>
+ 
+     <select id="getBoard" resultType="org.joonzis.domain.BoardVO">
+       SELECT * FROM board WHERE IDX=#{idx}
+    </select>
 
-		UPDATE tbl_board 
-		SET 
-		    TITLE = #{title},
-		    CONTENT = #{content},
-		    WRITER = #{writer},
-		    UPDATEDATE = sysdate
-		WHERE 
-			BNO = #{bno}
-	</update>
-	
-	<!-- 댓글수 업데이트 -->
-	<update id="updateReplyCnt" >
-		UPDATE TBL_BOARD 
-		SET 
-			REPLYCNT = REPLYCNT + #{amount}
-		WHERE 
-			BNO = #{bno}
-	</update>
-	
-	<select id="listAll" resultType="int">
-		SELECT COUNT(*) FROM tbl_board
-	</select>
-	
-	<select id="replyAll" resultType="int">
-		SELECT COUNT(*) FROM tbl_reply WHERE BNO = #{bno}
-	</select>
-	
-	<delete id="replyAllDelete">
-		DELETE FROM tbl_reply WHERE BNO = #{bno}
-	</delete>
-	
-	<!-- 마지막 BNO 값  -->
-	<select id="getBno" resultType="int">
-		SELECT MAX(BNO) FROM TBL_BOARD
-	</select>
+    <insert id="register" parameterType="org.joonzis.domain.BoardVO">
+        INSERT INTO Board
+        VALUES(
+            seq_bd.nextval,
+            #{writer},
+            #{content},
+            #{title},
+            sysdate
+        )
+    </insert>
 
+    <delete id="delete">
+        DELETE FROM BOARD WHERE IDX = #{idx}
+    </delete>
+
+    <update id="update" parameterType="org.joonzis.domain.BoardVO">
+        UPDATE BOARD
+        SET
+            TITLE=#{title},
+            CONTENT=#{content},
+            WRITER=#{writer}
+        WHERE
+            IDX=#{idx}
+    </update>
 </mapper>
