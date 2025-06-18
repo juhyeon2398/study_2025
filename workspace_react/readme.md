@@ -23,3 +23,13 @@ npm install redux react-redux
   );
   ``` 
 - 정보를 devtool에서 확인가능
+
+# react-query
+```bash
+npm i @tanstack/react-query @tanstack/react-query-devtools
+```
+
+1. useQuery
+- queryKey : ['고유값'],
+- queryFn : getPosts(), // 반드시 Promise를 반화내야함 (async함수 사용)
+
