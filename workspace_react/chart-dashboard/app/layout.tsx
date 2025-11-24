@@ -20,7 +20,7 @@ export default function RootLayout({
   return (
     <html lang="ko">
       {/* Tailwind CSS를 사용한 기본 스타일링: 폰트, 배경색 */}
-      <body className={`${inter.className} bg-gray-50 text-gray-800 antialiased`}>
+      <body className={`${inter.className} bg-gray-50 antialiased`}>
         {children}
       </body>
     </html>
