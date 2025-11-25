@@ -19,7 +19,6 @@ export async function GET(request: Request) {
     });
 
     const yahooData = response.data;
-    console.log("🚀 ~ GET ~ yahooData:", yahooData)
 
     // 2. 받은 데이터의 유효성 검사 및 필요한 경우 가공 (src/utils/dataTransformer.ts 활용)
     // 이 단계에서 복잡한 캔들스틱 변환을 수행할 수 있습니다.
