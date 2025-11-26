@@ -33,3 +33,10 @@ export interface KPIData {
   change: number;
   isPositive: boolean;
 }
+
+// Filter 타입 정의
+export interface FilterType {
+  day: string;
+  searchData: string;
+  symbol: string;
+}

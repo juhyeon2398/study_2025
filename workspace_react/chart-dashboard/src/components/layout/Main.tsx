@@ -1,10 +1,17 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Card } from '../common/Card';
 import LineChart from '../charts/LineChart';
 import { Button } from '../common/Button';
 import { Search } from '../common/Search';
 
+
 export const Main: React.FC = () => {
+
+  const [filter, setFilter] = useState({
+    day : '1d',
+    searchData : '',
+    symbol: 'AAPL',
+  });
 
   const buttonStyle = "max-w-25 grow-1 bg-blue-600 text-black font-semibold hover:bg-blue-700 hover:text-white";
 
@@ -13,18 +20,21 @@ export const Main: React.FC = () => {
       <section className="mb-8 flex space-x-5 ">
         <Button 
           className={buttonStyle}
-          value="1DAY"
+          value="1d"
+          setFilter={setFilter}
         />
         <Button 
           className={buttonStyle}
-          value="1WEEK"
+          value="1w"
+          setFilter={setFilter}
         />
         <Button 
           className={buttonStyle}
-          value="1MONTH"
+          value="1mo"
+          setFilter={setFilter}
         />
 
-        <Search data="" className="grow-5 text-black"/>        
+        <Search className="grow-5 text-black" setFilter={setFilter}/>        
         
       </section>
 
@@ -49,7 +59,7 @@ export const Main: React.FC = () => {
 
       </section>
       <section>
-        <LineChart className=""/>
+        <LineChart filter={filter} />
       </section>
     </>
   );
