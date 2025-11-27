@@ -1,14 +1,10 @@
 import { useEffect, useState } from 'react';
 import { FilterType } from '@/src/types';
 import { 
-  transformYahooFinanceData, 
-  getLatestPrice, 
-  getMetaInfo,
   ChartDataPoint, 
   formatNumber,
   formatDateTime
 } from '@/src/utils/dataTransformer';
-import { fetchStockData } from '@/src/services/stockApi';
 
 const LineChart = ({ filter }: { filter: FilterType }) => {
   const baseStyles = 'bg-white shadow-xl rounded-xl p-6 transition-shadow duration-300 hover:shadow-2xl text-black';
@@ -20,40 +16,8 @@ const LineChart = ({ filter }: { filter: FilterType }) => {
   const [error, setError] = useState<string | null>(null);
   
   useEffect(() => {
-    // 비동기 함수로 분리
-    console.log("🚀 ~ fetchData ~ filter.symbol:", filter.symbol)
-    const fetchData = async () => {
-      try {
-        setLoading(true);
-        setError(null);
-        
-        // API 서비스 사용
-        const json = await fetchStockData(filter.symbol, filter.day);
-        
-        // 데이터 변환
-        const transformedData = transformYahooFinanceData(json);
-        setChartData(transformedData);
-        
-        // 최근 가격 추출
-        setPrice(getLatestPrice(json));
-        
-        // 메타 정보 추출
-        setMeta(getMetaInfo(json));
-        
-        // 최근 날짜 추출
-        if (transformedData.length > 0) {
-          const lastData = transformedData[transformedData.length - 1];
-          setLatestDate(formatDateTime(lastData.timestamp));
-        }
-      } catch (err) {
-        console.error('데이터 로드 오류:', err);
-        setError(err instanceof Error ? err.message : '데이터를 불러오는데 실패했습니다.');
-      } finally {
-        setLoading(false);
-      }
-    };
-    
-    fetchData();
+    // TODO: KIS API 또는 다른 데이터 소스로 주식 데이터 가져오기 구현 필요
+    setLoading(false);
   }, [filter.day, filter.symbol]);
 
   if (loading) return <div className="p-6">Loading...</div>;
