@@ -25,12 +25,10 @@ let tokenExpiry: number = 0;
 async function getKISAccessToken(): Promise<string> {
   // 캐시된 토큰이 유효하면 재사용
   if (accessToken && Date.now() < tokenExpiry) {
-    console.log('✅ 캐시된 토큰 사용');
     return accessToken;
   }
 
   try {
-    console.log('🔑 한국투자증권 토큰 발급 중...');
     const response = await axios.post(
       `${KIS_API_CONFIG.baseUrl}/oauth2/tokenP`,
       {
@@ -41,10 +39,8 @@ async function getKISAccessToken(): Promise<string> {
     );
 
     accessToken = response.data.access_token;
-    // 토큰 만료 시간 설정 (발급 후 23시간)
     tokenExpiry = Date.now() + (23 * 60 * 60 * 1000);
     
-    console.log('✅ 토큰 발급 성공');
     return accessToken!;
   } catch (error) {
     console.error('❌ 토큰 발급 실패:', error);
@@ -62,9 +58,6 @@ async function searchKISStocks(query: string): Promise<SearchResult[]> {
   try {
     const token = await getKISAccessToken();
     
-    console.log('🔍 한국투자증권 API 검색 중...');
-    
-    // 종목 조회 API
     const response = await axios.get(
       `${KIS_API_CONFIG.baseUrl}/uapi/domestic-stock/v1/quotations/search-stock-info`,
       {
@@ -97,7 +90,6 @@ async function searchKISStocks(query: string): Promise<SearchResult[]> {
       });
     }
 
-    console.log(`✅ ${results.length}개 종목 발견`);
     return results.slice(0, 10);
   } catch (error) {
     console.error('❌ 한국투자증권 검색 실패:', error);
@@ -150,32 +142,23 @@ export async function GET(request: Request) {
   const { searchParams } = new URL(request.url);
   const query = searchParams.get('q') || '';
 
-  console.log('\n=== 주식 검색 시작 ===');
-  console.log('원본 검색어:', query);
-
   if (!query) {
     return Response.json({ quotes: [] });
   }
 
-  console.log('🇰🇷 한국 주식 검색 중...');
-  
   // 먼저 KIS API 시도
   const kisResults = await searchKISStocks(query);
   
   if (kisResults.length > 0) {
-    console.log(`✅ KIS API: ${kisResults.length}개 발견`);
     return Response.json({ quotes: kisResults });
   }
   
   // KIS API 실패 시 백업 리스트 사용
-  console.log('⚠️ KIS API 실패, 백업 리스트 사용');
   const backupResults = searchKoreanStocksBackup(query);
   
   if (backupResults.length > 0) {
-    console.log(`✅ 백업 리스트: ${backupResults.length}개 발견`);
     return Response.json({ quotes: backupResults });
   }
   
-  console.log('⚠️ 검색 결과 없음');
   return Response.json({ quotes: [] });
 }

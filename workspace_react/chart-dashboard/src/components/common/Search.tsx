@@ -17,14 +17,11 @@ export const Search: React.FC<SearchProps> = ({ className, setFilter } :  Search
     if (q.length > 1) {
       try {
         setLoading(true);
-        console.log('🔍 검색 시작:', q);
         const data = await searchSymbols(q);
-        console.log('✅ 검색 결과 개수:', data?.length || 0);
-        console.log('✅ 검색 결과 상세:', data);
         setResults(data || []);
         setShowResults(true);
       } catch (error) {
-        console.error('❌ 검색 오류:', error);
+        console.error('검색 오류:', error);
         setResults([]);
       } finally {
         setLoading(false);
