@@ -1,5 +1,20 @@
 This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
+## 환경 설정
+
+1. `.env.example` 파일을 `.env.local`로 복사
+2. `.env.local` 파일에 실제 API 키 값 입력
+
+```bash
+cp .env.example .env.local
+```
+
+## 환경 변수
+
+- `KIS_APP_KEY`: 한국투자증권 API App Key
+- `KIS_APP_SECRET`: 한국투자증권 API App Secret  
+- `KIS_BASE_URL`: 한국투자증권 API Base URL (기본값: https://openapi.koreainvestment.com:9443)
+
 ## Getting Started
 
 First, run the development server:

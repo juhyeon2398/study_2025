@@ -2,7 +2,7 @@ import axios from "axios";
 
 interface SearchResult {
   symbol: string;
-  name: string;
+  name: string; 
   shortname: string;
   exch: string;
   type: string;
@@ -12,9 +12,9 @@ interface SearchResult {
 
 // 한국투자증권 API 설정
 const KIS_API_CONFIG = {
-  appKey: 'PSnDkA6UGlqDgzmAUrksz7qVZJRyEDZpQv78',
-  appSecret: 'NSglqcq/89fct097dw6xBuEqyMVlhoaw+LPdY3hwfB84sKw775kQ0gWB33Ly7GwA2/oKm1fRkquJCA2MpJAoQFdt2DiMxZGGPE0xNTBRayt2bP1s5CQ/s4rQjoC1rd+VeamfWvHRF2MEUU6zyiCYdZbRdyMfeC/ly+MKm/bnapWzJ+IOshU=',
-  baseUrl: 'https://openapi.koreainvestment.com:9443' // 모의투자 URL
+  appKey: process.env.KIS_APP_KEY || '',
+  appSecret: process.env.KIS_APP_SECRET || '',
+  baseUrl: process.env.KIS_BASE_URL || 'https://openapi.koreainvestment.com:9443'
 };
 
 // 액세스 토큰 캐시
